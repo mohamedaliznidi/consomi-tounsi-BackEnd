@@ -1,5 +1,5 @@
 package tn.esprit.spring;
 
-public class test {
+public enum Donation_Type {
 
 }
