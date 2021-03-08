@@ -18,14 +18,13 @@ public class Publicity {
 	private int id;
 	@Temporal (TemporalType.DATE)
 	private Date StartDateP;
+	@Temporal (TemporalType.DATE)
+	private Date EndDateP;
 	@Enumerated(EnumType.ORDINAL)
 	private PublicityCategory publicitycategory;
+	private String image;
 	
-	public enum PublicityCategory {
-		Balise1 , Balise2, Balise3,Balise4 , Balise5, BaliseForum, BaliseHome1,BaliseHome2,BaliseHome3,
-		BaliseJackpot, BaliseEvent,BaliseDonation,
-		
-	}
+	
 	
 }
 

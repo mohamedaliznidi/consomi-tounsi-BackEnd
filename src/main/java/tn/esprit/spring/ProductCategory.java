@@ -13,8 +13,10 @@ import javax.persistence.OneToMany;
 @Entity
 public class ProductCategory {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	String categoryName;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	private String categoryName;
 	@ManyToOne
 	Product products;
+	
 }

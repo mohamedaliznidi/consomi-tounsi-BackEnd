@@ -35,11 +35,7 @@ public class Sheet {
 	private String Category2;
 	private String Category3;
 	
-	public enum MonthlyIncome {Income1,Income2,Income3,Income4,Income5}
-	public enum CivilStatus {
-		marié, celibataire,divorcé, veuf}
-	public enum HandicapType {
-		physique,intellectuel,mental}
+	
 	
 	
 	

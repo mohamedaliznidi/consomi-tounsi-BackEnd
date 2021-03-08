@@ -17,14 +17,14 @@ import javax.persistence.OneToMany;
 public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	int id;
-	String name;
-	String code;
-	float price;
-	String image;
-	int quantity;
-	Date expDate;
-	categoryP category;
+	private int id;
+	private String name;
+	private String code;
+	private float price;
+	private String image;
+	private int quantity;
+	private Date expDate;
+	private ProductCategory category;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Product")
 	private Set<ProductCategory> productCategory;

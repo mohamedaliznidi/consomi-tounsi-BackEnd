@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -18,17 +19,18 @@ import javax.persistence.ManyToOne;
 @Entity
 public class OrderC {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	int id;
-	String shippingAdress;
+	@Column(name="Id_Order")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	private Adress shippingAdress;
 	@Enumerated(EnumType.STRING)
-	PaymentMethode paymentMethode;
-	float taxPrice;
-	float totalPrice;
-	boolean isPaid;
-	Date paidAt;
-	boolean isDelivered;
-	Date DeliveredAt;
+	private PaymentMethode paymentMethode;
+	private float taxPrice;
+	private float totalPrice;
+	private boolean isPaid;
+	private Date paidAt;
+	private boolean isDelivered;
+	private Date DeliveredAt;
 	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<Product> productss;
 
