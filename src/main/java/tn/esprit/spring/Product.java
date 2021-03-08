@@ -1,5 +1,6 @@
 package tn.esprit.spring.entity;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -8,14 +9,27 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
 @Entity
-public class Client {
+public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	int id;
 	String name;
-	@OneToMany (cascade = CascadeType.ALL, mappedBy="client" )
-	private Set<OrderC> orderc;
+	String code;
+	float price;
+	String image;
+	int quantity;
+	Date expDate;
+	categoryP category;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="Product")
+	private Set<ProductCategory> productCategory;
+	
+	
+	
 
 }

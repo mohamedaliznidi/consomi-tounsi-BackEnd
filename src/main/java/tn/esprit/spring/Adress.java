@@ -4,18 +4,24 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
 @Entity
-public class Client {
+public class Adress {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	int id;
-	String name;
-	@OneToMany (cascade = CascadeType.ALL, mappedBy="client" )
+	int codeP;
+	String gouvernorat;
+	String road;
+	int number;
+	String delegation;
+	String localite;
+	
+	@OneToMany (cascade = CascadeType.ALL, mappedBy="adress" )
 	private Set<OrderC> orderc;
-
+	
+	
 }

@@ -4,18 +4,19 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+
 @Entity
-public class Client {
+public class Basket {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	int id;
-	String name;
-	@OneToMany (cascade = CascadeType.ALL, mappedBy="client" )
-	private Set<OrderC> orderc;
+	int idBasket;
+	boolean stateBasket;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private Set<Product> productss;
 
 }
