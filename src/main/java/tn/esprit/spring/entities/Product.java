@@ -1,4 +1,4 @@
-package tn.esprit.spring;
+package tn.esprit.spring.entities;
 
 import java.util.Date;
 import java.util.Set;
@@ -24,9 +24,9 @@ public class Product {
 	private String image;
 	private int quantity;
 	private Date expDate;
-	private ProductCategory category;
+	//private ProductCategory category;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="Product")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="product")
 	private Set<ProductCategory> productCategory;
 	
 	

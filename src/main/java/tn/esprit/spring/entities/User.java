@@ -1,4 +1,4 @@
-package tn.esprit.spring;
+package tn.esprit.spring.entities;
 
 import javax.persistence.Column; 
 import javax.persistence.Entity;

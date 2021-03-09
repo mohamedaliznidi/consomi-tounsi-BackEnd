@@ -1,4 +1,4 @@
-package tn.esprit.spring;
+package tn.esprit.spring.entities;
 
 import java.lang.reflect.Array;
 import java.util.Date;
@@ -32,7 +32,7 @@ public class OrderC {
 	private boolean isDelivered;
 	private Date DeliveredAt;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private Set<Product> productss;
+	private Set<Product> products;
 
 
 	@ManyToOne 

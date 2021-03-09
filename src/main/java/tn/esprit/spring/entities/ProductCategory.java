@@ -1,4 +1,4 @@
-package tn.esprit.spring;
+package tn.esprit.spring.entities;
 
 import java.util.Set;
 
@@ -7,16 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Basket {
+public class ProductCategory {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idBasket;
-	private boolean stateBasket;
+	private int id;
+	private String categoryName;
+	@ManyToOne
+	Product products;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	private Set<Product> productss;
-
 }
