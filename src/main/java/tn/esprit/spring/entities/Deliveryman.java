@@ -1,6 +1,7 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="deliveryman")
-public class Deliveryman implements Serializable {
+public class Deliveryman  extends User implements Serializable {
 	
 	/**
 	 * 
@@ -48,6 +50,9 @@ public class Deliveryman implements Serializable {
 	@ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id",nullable=true )
 	private User user  ;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="deliveryman")
+	private Set<OrderC> orders;
 
 	public Long getDelivery_id() {
 		return delivery_id;

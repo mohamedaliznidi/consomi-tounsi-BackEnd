@@ -1,11 +1,14 @@
 package tn.esprit.spring.entities;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,5 +31,8 @@ public class Event {
 	
 	@Column(name="EVENT_TIME")
 	private String Time;
+	
+	@ManyToMany(mappedBy="events", cascade = CascadeType.ALL)
+	private Set<Client> clients;
 
 }

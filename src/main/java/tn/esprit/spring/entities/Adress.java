@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
 @Entity
 public class Adress {
 	@Id 
@@ -23,6 +24,5 @@ public class Adress {
 	
 	@OneToMany (cascade = CascadeType.ALL, mappedBy="adress" )
 	private Set<OrderC> orderc;
-	
 	
 }

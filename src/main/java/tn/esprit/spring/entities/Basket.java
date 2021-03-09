@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Basket {
@@ -17,6 +18,9 @@ public class Basket {
 	private boolean stateBasket;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	private Set<Product> productss;
+	private Set<Product> products;
+	
+	@OneToOne (mappedBy = "basket")
+	private Client client;
 
 }

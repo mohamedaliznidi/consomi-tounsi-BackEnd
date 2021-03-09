@@ -31,12 +31,17 @@ public class OrderC {
 	private Date paidAt;
 	private boolean isDelivered;
 	private Date DeliveredAt;
+	
 	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<Product> products;
 
 
 	@ManyToOne 
 	 Client client;
+	
 	@ManyToOne
 	Adress adress;
+	
+	@ManyToOne
+	Deliveryman deliveryman;
 }
