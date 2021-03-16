@@ -15,14 +15,16 @@ import javax.persistence.OneToMany;
 public class Adress {
 	@Id 
 	@Column(name="CodeP")
-	private int codeP;
-	private String gouvernorat;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	private codeP codeP;
 	private String road;
 	private int number;
-	private String delegation;
-	private String localite;
+
 	
 	@OneToMany (cascade = CascadeType.ALL, mappedBy="adress" )
 	private Set<OrderC> orderc;
+	@OneToMany (cascade = CascadeType.ALL, mappedBy="adress" )
+	private Set<Client> client;
 	
 }

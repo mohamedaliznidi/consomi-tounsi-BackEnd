@@ -1,14 +1,19 @@
 package tn.esprit.spring.entities;
 
-import javax.persistence.Column; 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue; 
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 
 
 @Entity
+@Inheritance( strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="USER_TYPE")
 public class User {
 
 @Id
