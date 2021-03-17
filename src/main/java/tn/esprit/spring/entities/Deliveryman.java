@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,9 +17,15 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
 
 @Entity
-
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Table(name="DELIVERY_MAN")
 public class Deliveryman  extends User implements Serializable {
 	
@@ -56,96 +61,5 @@ public class Deliveryman  extends User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="deliveryman")
 	private Set<OrderC> orders;
 
-	public Long getDelivery_id() {
-		return delivery_id;
-	}
-
-	public void setDelivery_id(Long delivery_id) {
-		this.delivery_id = delivery_id;
-	}
-
-	public Deliveryman() {
-		super();
-	}
-
-	public Deliveryman(Long delivery_id, String lastname, String fristName, String adress, String phonenumber,
-			int prime, int rank, String joblist, User user) {
-		super();
-		this.delivery_id = delivery_id;
-		this.lastname = lastname;
-		FristName = fristName;
-		this.adress = adress;
-		this.phonenumber = phonenumber;
-		this.prime = prime;
-		this.rank = rank;
-		this.joblist = joblist;
-		this.user = user;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-
-	public String getFristName() {
-		return FristName;
-	}
-
-	public void setFristName(String fristName) {
-		FristName = fristName;
-	}
-
-	public String getAdress() {
-		return adress;
-	}
-
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
-
-	public String getPhonenumber() {
-		return phonenumber;
-	}
-
-	public void setPhonenumber(String phonenumber) {
-		this.phonenumber = phonenumber;
-	}
-
-	public int getPrime() {
-		return prime;
-	}
-
-	public void setPrime(int prime) {
-		this.prime = prime;
-	}
-
-	public int getRank() {
-		return rank;
-	}
-
-	public void setRank(int rank) {
-		this.rank = rank;
-	}
-
-	public String getJoblist() {
-		return joblist;
-	}
-
-	public void setJoblist(String joblist) {
-		this.joblist = joblist;
-	} 
 	
-	
-
 }

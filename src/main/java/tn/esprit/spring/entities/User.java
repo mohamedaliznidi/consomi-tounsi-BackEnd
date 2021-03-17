@@ -10,27 +10,43 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+
+
+
 
 @Entity
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Inheritance( strategy=InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name="USER_TYPE")
 public class User {
 
-@Id
-@GeneratedValue (strategy = GenerationType.AUTO)
-@Column(name="USER_ID")
-private int id; // Clé primaire
+	@Id
+	@GeneratedValue (strategy = GenerationType.AUTO)
+	@Column(name="USER_ID")
+	@NonNull
+	private int id; // Clé primaire
 
-@Column(name="USER_NAME")
-private String name;
+	@Column(name="USER_NAME")
+	@NonNull
+	private String name;
 
-@Column(name="USER_EMAIL")
-private String email;
+	@Column(name="USER_EMAIL")
+	@NonNull
+	private String email;
 
-@Column(name="USER_PW")
-private String password;
+	@Column(name="USER_PW")
+	@NonNull
+	private String password;
 
-@Column(name="USER_PHONE")
-private int phone_number;
-
+	@Column(name="USER_PHONE")
+	@NonNull
+	private int phone_number;
+	
 }

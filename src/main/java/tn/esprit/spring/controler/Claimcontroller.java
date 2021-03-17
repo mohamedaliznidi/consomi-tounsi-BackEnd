@@ -50,7 +50,7 @@ public class Claimcontroller {
 		@ResponseBody
 		public Claim updateclaim(@PathVariable("idclaim") Long idclaim, @RequestBody Claim claim) {
 			Claim c = categoryRepository.getClaimById(idclaim);
-			c.setDescreption(claim.getDescreption());
+			//c.setDescreption(claim.getDescreption());
 			c.setSubject_claim(claim.getSubject_claim());
 			c.setState(claim.isState());
 		    

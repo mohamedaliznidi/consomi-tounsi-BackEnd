@@ -8,41 +8,29 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
 @Entity 
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Table(name="commentforum")
 public class Commentforum {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	
-	Long idcommentforum;
+	@NonNull
+	int idcommentforum;
 	@Column(name="content")
+	@NonNull
 	String content;
 	@Column(name="commentdate")
+	@NonNull
 	java.util.Date commentdate ;
 	
 	@ManyToOne 
 	private Subject subject;
-	
-	public Long getIdcommentforum() {
-		return idcommentforum;
-	}
-	public void setIdcommentforum(Long idcommentforum) {
-		this.idcommentforum = idcommentforum;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public java.util.Date getCommentdate() {
-		return commentdate;
-	}
-	public void setCommentdate(java.util.Date commentdate) {
-		this.commentdate = commentdate;
-	}
-	
-	
-	
 
 }

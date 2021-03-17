@@ -10,11 +10,21 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class Basket {
 	@Id
+	@NonNull
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idBasket;
+	@NonNull
 	private boolean stateBasket;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
