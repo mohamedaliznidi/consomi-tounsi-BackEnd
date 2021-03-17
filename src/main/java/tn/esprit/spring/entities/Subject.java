@@ -1,5 +1,6 @@
 package tn.esprit.spring.entities;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,7 +14,11 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-public class Subject {
+public class Subject implements Serializable {
+	
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@Column(name="Id_Subject")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

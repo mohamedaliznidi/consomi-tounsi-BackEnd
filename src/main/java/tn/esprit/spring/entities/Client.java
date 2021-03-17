@@ -1,5 +1,6 @@
 package tn.esprit.spring.entities;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,22 +15,41 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+
 
 
 @Entity
-@Getter
-@Setter
-@RequiredArgsConstructor
+
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorColumn(name="CLIENT_TYPE")
 
 @Table(name="CLIENT")
-public class Client extends User {
+public class Client extends User implements Serializable {
 	
 	
+	/**
+	 * @param orderc
+	 * @param adress
+	 * @param basket
+	 * @param event
+	 * @param events
+	 * @param subjects
+	 * @param claim
+	 */
+	public Client(Set<OrderC> orderc, Adress adress, Basket basket, Event event, Set<Event> events,
+			Set<Subject> subjects, Set<Claim> claim) {
+		this.orderc = orderc;
+		this.adress = adress;
+		this.basket = basket;
+		this.event = event;
+		this.events = events;
+		this.subjects = subjects;
+		this.claim = claim;
+	}
+
+	
+
+	private static final long serialVersionUID = 1L;
 	//relation orderc
 	@OneToMany (cascade = CascadeType.ALL, mappedBy="client" )
 	private Set<OrderC> orderc;
@@ -54,6 +74,111 @@ public class Client extends User {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="client")
 	private Set<Claim> claim;
+
+	/**
+	 * @return the orderc
+	 */
+	public Set<OrderC> getOrderc() {
+		return orderc;
+	}
+
+	/**
+	 * @param orderc the orderc to set
+	 */
+	public void setOrderc(Set<OrderC> orderc) {
+		this.orderc = orderc;
+	}
+
+	/**
+	 * @return the adress
+	 */
+	public Adress getAdress() {
+		return adress;
+	}
+
+	/**
+	 * @param adress the adress to set
+	 */
+	public void setAdress(Adress adress) {
+		this.adress = adress;
+	}
+
+	/**
+	 * @return the basket
+	 */
+	public Basket getBasket() {
+		return basket;
+	}
+
+	/**
+	 * @param basket the basket to set
+	 */
+	public void setBasket(Basket basket) {
+		this.basket = basket;
+	}
+
+	/**
+	 * @return the event
+	 */
+	public Event getEvent() {
+		return event;
+	}
+
+	/**
+	 * @param event the event to set
+	 */
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+	/**
+	 * @return the events
+	 */
+	public Set<Event> getEvents() {
+		return events;
+	}
+
+	/**
+	 * @param events the events to set
+	 */
+	public void setEvents(Set<Event> events) {
+		this.events = events;
+	}
+
+	/**
+	 * @return the subjects
+	 */
+	public Set<Subject> getSubjects() {
+		return subjects;
+	}
+
+	/**
+	 * @param subjects the subjects to set
+	 */
+	public void setSubjects(Set<Subject> subjects) {
+		this.subjects = subjects;
+	}
+
+	/**
+	 * @return the claim
+	 */
+	public Set<Claim> getClaim() {
+		return claim;
+	}
+
+	/**
+	 * @param claim the claim to set
+	 */
+	public void setClaim(Set<Claim> claim) {
+		this.claim = claim;
+	}
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 
 }

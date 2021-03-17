@@ -1,5 +1,6 @@
 package tn.esprit.spring.entities;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,21 +11,27 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
-@RequiredArgsConstructor
-public class Basket {
+
+public class Basket implements Serializable {
+	
+	
+	public Basket( int idBasket, boolean stateBasket, Set<Product> products) {
+		super();
+		this.idBasket = idBasket;
+		this.stateBasket = stateBasket;
+		this.products = products;
+	}
+
+	private static final long serialVersionUID = 1L;
+	
 	@Id
-	@NonNull
+
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idBasket;
-	@NonNull
+
+
 	private boolean stateBasket;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -32,5 +39,37 @@ public class Basket {
 	
 	@OneToOne (mappedBy = "basket")
 	private Client client;
+
+	public int getIdBasket() {
+		return idBasket;
+	}
+
+	public void setIdBasket(int idBasket) {
+		this.idBasket = idBasket;
+	}
+
+	public boolean isStateBasket() {
+		return stateBasket;
+	}
+
+	public void setStateBasket(boolean stateBasket) {
+		this.stateBasket = stateBasket;
+	}
+
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 }

@@ -1,5 +1,7 @@
 package tn.esprit.spring.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -25,8 +27,10 @@ import lombok.Setter;
 @RequiredArgsConstructor
 @Inheritance( strategy=InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name="USER_TYPE")
-public class User {
-
+public class User implements Serializable {
+	
+	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	@Column(name="USER_ID")

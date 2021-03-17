@@ -1,19 +1,17 @@
 package tn.esprit.spring.entities;
 
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 
 @Entity
-@Getter
-@Setter
-@RequiredArgsConstructor
 @Table(name="ADMIN")
-public class Admin extends User {
+public class Admin extends User implements Serializable {
 	
+	
+	private static final long serialVersionUID = 1L;
 }

@@ -4,9 +4,6 @@ package tn.esprit.spring.controler;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,11 +61,7 @@ public class Deliverymancontroller {
 		@ResponseBody
 		public Deliveryman updatedeliveryman(@PathVariable("delivery_id") Long delivery_id, @RequestBody Deliveryman deliveryman) {
 			Deliveryman d =deliveryRepository.getDeliveryById(delivery_id);
-			d.setAdress(deliveryman.getAdress());
-			d.setFristName(deliveryman.getFristName());
 			d.setJoblist(deliveryman.getJoblist());
-			d.setLastname(deliveryman.getLastname());
-			d.setPhonenumber(deliveryman.getPhonenumber());
 			d.setPrime(deliveryman.getPrime());
 			d.setRank(deliveryman.getRank());
 		    
