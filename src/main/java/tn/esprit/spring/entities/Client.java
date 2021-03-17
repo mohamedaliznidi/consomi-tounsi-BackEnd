@@ -3,6 +3,7 @@ package tn.esprit.spring.entities;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,13 +17,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 @Entity
-@Inheritance( strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorValue("CLIENT")
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="CLIENT_TYPE")
+
+@Table(name="CLIENT")
 public class Client extends User {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	int id;
+	
 	String name;
 	
 	//relation orderc

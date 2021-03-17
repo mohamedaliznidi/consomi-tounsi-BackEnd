@@ -7,8 +7,9 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 @Entity
-@DiscriminatorValue("CLIENT_PLUS")
-public class ClientPlus {
+
+@DiscriminatorValue("PLUS")
+public class ClientPlus extends Client{
 
 	@ManyToMany(mappedBy="clientplus", cascade = CascadeType.ALL)
 	private Set<Donation> donations;

@@ -12,12 +12,12 @@ import javax.persistence.InheritanceType;
 
 
 @Entity
-@Inheritance( strategy=InheritanceType.JOINED)
+@Inheritance( strategy=InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name="USER_TYPE")
 public class User {
 
 @Id
-@GeneratedValue (strategy = GenerationType.IDENTITY)
+@GeneratedValue (strategy = GenerationType.AUTO)
 @Column(name="USER_ID")
 private int id; // Clé primaire
 

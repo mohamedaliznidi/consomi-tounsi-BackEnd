@@ -20,8 +20,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-@DiscriminatorValue("DELIVARY_MAN")
-@Table(name="deliveryman")
+
+@Table(name="DELIVERY_MAN")
 public class Deliveryman  extends User implements Serializable {
 	
 	/**

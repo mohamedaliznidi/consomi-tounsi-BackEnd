@@ -1,11 +1,12 @@
 package tn.esprit.spring.entities;
 
-import javax.persistence.DiscriminatorValue;
+
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
 @Entity
-@DiscriminatorValue("ADMIN")
+@Table(name="ADMIN")
 public class Admin extends User {
 	
 }
