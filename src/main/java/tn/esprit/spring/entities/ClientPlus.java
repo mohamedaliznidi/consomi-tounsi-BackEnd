@@ -13,9 +13,9 @@ import javax.persistence.ManyToMany;
 public class ClientPlus extends Client implements Serializable {
 	
 	
-	public ClientPlus(Set<OrderC> orderc, Adress adress, Basket basket, Event event, Set<Event> events,
-			Set<Subject> subjects, Set<Claim> claim) {
-		super(orderc, adress, basket, event, events, subjects, claim);
+	
+	public ClientPlus(int id, String name, String email, String password, int phone_number) {
+		super(id, name, email, password, phone_number);
 		// TODO Auto-generated constructor stub
 	}
 

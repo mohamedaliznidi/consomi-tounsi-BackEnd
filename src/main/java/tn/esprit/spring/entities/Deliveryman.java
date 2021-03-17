@@ -16,15 +16,10 @@ import javax.persistence.Table;
 public class Deliveryman  extends User implements Serializable {
 	
 	
-	/**
-	 * @param prime
-	 * @param rank
-	 * @param joblist
-	 */
-	public Deliveryman(int prime, int rank, String joblist) {
-		this.prime = prime;
-		this.rank = rank;
-		this.joblist = joblist;
+
+	public Deliveryman(int id, String name, String email, String password, int phone_number) {
+		super(id, name, email, password, phone_number);
+		// TODO Auto-generated constructor stub
 	}
 
 

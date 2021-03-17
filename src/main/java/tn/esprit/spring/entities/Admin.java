@@ -13,5 +13,10 @@ import javax.persistence.Table;
 public class Admin extends User implements Serializable {
 	
 	
+	public Admin(int id, String name, String email, String password, int phone_number) {
+		super(id, name, email, password, phone_number);
+		// TODO Auto-generated constructor stub
+	}
+
 	private static final long serialVersionUID = 1L;
 }

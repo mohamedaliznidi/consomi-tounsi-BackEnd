@@ -27,27 +27,14 @@ import javax.persistence.Table;
 public class Client extends User implements Serializable {
 	
 	
-	/**
-	 * @param orderc
-	 * @param adress
-	 * @param basket
-	 * @param event
-	 * @param events
-	 * @param subjects
-	 * @param claim
-	 */
-	public Client(Set<OrderC> orderc, Adress adress, Basket basket, Event event, Set<Event> events,
-			Set<Subject> subjects, Set<Claim> claim) {
-		this.orderc = orderc;
-		this.adress = adress;
-		this.basket = basket;
-		this.event = event;
-		this.events = events;
-		this.subjects = subjects;
-		this.claim = claim;
-	}
+
 
 	
+
+	public Client(int id, String name, String email, String password, int phone_number) {
+		super(id, name, email, password, phone_number);
+		// TODO Auto-generated constructor stub
+	}
 
 	private static final long serialVersionUID = 1L;
 	//relation orderc

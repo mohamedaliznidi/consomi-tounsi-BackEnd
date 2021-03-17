@@ -1,4 +1,5 @@
 package tn.esprit.spring.entities;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
@@ -11,18 +12,27 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
-@RequiredArgsConstructor
+
 public class Publicity implements Serializable {
 	
 	
+	/**
+	 * @param id
+	 * @param startDateP
+	 * @param endDateP
+	 * @param publicitycategory
+	 * @param image
+	 */
+	public Publicity(int id, Date startDateP, Date endDateP, PublicityCategory publicitycategory, String image) {
+		this.id = id;
+		StartDateP = startDateP;
+		EndDateP = endDateP;
+		this.publicitycategory = publicitycategory;
+		this.image = image;
+	}
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -35,8 +45,78 @@ public class Publicity implements Serializable {
 	private Date EndDateP;
 	@Enumerated(EnumType.ORDINAL)
 	private PublicityCategory publicitycategory;
-	@NonNull
+	
 	private String image;
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the startDateP
+	 */
+	public Date getStartDateP() {
+		return StartDateP;
+	}
+
+	/**
+	 * @param startDateP the startDateP to set
+	 */
+	public void setStartDateP(Date startDateP) {
+		StartDateP = startDateP;
+	}
+
+	/**
+	 * @return the endDateP
+	 */
+	public Date getEndDateP() {
+		return EndDateP;
+	}
+
+	/**
+	 * @param endDateP the endDateP to set
+	 */
+	public void setEndDateP(Date endDateP) {
+		EndDateP = endDateP;
+	}
+
+	/**
+	 * @return the publicitycategory
+	 */
+	public PublicityCategory getPublicitycategory() {
+		return publicitycategory;
+	}
+
+	/**
+	 * @param publicitycategory the publicitycategory to set
+	 */
+	public void setPublicitycategory(PublicityCategory publicitycategory) {
+		this.publicitycategory = publicitycategory;
+	}
+
+	/**
+	 * @return the image
+	 */
+	public String getImage() {
+		return image;
+	}
+
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(String image) {
+		this.image = image;
+	}
 	
 	
 	

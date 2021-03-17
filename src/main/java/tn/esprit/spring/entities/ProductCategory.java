@@ -9,25 +9,65 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
-@RequiredArgsConstructor
+
 public class ProductCategory implements Serializable {
 	
 	
+	/**
+	 * @param id
+	 * @param categoryName
+	 * @param products
+	 */
+	public ProductCategory(int id, String categoryName, Product products) {
+		this.id = id;
+		this.categoryName = categoryName;
+		this.products = products;
+	}
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	@NonNull
+	
 	private String categoryName;
 	@ManyToOne
 	Product products;
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+	/**
+	 * @return the categoryName
+	 */
+	public String getCategoryName() {
+		return categoryName;
+	}
+	/**
+	 * @param categoryName the categoryName to set
+	 */
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+	/**
+	 * @return the products
+	 */
+	public Product getProducts() {
+		return products;
+	}
+	/**
+	 * @param products the products to set
+	 */
+	public void setProducts(Product products) {
+		this.products = products;
+	}
 	
 }
