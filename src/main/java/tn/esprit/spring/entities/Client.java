@@ -16,6 +16,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
+import java.util.List;
+
+
+
 
 
 @Entity
@@ -61,6 +65,16 @@ public class Client extends User implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="client")
 	private Set<Claim> claim;
+	
+	
+	private List<CommentProduct> comments;
+	@OneToMany(mappedBy="client")
+	public List<CommentProduct> getComments(){
+		return comments;
+	}
+	public void setComments (List<CommentProduct> comments){
+		this.comments=comments;
+	}
 
 	/**
 	 * @return the orderc

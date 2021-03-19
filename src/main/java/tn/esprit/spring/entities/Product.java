@@ -2,6 +2,7 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -61,8 +62,19 @@ public class Product implements Serializable {
 	private Date expDate;
 	//private ProductCategory category;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="product")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="products")
 	private Set<ProductCategory> productCategory;
+	
+	
+	
+	private List<CommentProduct> comments;
+	@OneToMany(mappedBy="product")
+	public List<CommentProduct> getComments(){
+		return comments;
+	}
+	public void setComments (List<CommentProduct> comments){
+		this.comments=comments;
+	}
 
 	/**
 	 * @return the id
