@@ -36,45 +36,33 @@ public class Jackpot implements Serializable {
 	
 	@Column(name="JACKPOT_IMAGE")
 	private String image;
+	
 
-	/**
-	 * @return the id
-	 */
+	//Getters&Setters
+	
 	public int getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the name
-	 */
 	public Jackpot_Type getName() {
 		return name;
 	}
 
-	/**
-	 * @param name the name to set
-	 */
+	
 	public void setName(Jackpot_Type name) {
 		this.name = name;
 	}
 
-	/**
-	 * @return the image
-	 */
+	
 	public String getImage() {
 		return image;
 	}
 
-	/**
-	 * @param image the image to set
-	 */
+	
 	public void setImage(String image) {
 		this.image = image;
 	}

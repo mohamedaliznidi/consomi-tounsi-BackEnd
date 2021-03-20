@@ -1,14 +1,17 @@
 package tn.esprit.spring.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
 @Entity
-public class CommentProduct {
+public class CommentProduct implements Serializable {
 	
 
 	
@@ -20,21 +23,26 @@ public class CommentProduct {
 		this.content = content;
 		this.date = date;
 	}
-
+	@Id
 	private CommentProductId id;
 	private Client client;
+	
 	private Product product;
 	private String content;
 	private Date date;
 	
-	@EmbeddedId 
+/**	@EmbeddedId 
 	public CommentProductId getCommentProductId(){
 		return id;
 	}
+	public void setCommentProductId(CommentProductId id){
+		this.id=id;
+	}
 	
 	@ManyToOne
-	@JoinColumn(name="idClient",referencedColumnName="id"
+	@JoinColumn(name="idClient",referencedColumnName="USER_ID"
 	, insertable=false, updatable=false)
+	*/
 	
 	public Client getClient(){
 		return client;
@@ -45,9 +53,9 @@ public class CommentProduct {
 		this.client=client;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name="idProduct",referencedColumnName="id"
-	, insertable=false, updatable=false)
+/**	@ManyToOne
+	@JoinColumn(name="idProduct",referencedColumnName="ID_PRODUCT"
+	, insertable=false, updatable=false)*/
 	
 	public Product getProduct(){
 		return product;

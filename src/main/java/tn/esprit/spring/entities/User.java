@@ -20,7 +20,7 @@ import javax.persistence.InheritanceType;
 
 @Inheritance( strategy=InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name="USER_TYPE")
-public class User implements Serializable {
+public abstract class User implements Serializable {
 	
 	
 	/**
@@ -61,79 +61,56 @@ public class User implements Serializable {
 
 	private int phone_number;
 
-	/**
-	 * @return the id
-	 */
+	//Getters&Setters
+	
 	public int getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
+	
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the name
-	 */
+	
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * @param name the name to set
-	 */
+	
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	/**
-	 * @return the email
-	 */
+	
 	public String getEmail() {
 		return email;
 	}
 
-	/**
-	 * @param email the email to set
-	 */
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	/**
-	 * @return the password
-	 */
+	
 	public String getPassword() {
 		return password;
 	}
 
-	/**
-	 * @param password the password to set
-	 */
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	/**
-	 * @return the phone_number
-	 */
 	public int getPhone_number() {
 		return phone_number;
 	}
 
-	/**
-	 * @param phone_number the phone_number to set
-	 */
+	
 	public void setPhone_number(int phone_number) {
 		this.phone_number = phone_number;
 	}
 
-	/**
-	 * @return the serialversionuid
-	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

@@ -47,73 +47,64 @@ public class Publicity implements Serializable {
 	private PublicityCategory publicitycategory;
 	
 	private String image;
+	
+	
+	//Getters&Setters
 
-	/**
-	 * @return the id
-	 */
+
 	public int getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the startDateP
-	 */
+
 	public Date getStartDateP() {
 		return StartDateP;
 	}
 
-	/**
-	 * @param startDateP the startDateP to set
-	 */
+
+
 	public void setStartDateP(Date startDateP) {
 		StartDateP = startDateP;
 	}
 
-	/**
-	 * @return the endDateP
-	 */
+
+
 	public Date getEndDateP() {
 		return EndDateP;
 	}
 
-	/**
-	 * @param endDateP the endDateP to set
-	 */
+
+
 	public void setEndDateP(Date endDateP) {
 		EndDateP = endDateP;
 	}
 
-	/**
-	 * @return the publicitycategory
-	 */
+
+
 	public PublicityCategory getPublicitycategory() {
 		return publicitycategory;
 	}
 
-	/**
-	 * @param publicitycategory the publicitycategory to set
-	 */
+
+
 	public void setPublicitycategory(PublicityCategory publicitycategory) {
 		this.publicitycategory = publicitycategory;
 	}
 
-	/**
-	 * @return the image
-	 */
+
+
 	public String getImage() {
 		return image;
 	}
 
-	/**
-	 * @param image the image to set
-	 */
+
+
 	public void setImage(String image) {
 		this.image = image;
 	}

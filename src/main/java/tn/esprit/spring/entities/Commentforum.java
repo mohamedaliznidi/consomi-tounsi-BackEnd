@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity 
 
-@Table(name="commentforum")
+@Table(name="COMMENT_FORUM")
 public class Commentforum implements Serializable {
 	
 	
@@ -24,8 +24,8 @@ public class Commentforum implements Serializable {
 	 * @param content
 	 * @param commentdate
 	 */
-	public Commentforum(int idcommentforum, String content, Date commentdate) {
-		this.idcommentforum = idcommentforum;
+	public Commentforum(int id, String content, Date commentdate) {
+		this.id = id;
 		this.content = content;
 		this.commentdate = commentdate;
 	}
@@ -34,56 +34,40 @@ public class Commentforum implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-
-	int idcommentforum;
+	int id;
 	@Column(name="content")
-
 	String content;
+	
 	@Column(name="commentdate")
-
 	java.util.Date commentdate ;
 	
 	@ManyToOne 
 	private Subject subject;
+	
+	//Getters&Setters
 
-	/**
-	 * @return the idcommentforum
-	 */
-	public int getIdcommentforum() {
-		return idcommentforum;
+	public int getId() {
+		return id;
 	}
 
-	/**
-	 * @param idcommentforum the idcommentforum to set
-	 */
-	public void setIdcommentforum(int idcommentforum) {
-		this.idcommentforum = idcommentforum;
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	/**
-	 * @return the content
-	 */
 	public String getContent() {
 		return content;
 	}
 
-	/**
-	 * @param content the content to set
-	 */
+
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-	/**
-	 * @return the commentdate
-	 */
 	public java.util.Date getCommentdate() {
 		return commentdate;
 	}
 
-	/**
-	 * @param commentdate the commentdate to set
-	 */
 	public void setCommentdate(java.util.Date commentdate) {
 		this.commentdate = commentdate;
 	}

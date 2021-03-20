@@ -17,11 +17,10 @@ import javax.persistence.OneToOne;
 public class Basket implements Serializable {
 	
 	
-	public Basket( int idBasket, boolean stateBasket, Set<Product> products) {
+	public Basket( int idBasket, boolean stateBasket) {
 		super();
 		this.idBasket = idBasket;
 		this.stateBasket = stateBasket;
-		this.products = products;
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -56,20 +55,5 @@ public class Basket implements Serializable {
 		this.stateBasket = stateBasket;
 	}
 
-	public Set<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(Set<Product> products) {
-		this.products = products;
-	}
-
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
 
 }

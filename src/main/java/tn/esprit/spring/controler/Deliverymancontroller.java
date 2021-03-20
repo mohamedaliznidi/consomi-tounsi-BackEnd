@@ -1,4 +1,4 @@
-package tn.esprit.spring.controler;
+/**package tn.esprit.spring.controler;
 
 
 import java.util.List;
@@ -36,6 +36,8 @@ public class Deliverymancontroller {
 			return new ResponseEntity<>( this.deliveryRepository.saveAndFlush(cat1),HttpStatus.CREATED);
 			
 		}*/
+
+/**
 
 	@PostMapping("/adddelevry")
 	public void add(@RequestBody  Deliveryman  cat1)
@@ -82,4 +84,4 @@ public String deleteman(@PathVariable("delivery_id") Long delivery_id) {
       .orElseThrow(() -> new IllegalArgumentException("Invalid deliveryman Id:" + delivery_id));
     deliveryRepository.delete(Deliveryman);
     return "redirect:/index"; }}
-
+*/

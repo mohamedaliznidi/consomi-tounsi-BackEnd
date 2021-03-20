@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 
 
@@ -98,241 +99,208 @@ public class Sheet implements Serializable {
 	private String Category2;
 	
 	private String Category3;
+	
+	
+	
+	
+	@OneToOne
+	private ClientPlus clientplus;
 
-	/**
-	 * @return the id
-	 */
+	
+	
+	//Getters&Setters
+	
 	public int getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
+	
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the student
-	 */
+	
 	public boolean isStudent() {
 		return Student;
 	}
 
-	/**
-	 * @param student the student to set
-	 */
+	
 	public void setStudent(boolean student) {
 		Student = student;
 	}
 
-	/**
-	 * @return the job
-	 */
+
 	public boolean isJob() {
 		return Job;
 	}
 
-	/**
-	 * @param job the job to set
-	 */
+	
+	
 	public void setJob(boolean job) {
 		Job = job;
 	}
 
-	/**
-	 * @return the monthlyincome
-	 */
+
+
 	public MonthlyIncome getMonthlyincome() {
 		return Monthlyincome;
 	}
 
-	/**
-	 * @param monthlyincome the monthlyincome to set
-	 */
+
+
 	public void setMonthlyincome(MonthlyIncome monthlyincome) {
 		Monthlyincome = monthlyincome;
 	}
 
-	/**
-	 * @return the civilStatus
-	 */
+
+
 	public CivilStatus getCivilStatus() {
 		return CivilStatus;
 	}
 
-	/**
-	 * @param civilStatus the civilStatus to set
-	 */
+
+
 	public void setCivilStatus(CivilStatus civilStatus) {
 		CivilStatus = civilStatus;
 	}
 
-	/**
-	 * @return the kids
-	 */
+
+
 	public boolean isKids() {
 		return Kids;
 	}
 
-	/**
-	 * @param kids the kids to set
-	 */
+
 	public void setKids(boolean kids) {
 		Kids = kids;
 	}
 
-	/**
-	 * @return the oldPerson
-	 */
+
+
 	public boolean isOldPerson() {
 		return OldPerson;
 	}
 
-	/**
-	 * @param oldPerson the oldPerson to set
-	 */
+
+
 	public void setOldPerson(boolean oldPerson) {
 		OldPerson = oldPerson;
 	}
 
-	/**
-	 * @return the oldPHealthP
-	 */
+
+
 	public boolean isOldPHealthP() {
 		return OldPHealthP;
 	}
 
-	/**
-	 * @param oldPHealthP the oldPHealthP to set
-	 */
+
+
 	public void setOldPHealthP(boolean oldPHealthP) {
 		OldPHealthP = oldPHealthP;
 	}
 
-	/**
-	 * @return the kidsN
-	 */
+
+
 	public int getKidsN() {
 		return KidsN;
 	}
 
-	/**
-	 * @param kidsN the kidsN to set
-	 */
+
+
 	public void setKidsN(int kidsN) {
 		KidsN = kidsN;
 	}
 
-	/**
-	 * @return the workCapacity
-	 */
+
+
 	public boolean isWorkCapacity() {
 		return WorkCapacity;
 	}
 
-	/**
-	 * @param workCapacity the workCapacity to set
-	 */
+
+
 	public void setWorkCapacity(boolean workCapacity) {
 		WorkCapacity = workCapacity;
 	}
 
-	/**
-	 * @return the monoParent
-	 */
+
+
 	public boolean isMonoParent() {
 		return MonoParent;
 	}
 
-	/**
-	 * @param monoParent the monoParent to set
-	 */
+
+
 	public void setMonoParent(boolean monoParent) {
 		MonoParent = monoParent;
 	}
 
-	/**
-	 * @return the handicap
-	 */
+
+
 	public boolean isHandicap() {
 		return Handicap;
 	}
 
-	/**
-	 * @param handicap the handicap to set
-	 */
+
+
 	public void setHandicap(boolean handicap) {
 		Handicap = handicap;
 	}
 
-	/**
-	 * @return the handicapType
-	 */
+
+
 	public HandicapType getHandicapType() {
 		return HandicapType;
 	}
 
-	/**
-	 * @param handicapType the handicapType to set
-	 */
+
+
 	public void setHandicapType(HandicapType handicapType) {
 		HandicapType = handicapType;
 	}
 
-	/**
-	 * @return the pregnant
-	 */
+
+
 	public boolean isPregnant() {
 		return Pregnant;
 	}
 
-	/**
-	 * @param pregnant the pregnant to set
-	 */
+
+
 	public void setPregnant(boolean pregnant) {
 		Pregnant = pregnant;
 	}
 
-	/**
-	 * @return the category1
-	 */
+
+
 	public String getCategory1() {
 		return Category1;
 	}
 
-	/**
-	 * @param category1 the category1 to set
-	 */
+
 	public void setCategory1(String category1) {
 		Category1 = category1;
 	}
 
-	/**
-	 * @return the category2
-	 */
+
+
 	public String getCategory2() {
 		return Category2;
 	}
 
-	/**
-	 * @param category2 the category2 to set
-	 */
+
+
 	public void setCategory2(String category2) {
 		Category2 = category2;
 	}
 
-	/**
-	 * @return the category3
-	 */
+	
 	public String getCategory3() {
 		return Category3;
 	}
 
-	/**
-	 * @param category3 the category3 to set
-	 */
+
+
 	public void setCategory3(String category3) {
 		Category3 = category3;
 	}

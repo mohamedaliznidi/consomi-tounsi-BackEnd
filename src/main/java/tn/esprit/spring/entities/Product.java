@@ -6,10 +6,12 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 
@@ -33,7 +35,7 @@ public class Product implements Serializable {
 	 * @param productCategory
 	 */
 	public Product(int id, String name, String code, float price, String image, int quantity, Date expDate,
-			Set<ProductCategory> productCategory) {
+			ProductCategory productcategory) {
 		this.id = id;
 		this.name = name;
 		this.code = code;
@@ -41,11 +43,12 @@ public class Product implements Serializable {
 		this.image = image;
 		this.quantity = quantity;
 		this.expDate = expDate;
-		this.productCategory = productCategory;
+		this.productcategory = productcategory;
 	}
 
 	private static final long serialVersionUID = 1L;
 	@Id
+	@Column(name="ID_PRODUCT")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
@@ -60,135 +63,103 @@ public class Product implements Serializable {
 	private int quantity;
 
 	private Date expDate;
-	//private ProductCategory category;
+	
+	private ProductCategory productcategory;
+	
+	@ManyToMany(mappedBy="products", cascade = CascadeType.ALL)
+	private Set<OrderC> orderc;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="products")
 	private Set<ProductCategory> productCategory;
 	
 	
 	
-	private List<CommentProduct> comments;
+/**	
 	@OneToMany(mappedBy="product")
-	public List<CommentProduct> getComments(){
-		return comments;
-	}
-	public void setComments (List<CommentProduct> comments){
-		this.comments=comments;
-	}
+	private List<CommentProduct> comments;
+	*/
 
-	/**
-	 * @return the id
-	 */
+	
+	
+	//Getters&Setters
+	
+	
 	public int getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
+	
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the name
-	 */
+	
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * @param name the name to set
-	 */
+	
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	/**
-	 * @return the code
-	 */
+	
+	
 	public String getCode() {
 		return code;
 	}
 
-	/**
-	 * @param code the code to set
-	 */
+	
 	public void setCode(String code) {
 		this.code = code;
 	}
 
-	/**
-	 * @return the price
-	 */
+	
 	public float getPrice() {
 		return price;
 	}
 
-	/**
-	 * @param price the price to set
-	 */
+
 	public void setPrice(float price) {
 		this.price = price;
 	}
 
-	/**
-	 * @return the image
-	 */
+	
+	
 	public String getImage() {
 		return image;
 	}
 
-	/**
-	 * @param image the image to set
-	 */
+	
 	public void setImage(String image) {
 		this.image = image;
 	}
 
-	/**
-	 * @return the quantity
-	 */
+
+
 	public int getQuantity() {
 		return quantity;
 	}
 
-	/**
-	 * @param quantity the quantity to set
-	 */
+
+
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
-	/**
-	 * @return the expDate
-	 */
+
+
 	public Date getExpDate() {
 		return expDate;
 	}
 
-	/**
-	 * @param expDate the expDate to set
-	 */
+
+
 	public void setExpDate(Date expDate) {
 		this.expDate = expDate;
 	}
 
-	/**
-	 * @return the productCategory
-	 */
-	public Set<ProductCategory> getProductCategory() {
-		return productCategory;
-	}
 
-	/**
-	 * @param productCategory the productCategory to set
-	 */
-	public void setProductCategory(Set<ProductCategory> productCategory) {
-		this.productCategory = productCategory;
-	}
-	
-	
 	
 
 }

@@ -11,7 +11,6 @@ import javax.persistence.Table;
 
 
 @Entity
-
 @Table(name="DELIVERY_MAN")
 public class Deliveryman  extends User implements Serializable {
 	
@@ -40,62 +39,38 @@ public class Deliveryman  extends User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="deliveryman")
 	private Set<OrderC> orders;
 
+	//Getters&Setters
 
 
-
-	/**
-	 * @return the prime
-	 */
 	public int getPrime() {
 		return prime;
 	}
 
 
-
-
-	/**
-	 * @param prime the prime to set
-	 */
 	public void setPrime(int prime) {
 		this.prime = prime;
 	}
 
 
 
-
-	/**
-	 * @return the rank
-	 */
 	public int getRank() {
 		return rank;
 	}
 
+	
 
-
-
-	/**
-	 * @param rank the rank to set
-	 */
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
 
 
-
-
-	/**
-	 * @return the joblist
-	 */
+	
 	public String getJoblist() {
 		return joblist;
 	}
 
 
 
-
-	/**
-	 * @param joblist the joblist to set
-	 */
 	public void setJoblist(String joblist) {
 		this.joblist = joblist;
 	}

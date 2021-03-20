@@ -1,16 +1,18 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 
 @Entity
-
-public class codeP implements Serializable {
+public class CodeP implements Serializable {
 	
 	
 	/**
@@ -19,8 +21,8 @@ public class codeP implements Serializable {
 	 * @param delegation
 	 * @param localite
 	 */
-	public codeP(int codeP, String gouvernorat, String delegation, String localite) {
-		this.codeP = codeP;
+	public CodeP(int codeP, String gouvernorat, String delegation, String localite) {
+		this.codep = codeP;
 		this.gouvernorat = gouvernorat;
 		this.delegation = delegation;
 		this.localite = localite;
@@ -29,28 +31,32 @@ public class codeP implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	
 	@Column(name="CodeP")
-	private int codeP;
+	private int codep;
 	
 	private String gouvernorat;
 	
 	private String delegation;
 	
 	private String localite;
+	
+	
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="codep")
+	private Set<Adress> adress;
 
 	/**
 	 * @return the codeP
 	 */
 	public int getCodeP() {
-		return codeP;
+		return codep;
 	}
 
 	/**
 	 * @param codeP the codeP to set
 	 */
 	public void setCodeP(int codeP) {
-		this.codeP = codeP;
+		this.codep = codeP;
 	}
 
 	/**

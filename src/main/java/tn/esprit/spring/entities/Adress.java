@@ -9,7 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
 
 
 
@@ -18,11 +20,10 @@ import javax.persistence.OneToMany;
 
 public class Adress implements Serializable {
 	
-	
-	public Adress(int id, tn.esprit.spring.entities.codeP codeP, String road, int number) {
+	//Constructor 
+	public Adress( String road, int number ,CodeP codep) {
 		super();
-		this.id = id;
-		this.codeP = codeP;
+		this.codep = (CodeP) codep;
 		this.road = road;
 		this.number = number;
 		
@@ -31,33 +32,28 @@ public class Adress implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id 
-	@Column(name="CodeP")
-	
+	@Column(name="ID_ADRESS")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
-	private codeP codeP;
-	
 	private String road;
-
 	private int number;
-
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private CodeP codep;
+
 	@OneToMany (cascade = CascadeType.ALL, mappedBy="adress" )
 	private Set<OrderC> orderc;
+	
 	@OneToMany (cascade = CascadeType.ALL, mappedBy="adress" )
 	private Set<Client> client;
+	
+	//Getters&Setters
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public codeP getCodeP() {
-		return codeP;
-	}
-	public void setCodeP(codeP codeP) {
-		this.codeP = codeP;
 	}
 	public String getRoad() {
 		return road;
@@ -71,17 +67,4 @@ public class Adress implements Serializable {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-	public Set<OrderC> getOrderc() {
-		return orderc;
-	}
-	public void setOrderc(Set<OrderC> orderc) {
-		this.orderc = orderc;
-	}
-	public Set<Client> getClient() {
-		return client;
-	}
-	public void setClient(Set<Client> client) {
-		this.client = client;
-	}
-	
 }

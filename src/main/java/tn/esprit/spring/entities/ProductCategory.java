@@ -20,10 +20,9 @@ public class ProductCategory implements Serializable {
 	 * @param categoryName
 	 * @param products
 	 */
-	public ProductCategory(int id, String categoryName, Product products) {
+	public ProductCategory(int id, String categoryName) {
 		this.id = id;
 		this.categoryName = categoryName;
-		this.products = products;
 	}
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -31,43 +30,33 @@ public class ProductCategory implements Serializable {
 	private int id;
 	
 	private String categoryName;
+	
 	@ManyToOne
 	Product products;
-	/**
-	 * @return the id
-	 */
+
+	
+	
+		//Getters&Setters
+	
+	
 	public int getId() {
 		return id;
 	}
-	/**
-	 * @param id the id to set
-	 */
+	
+	
 	public void setId(int id) {
 		this.id = id;
 	}
-	/**
-	 * @return the categoryName
-	 */
+	
+	
 	public String getCategoryName() {
 		return categoryName;
 	}
-	/**
-	 * @param categoryName the categoryName to set
-	 */
+	
+	
+	
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	/**
-	 * @return the products
-	 */
-	public Product getProducts() {
-		return products;
-	}
-	/**
-	 * @param products the products to set
-	 */
-	public void setProducts(Product products) {
-		this.products = products;
-	}
-	
+
 }

@@ -21,24 +21,32 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Claim implements Serializable {
 	
 	
+	public Claim(Long idclaim, String description, String subject_claim, boolean state) {
+		super();
+		this.idclaim = idclaim;
+		this.description = description;
+		this.subject_claim = subject_claim;
+		this.state = state;
+	}
+
+
 	private static final long serialVersionUID = 1L;
-	//properties
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	
 	Long idclaim;
-	@Column(name="Descreption")
-	String descreption;
+	@Column(name="Description")
+	String description;
 	@Column(name="Subject_claim")
 	String subject_claim ;
 	@Column(name="State")
 	boolean state ; 
 	
 	
-	// Relations
-	@JsonIgnore
+	
+	
 	@ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="client_id",nullable=true )
 	private Client client ;
 
 
@@ -52,13 +60,13 @@ public class Claim implements Serializable {
 	}
 
 
-	public String getDescreption() {
-		return descreption;
+	public String getDescription() {
+		return description;
 	}
 
 
-	public void setDescreption(String descreption) {
-		this.descreption = descreption;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 
