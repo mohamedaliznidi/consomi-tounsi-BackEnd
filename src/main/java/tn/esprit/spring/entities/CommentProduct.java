@@ -23,26 +23,27 @@ public class CommentProduct implements Serializable {
 		this.content = content;
 		this.date = date;
 	}
-	@Id
-	private CommentProductId id;
-	private Client client;
 	
+	
+	private Client client;
 	private Product product;
 	private String content;
 	private Date date;
 	
-/**	@EmbeddedId 
+	//private CommentProductId commentproductid;
+	@EmbeddedId 
+	private CommentProductId commentproductid;
 	public CommentProductId getCommentProductId(){
-		return id;
+		return commentproductid;
 	}
-	public void setCommentProductId(CommentProductId id){
-		this.id=id;
+	public void setCommentProductId(CommentProductId commentproductid){
+		this.commentproductid=commentproductid;
 	}
 	
 	@ManyToOne
 	@JoinColumn(name="idClient",referencedColumnName="USER_ID"
 	, insertable=false, updatable=false)
-	*/
+	
 	
 	public Client getClient(){
 		return client;
@@ -53,9 +54,9 @@ public class CommentProduct implements Serializable {
 		this.client=client;
 	}
 	
-/**	@ManyToOne
+	@ManyToOne
 	@JoinColumn(name="idProduct",referencedColumnName="ID_PRODUCT"
-	, insertable=false, updatable=false)*/
+	, insertable=false, updatable=false)
 	
 	public Product getProduct(){
 		return product;

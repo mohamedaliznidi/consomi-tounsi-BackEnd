@@ -74,10 +74,17 @@ public class Product implements Serializable {
 	
 	
 	
-/**	
+	//private List<CommentProduct> comments;
 	@OneToMany(mappedBy="product")
 	private List<CommentProduct> comments;
-	*/
+	public List<CommentProduct> getComments(){
+		return comments;
+	}
+	
+	public void setComments(List<CommentProduct> comments){
+		this.comments=comments;
+	}
+	
 
 	
 	

@@ -64,9 +64,15 @@ public Client(int id, String name, String email, String password, int phone_numb
 	private Set<Subject> subjects;
 	
 
-	/** ceci est un peu compliqué je vais terminer eli shelin baaed narj3elha
+	//private List<CommentProduct> comments;
 	@OneToMany(mappedBy="client")
-	private List<CommentProduct> comments;*/
+	private List<CommentProduct> comments;
+	private List<CommentProduct> getComments(){
+		return comments;
+	}
 	
+	public void setComments (List<CommentProduct> comments){
+		this.comments=comments;
+	}
 
 }
