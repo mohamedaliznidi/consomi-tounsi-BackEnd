@@ -8,5 +8,4 @@ import javax.persistence.Embeddable;
 public class CommentProductId implements Serializable {
 	private int idClient;
 	private int idProduct;
-	private int rate;
 }

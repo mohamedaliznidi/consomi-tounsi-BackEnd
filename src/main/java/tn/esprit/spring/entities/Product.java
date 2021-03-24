@@ -35,7 +35,7 @@ public class Product implements Serializable {
 	 * @param productCategory
 	 */
 	public Product(int id, String name, String code, float price, String image, int quantity, Date expDate,
-			ProductCategory productcategory) {
+			ProductCategory productcategory ,int generalrate) {
 		this.id = id;
 		this.name = name;
 		this.code = code;
@@ -44,6 +44,7 @@ public class Product implements Serializable {
 		this.quantity = quantity;
 		this.expDate = expDate;
 		this.productcategory = productcategory;
+		this.generalrate=generalrate;
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -63,6 +64,8 @@ public class Product implements Serializable {
 	private int quantity;
 
 	private Date expDate;
+	
+	private int generalrate;
 	
 	private ProductCategory productcategory;
 	
@@ -164,6 +167,14 @@ public class Product implements Serializable {
 
 	public void setExpDate(Date expDate) {
 		this.expDate = expDate;
+	}
+
+	public int getGeneralrate() {
+		return generalrate;
+	}
+
+	public void setGeneralrate(int generalrate) {
+		this.generalrate = generalrate;
 	}
 
 

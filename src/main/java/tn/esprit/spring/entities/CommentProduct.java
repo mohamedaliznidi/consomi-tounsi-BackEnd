@@ -16,15 +16,17 @@ public class CommentProduct implements Serializable {
 
 	
 	
-	public CommentProduct(Client client, Product product, String content, Date date) {
+	public CommentProduct(Client client, Product product, String content, Date date,int rate) {
 		super();
 		this.client = client;
 		this.product = product;
 		this.content = content;
 		this.date = date;
+		this.rate=rate;
+		
 	}
 	
-	
+	private int rate;
 	private Client client;
 	private Product product;
 	private String content;
@@ -84,6 +86,12 @@ public class CommentProduct implements Serializable {
 	public void setDate(Date date){
 		
 		this.date=date;
+	}
+	public int getRate() {
+		return rate;
+	}
+	public void setRate(int rate) {
+		this.rate = rate;
 	}
 	
 	
