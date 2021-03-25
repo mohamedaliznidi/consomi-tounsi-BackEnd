@@ -12,11 +12,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="DELIVERY_MAN")
-public class DeliveryMan  extends User implements Serializable {
+public class Deliveryman  extends User implements Serializable {
 	
 	
 
-	public DeliveryMan(int id, String name, String email, String password, int phone_number) {
+	public Deliveryman(int id, String name, String email, String password, int phone_number) {
 		super(id, name, email, password, phone_number);
 		// TODO Auto-generated constructor stub
 	}

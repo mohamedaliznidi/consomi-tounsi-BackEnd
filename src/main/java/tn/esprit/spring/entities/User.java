@@ -11,11 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+
+
+
+
 @Entity
+
 
 @Inheritance( strategy=InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name="USER_TYPE")
-public  class User implements Serializable {
+public abstract class User implements Serializable {
 	
 	
 	/**
@@ -25,7 +30,7 @@ public  class User implements Serializable {
 	 * @param password
 	 * @param phone_number
 	 */
-	public User(Integer id, String name, String email, String password, int phone_number) {
+	public User(int id, String name, String email, String password, int phone_number) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -38,7 +43,7 @@ public  class User implements Serializable {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	@Column(name="USER_ID")
 	
-	private Integer id; // Clé primaire
+	private int id; // Clé primaire
 
 	@Column(name="USER_NAME")
 	
@@ -58,12 +63,12 @@ public  class User implements Serializable {
 
 	//Getters&Setters
 	
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
 	
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
