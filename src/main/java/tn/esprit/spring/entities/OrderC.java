@@ -36,7 +36,7 @@ public class OrderC implements Serializable {
 	 * @param products
 	 * @param client
 	 * @param adress
-	 * @param deliveryman
+	 * @param deliveryMan
 	 */
 	public OrderC(int id, Adress shippingAdress, PaymentMethode paymentMethode, float taxPrice, float totalPrice,
 			boolean isPaid, Date paidAt, boolean isDelivered, Date deliveredAt) {
@@ -87,7 +87,7 @@ public class OrderC implements Serializable {
 	
 	
 	@ManyToOne
-	Deliveryman deliveryman; 
+	DeliveryMan deliveryMan; 
 
 	//Getters&Setters
 	public int getId() {
