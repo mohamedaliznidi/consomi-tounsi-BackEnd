@@ -22,7 +22,7 @@ public class Subject implements Serializable {
 	 * @param name_Subject
 	 * @param desc_Subject
 	 * @param client
-	 * @param commentforums
+	 * @param commentForums
 	 */
 	public Subject(int id, String name_Subject, String desc_Subject) {
 		this.id = id;
@@ -43,7 +43,7 @@ public class Subject implements Serializable {
 	private Client client; 
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="subject")
-	private Set<Commentforum> commentforums;
+	private Set<CommentForum> commentForums;
 
 	//Getters&Setters 
 	
