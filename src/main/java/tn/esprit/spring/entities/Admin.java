@@ -14,7 +14,7 @@ public class Admin extends User implements Serializable {
 	
 	
 	public Admin(int id, String name, String email, String password, int phone_number) {
-		super(phone_number, password, password, password, phone_number);
+		super(id, name, email, password, phone_number);
 		// TODO Auto-generated constructor stub
 	}
 
