@@ -1,12 +1,12 @@
 package tn.esprit.spring.service;
 
 import java.util.List;
-import java.util.logging.LogManager;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ch.qos.logback.classic.Logger;
+
 import tn.esprit.spring.entities.Product;
 import tn.esprit.spring.entities.ProductCategory;
 import tn.esprit.spring.repositry.ProductRepository;

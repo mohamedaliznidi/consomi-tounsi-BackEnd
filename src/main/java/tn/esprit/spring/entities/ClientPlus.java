@@ -13,11 +13,11 @@ import javax.persistence.OneToOne;
 @DiscriminatorValue("PLUS")
 public class ClientPlus extends Client implements Serializable {
 	
-	
-	
-	public ClientPlus(int id, String name, String email, String password, int phone_number,Adress adress) {
-		super(id, name, email, password, phone_number,adress);
-		// TODO Auto-generated constructor stub
+	public ClientPlus(int id, String first_Name, String last_Name, String user_Name, String email, String password,
+			int phone_number, String user_Role, Set<OrderC> orderc, Adress adress, Set<Claim> claim, Basket basket,
+			Event event, Set<Event> events, Set<Subject> subjects) {
+		super(id, first_Name, last_Name, user_Name, email, password, phone_number, orderc, adress, claim, basket,
+				event, events, subjects);
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -27,4 +27,14 @@ public class ClientPlus extends Client implements Serializable {
 	
 	@OneToOne (mappedBy = "clientplus")
 	private Sheet sheet;
+
+	
+	public ClientPlus(int id, String first_Name, String last_Name, String user_Name, String email, String password,
+			int phone_number, String user_Role, Set<OrderC> orderc, Adress adress, Set<Claim> claim, Basket basket,
+			Event event, Set<Event> events, Set<Subject> subjects, Set<Donation> donations, Sheet sheet) {
+		super(id, first_Name, last_Name, user_Name, email, password, phone_number, orderc, adress, claim,
+				basket, event, events, subjects);
+		this.donations = donations;
+		this.sheet = sheet;
+	}
 }

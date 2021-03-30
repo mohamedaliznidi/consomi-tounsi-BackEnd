@@ -2,66 +2,72 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue; 
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-
-
+import javax.persistence.*;
 
 
 
 @Entity
-
-
-@Inheritance( strategy=InheritanceType.TABLE_PER_CLASS)
+@Inheritance( strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="USER_TYPE")
 public abstract class User implements Serializable {
+
+
+
 	
-	
-	/**
-	 * @param id
-	 * @param name
-	 * @param email
-	 * @param password
-	 * @param phone_number
-	 */
-	public User(int id, String name, String email, String password, int phone_number) {
+	public User(int id, String first_Name, String last_Name, String user_Name, String email, String password,
+			int phone_number, String user_Role) {
 		this.id = id;
-		this.name = name;
+		this.first_Name = first_Name;
+		this.last_Name = last_Name;
+		this.user_Name = user_Name;
 		this.email = email;
 		this.password = password;
 		this.phone_number = phone_number;
+		this.User_Role = user_Role;
 	}
 
-	private static final long serialVersionUID = 1L;
+	protected static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	@Column(name="USER_ID")
-	
-	private int id; // Clé primaire
 
-	@Column(name="USER_NAME")
-	
-	private String name;
+	protected int id; // Clé primaire
 
-	@Column(name="USER_EMAIL")
-	
-	private String email;
+	@Column(name="USER_FIRST_NAME",  nullable = false)
 
-	@Column(name="USER_PW")
+	protected String first_Name;
 
-	private String password;
+	@Column(name="USER_LAST_NAME", nullable = false)
 
-	@Column(name="USER_PHONE")
+	protected String last_Name;
 
-	private int phone_number;
+	@Column(name="USER_NAME",unique = true, nullable = false)
+
+	protected String user_Name;
+
+	@Column(name="USER_EMAIL",unique = true, nullable = false)
+
+	protected String email;
+
+	@Column(name="USER_PW",unique = true, nullable = false)
+
+	protected String password;
+
+	@Column(name="USER_PHONE", nullable = false)
+
+	protected int phone_number;
+
+	@Column(name="USER_ROLE")
+	protected String User_Role;
 
 	//Getters&Setters
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	
 	public int getId() {
 		return id;
@@ -73,21 +79,39 @@ public abstract class User implements Serializable {
 	}
 
 	
-	public String getName() {
-		return name;
+	public String getFirst_Name() {
+		return first_Name;
 	}
 
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setFirst_Name(String first_Name) {
+		this.first_Name = first_Name;
+	}
+
+
+	public String getLast_Name() {
+		return last_Name;
 	}
 
 	
+	public void setLast_Name(String last_Name) {
+		this.last_Name = last_Name;
+	}
+
+	
+	public String getUser_Name() {
+		return user_Name;
+	}
+
+	public void setUser_Name(String user_Name) {
+		this.user_Name = user_Name;
+	}
+
 	public String getEmail() {
 		return email;
 	}
 
-	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -102,6 +126,7 @@ public abstract class User implements Serializable {
 		this.password = password;
 	}
 
+	
 	public int getPhone_number() {
 		return phone_number;
 	}
@@ -111,8 +136,14 @@ public abstract class User implements Serializable {
 		this.phone_number = phone_number;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getUser_Role() {
+		return User_Role;
 	}
-	
+
+	public void setUser_Role(String user_Role) {
+		User_Role = user_Role;
+	}
+
+
+
 }

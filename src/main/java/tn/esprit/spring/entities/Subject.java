@@ -17,15 +17,9 @@ import javax.persistence.OneToMany;
 public class Subject implements Serializable {
 	
 	
-	/**
-	 * @param id
-	 * @param name_Subject
-	 * @param desc_Subject
-	 * @param client
-	 * @param commentforums
-	 */
-	public Subject(int id, String name_Subject, String desc_Subject) {
+	public Subject(int id, String name_Subject, String desc_Subject, String theme_Subject) {
 		this.id = id;
+		Theme_Subject = theme_Subject;
 		Name_Subject = name_Subject;
 		Desc_Subject = desc_Subject;
 	}
@@ -38,12 +32,13 @@ public class Subject implements Serializable {
 	private int id;
 	private String Name_Subject;
 	private String Desc_Subject;
+	private String Theme_Subject;
 	
 	@ManyToOne 
 	private Client client; 
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="subject")
-	private Set<Commentforum> commentforums;
+	private Set<CommentForum> commentForums;
 
 	//Getters&Setters 
 	
@@ -75,6 +70,16 @@ public class Subject implements Serializable {
 
 	public void setDesc_Subject(String desc_Subject) {
 		Desc_Subject = desc_Subject;
+	}
+
+
+	public String getTheme_Subject() {
+		return Theme_Subject;
+	}
+
+
+	public void setTheme_Subject(String theme_Subject) {
+		Theme_Subject = theme_Subject;
 	}
 
 	

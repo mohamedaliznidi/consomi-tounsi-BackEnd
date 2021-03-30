@@ -11,12 +11,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name="ADMIN")
 public class Admin extends User implements Serializable {
+
 	
-	
-	public Admin(int id, String name, String email, String password, int phone_number) {
-		super(id, name, email, password, phone_number);
-		// TODO Auto-generated constructor stub
+	public Admin(int id, String first_Name, String last_Name, String user_Name, String email, String password,
+			int phone_number) {
+		super(id, first_Name, last_Name, user_Name, email, password, phone_number, "ADMIN");
+		
 	}
+
+	
+	
 
 	private static final long serialVersionUID = 1L;
 }
