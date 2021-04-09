@@ -108,7 +108,7 @@ public class ProductManagerController {
 				Optional<ProductManager> pmData = pmService.retrieveManager(id);
 
 				if (pmData.isPresent()) {
-					return new ResponseEntity<>(pmService.updateManager(pm), HttpStatus.OK);
+					return new ResponseEntity<>(pmService.updateManager(pm,id), HttpStatus.OK);
 				} else {
 					return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 				}

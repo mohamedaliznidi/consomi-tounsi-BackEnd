@@ -4,6 +4,7 @@ import java.util.List;
 
 import tn.esprit.spring.entities.ChatMessage;
 import tn.esprit.spring.entities.MessageStatus;
+import tn.esprit.spring.exception.ResourceNotFoundException;
 
 public interface IChatMessageService {
 	ChatMessage save(ChatMessage chatMessage) ;

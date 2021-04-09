@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,9 +16,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-
-
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import tn.esprit.spring.service.JwtTokenProvider;
 import tn.esprit.spring.service.UserServiceImpl;
@@ -53,17 +55,42 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
         .and()
         .addFilterBefore(new JwtTokenAuthenticationFilter(jwtConfig, tokenProvider, userService), UsernamePasswordAuthenticationFilter.class)
         
-        .authorizeRequests().antMatchers("*").permitAll().and().formLogin();
-                //.antMatchers("/admin/*").hasRole("ADMIN")
-                //.antMatchers("/user/*").hasAnyRole("ADMIN", "USER", "PRODUCT_MANAGER")
-               // .antMatchers("/manager/*").hasAnyRole("ADMIN", "PRODUCT_MANAGER")
-               // .antMatchers("/deliveryman/*").hasAnyRole("ADMIN", "DELIVERY_MAN")
-              //  .antMatchers("/","/home/*").permitAll()
-               // antMatchers("*").permitAll().and().formLogin();
+        .authorizeRequests()
+                .antMatchers("/admin/*").hasRole("ADMIN")
+                .antMatchers("/user/*").hasAnyRole("ADMIN", "USER", "PRODUCT_MANAGER")
+                .antMatchers("/manager/*").hasAnyRole("ADMIN", "PRODUCT_MANAGER")
+                .antMatchers("/deliveryman/*").hasAnyRole("ADMIN", "DELIVERY_MAN")
+                .antMatchers("/","/home/*").permitAll()
+                .antMatchers("*").permitAll().and().formLogin();
     }
     
     @Bean
     public PasswordEncoder getPasswordEncoder() {
     	return new BCryptPasswordEncoder();
+    }
+    
+
+    @Bean(BeanIds.AUTHENTICATION_MANAGER)
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    @Bean
+    public CorsFilter corsFilter() {
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        final CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("*");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("OPTIONS");
+        config.addAllowedMethod("HEAD");
+        config.addAllowedMethod("GET");
+        config.addAllowedMethod("PUT");
+        config.addAllowedMethod("POST");
+        config.addAllowedMethod("DELETE");
+        config.addAllowedMethod("PATCH");
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
     }
 }

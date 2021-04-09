@@ -9,32 +9,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Admin;
 import tn.esprit.spring.exception.EmailAlreadyExistsException;
+import tn.esprit.spring.exception.ResourceNotFoundException;
 import tn.esprit.spring.exception.UsernameAlreadyExistsException;
 import tn.esprit.spring.repositry.AdminRepository;
 
 @Service
 public class AdminServiceImpl implements IAdminService {
 
-	@Autowired private PasswordEncoder passwordEncoder;
+	@Autowired private BCryptPasswordEncoder passwordEncoder;
 	@Autowired private AdminRepository adminRepository;
 	@Autowired private AuthenticationManager authenticationManager;
 	@Autowired private JwtTokenProvider tokenProvider;
-	
+
 	private static final Logger Log = LogManager.getLogger(AdminServiceImpl.class);
 
 	@Override
-	public Admin updateAdmin(Admin admin) {
-		Log.info("updatinging admin {}", admin.getUser_Name());
-		return adminRepository.save(admin);
+	public Admin updateAdmin(Admin admin, int id)  throws ResourceNotFoundException{
+		Admin a=adminRepository.findById(id).orElseThrow(
+				()->new ResourceNotFoundException(" this admin doesn't exist"));
+		a.setFirst_Name(admin.getFirst_Name());
+		a.setLast_Name(admin.getLast_Name());
+		a.setPassword(passwordEncoder.encode(admin.getPassword()));
+		a.setUser_Name(admin.getUser_Name());
+		return adminRepository.save(a);
+
 	}
 
 	@Override
 	public void deleteAdmin(int id) {
+		
 		adminRepository.deleteById(id);
 
 	}

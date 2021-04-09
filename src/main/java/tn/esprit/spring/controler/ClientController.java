@@ -93,23 +93,23 @@ public class ClientController {
 	}
 
 
-    @PostMapping("/signin")
-    public ResponseEntity<?> authenticateClient(@Valid @RequestBody LoginRequest loginRequest) {
-        String token = clientService.loginClient(loginRequest.getUsername(), loginRequest.getPassword());
-        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
-    }
-    
-    
+	@PostMapping("/signin")
+	public ResponseEntity<?> authenticateClient(@Valid @RequestBody LoginRequest loginRequest) {
+		String token = clientService.loginClient(loginRequest.getUsername(), loginRequest.getPassword());
+		return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+	}
+
+
 	//PUT Requests
 
 	@PutMapping("/clients/{id}")
-	public ResponseEntity<Client> update(@PathVariable("id") int id, @RequestBody Client client) {
+	public ResponseEntity<Client> update(@PathVariable("id") int id, @RequestBody Client client) throws ResourceNotFoundException {
 
 		Log.info("updatinging client {}",client.getUser_Name());
 		Optional<Client> clientData = clientService.retrieveClient(id);
 
 		if (clientData.isPresent()) {
-			return new ResponseEntity<>(clientService.updateClient(client), HttpStatus.OK);
+			return new ResponseEntity<>(clientService.updateClient(client,id), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

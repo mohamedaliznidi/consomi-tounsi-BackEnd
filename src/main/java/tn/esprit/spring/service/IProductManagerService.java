@@ -7,7 +7,7 @@ import tn.esprit.spring.entities.ProductManager;
 
 public interface IProductManagerService {
 	
-	ProductManager updateManager(ProductManager pm);
+	ProductManager updateManager(ProductManager pm,int id);
 	void deleteManager(int id);
 	Optional<ProductManager> retrieveManager(int id);
 	List<ProductManager> retrieveAllManagers();

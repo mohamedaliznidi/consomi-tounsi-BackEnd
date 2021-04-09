@@ -13,7 +13,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Client;
+
 import tn.esprit.spring.exception.EmailAlreadyExistsException;
+import tn.esprit.spring.exception.ResourceNotFoundException;
 import tn.esprit.spring.exception.UsernameAlreadyExistsException;
 import tn.esprit.spring.repositry.ClientRepository;
 
@@ -29,19 +31,27 @@ public class ClientServiceImpl implements IClientService {
 	
 	
 	@Override
-	public Client updateClient(Client client) {
+	public Client updateClient(Client client ,int id) throws ResourceNotFoundException {
 		Log.info("updating client {}", client.getUser_Name());
-		return clientRepository.save(client);
+		Client c = clientRepository.findById(id).orElseThrow(()->new ResourceNotFoundException(" this client doesn't exist"));
+		c.setPhone_number(client.getPhone_number());
+		c.setUser_Name(client.getUser_Name());
+		c.setPassword(passwordEncoder.encode(client.getPassword()));
+		c.setEmail(client.getEmail());
+		c.setFirst_Name(client.getFirst_Name());
+		c.setLast_Name(client.getLast_Name());
+	   return clientRepository.save(c);
 	}
 
 	@Override
 	public void deleteClient(int id) {
+		Log.info("deleting client by id {}",clientRepository.findById(id));
 		clientRepository.deleteById(id);
 	}
 
 	@Override
 	public Optional<Client> retrieveClient(int id) {
-	
+		Log.info("retrieving client by id {}",clientRepository.findById(id));
 		return clientRepository.findById(id);
 	}
 
@@ -54,18 +64,21 @@ public class ClientServiceImpl implements IClientService {
 
 	@Override
 	public Optional<Client> retrieveByUserName(String user_name) {
+		Log.info("retrieving client : {}",user_name);
 		Optional<Client> client = clientRepository.findByUserName(user_name);
 		return client;
 	}
 
 	@Override
 	public Optional<Client> retrieveByEmail(String email) {
+		Log.info("retrieving client : {}",email);
 		Optional<Client> client = clientRepository.findByEmail(email);
 		return client;
 	}
 
 	@Override
 	public Optional<Client> retrieveByFullName(String first_name, String last_name) {
+		Log.info("retrieving client {} {}",first_name,last_name);
 		Optional<Client> client = clientRepository.findByFullName(first_name, last_name);
 		return client;
 	}

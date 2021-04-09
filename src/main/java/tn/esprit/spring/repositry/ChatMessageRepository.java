@@ -1,6 +1,8 @@
 package tn.esprit.spring.repositry;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import tn.esprit.spring.entities.ChatMessage;
@@ -13,5 +15,5 @@ public interface ChatMessageRepository extends JpaRepository<ChatMessage, Intege
 
 	List<ChatMessage> findByChatId(int chatId);
 
-	List<ChatMessage> findBySenderIdAndRecipientId(int senderId, int recipientId);
+	Optional<ChatMessage> findBySenderIdAndRecipientId(int senderId, int recipientId);
 }

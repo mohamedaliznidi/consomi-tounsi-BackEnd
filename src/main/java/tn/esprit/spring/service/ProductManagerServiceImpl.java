@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.ProductManager;
 import tn.esprit.spring.exception.EmailAlreadyExistsException;
+import tn.esprit.spring.exception.ResourceNotFoundException;
 import tn.esprit.spring.exception.UsernameAlreadyExistsException;
 import tn.esprit.spring.repositry.ProductManagerRepository;
 
@@ -30,20 +31,28 @@ public class ProductManagerServiceImpl implements IProductManagerService {
 	
 	
 	@Override
-	public ProductManager updateManager(ProductManager pm) {
-		Log.info("updating manager {}", pm.getUser_Name());
-		return pmRepo.save(pm);
+	public ProductManager updateManager(ProductManager product_manager, int id)throws ResourceNotFoundException {
+		Log.info("updating manager {}", product_manager.getUser_Name());
+		ProductManager pm = pmRepo.findById(id).orElseThrow(()->new ResourceNotFoundException(" this manager doesn't exist"));
+		pm.setPhone_number(product_manager.getPhone_number());
+		pm.setUser_Name(product_manager.getUser_Name());
+		pm.setPassword(passwordEncoder.encode(product_manager.getPassword()));
+		pm.setEmail(product_manager.getEmail());
+		pm.setFirst_Name(product_manager.getFirst_Name());
+		pm.setLast_Name(product_manager.getLast_Name());
+	   return pmRepo.save(pm);
 	}
 
 	@Override
 	public void deleteManager(int id) {
+		Log.info("deleting manager {}",pmRepo.findById(id));
 		pmRepo.deleteById(id);
 		
 	}
 
 	@Override
 	public Optional<ProductManager> retrieveManager(int id) {
-		
+		Log.info("retrieving manager {}",pmRepo.findById(id));
 		return pmRepo.findById(id);
 	}
 
@@ -56,18 +65,21 @@ public class ProductManagerServiceImpl implements IProductManagerService {
 
 	@Override
 	public Optional<ProductManager> retrieveByUserName(String user_name) {
+		Log.info("retrieving manager {}",user_name);
 		Optional<ProductManager> pm = pmRepo.findByUserName(user_name);
 		return pm;
 	}
 
 	@Override
 	public Optional<ProductManager> retrieveByEmail(String email) {
+		Log.info("retrieving manager {}",email);
 		Optional<ProductManager> pm = pmRepo.findByEmail(email);
 		return pm;
 	}
 
 	@Override
 	public Optional<ProductManager> retrieveByFullName(String first_name, String last_name) {
+		Log.info("retrieving manager {} {}",first_name,last_name);
 		Optional<ProductManager> pm = pmRepo.findByFullName(first_name, last_name);
 		return pm;
 	}
