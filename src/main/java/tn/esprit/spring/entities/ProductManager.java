@@ -1,8 +1,13 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.time.Instant;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -13,13 +18,27 @@ public class ProductManager extends User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+	public ProductManager(int id, @NotBlank @Size(max = 15) String user_Name,
+			@NotBlank @Size(max = 40) @Email String email, @NotBlank @Size(max = 100) String password, int phone_number,
+			String Role, String first_Name, String last_Name, Instant createdAt, Instant updatedAt, boolean active) {
+		super(id, user_Name, email, password, phone_number, Role, first_Name, last_Name, createdAt, updatedAt, active);
 
+	}
+
+	public ProductManager(@NotBlank @Size(max = 15) String user_Name, @NotBlank @Size(max = 40) @Email String email,
+			@NotBlank @Size(max = 100) String password) {
+		super(user_Name, email, password);
 	
-	public ProductManager(int id, String first_Name, String last_Name, String user_Name, String email, String password,
-			int phone_number) {
-		super(id, first_Name, last_Name, user_Name, email, password, phone_number, "PRODUCT_MANAGER");
+	}
+
+	public ProductManager(User user) {
+		super(user);
 		
 	}
+
+
+	
+	
 	
 	
 }

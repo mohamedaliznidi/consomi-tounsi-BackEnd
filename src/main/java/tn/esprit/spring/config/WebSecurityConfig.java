@@ -1,19 +1,42 @@
 package tn.esprit.spring.config;
+
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+
+
+
+import tn.esprit.spring.service.JwtTokenProvider;
+import tn.esprit.spring.service.UserServiceImpl;
+
+
 
 @EnableWebSecurity
 public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserDetailsService userDetailsService;
+    
+    @Autowired
+    private JwtConfig jwtConfig;
+
+    @Autowired
+    private JwtTokenProvider tokenProvider;
+
+    @Autowired
+    private UserServiceImpl userService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -22,13 +45,21 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/admin/*").hasRole("ADMIN")
-                .antMatchers("/user/*").hasAnyRole("ADMIN", "USER", "PRODUCT_MANAGER")
-                .antMatchers("/manager/*").hasAnyRole("ADMIN", "PRODUCT_MANAGER")
-                .antMatchers("/deliveryman/*").hasAnyRole("ADMIN", "DELIVERY_MAN")
-                .antMatchers("/","/home/*").permitAll()
-                .and().formLogin();
+        http.cors().and()
+        .csrf().disable()
+        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+        .exceptionHandling().authenticationEntryPoint((req, rsp, e) -> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+        .and()
+        .addFilterBefore(new JwtTokenAuthenticationFilter(jwtConfig, tokenProvider, userService), UsernamePasswordAuthenticationFilter.class)
+        
+        .authorizeRequests().antMatchers("*").permitAll().and().formLogin();
+                //.antMatchers("/admin/*").hasRole("ADMIN")
+                //.antMatchers("/user/*").hasAnyRole("ADMIN", "USER", "PRODUCT_MANAGER")
+               // .antMatchers("/manager/*").hasAnyRole("ADMIN", "PRODUCT_MANAGER")
+               // .antMatchers("/deliveryman/*").hasAnyRole("ADMIN", "DELIVERY_MAN")
+              //  .antMatchers("/","/home/*").permitAll()
+               // antMatchers("*").permitAll().and().formLogin();
     }
     
     @Bean

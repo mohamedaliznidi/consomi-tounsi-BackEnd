@@ -22,13 +22,6 @@ import javax.persistence.OneToOne;
 public class Donation implements Serializable {
 	
 	
-	/**
-	 * @param id
-	 * @param type
-	 * @param state
-	 * @param clientplus
-	 * @param clientpluss
-	 */
 	public Donation(int id, Donation_Type type, boolean state) {
 		this.id = id;
 		this.type = type;

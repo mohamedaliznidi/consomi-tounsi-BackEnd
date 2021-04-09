@@ -7,7 +7,6 @@ import tn.esprit.spring.entities.User;
 
 public interface IUserService {
 	
-	User addUser(User u);
 	User updateUser(User u);
 	void deleteUser(int id);
 	Optional<User> retrieveUser(int id);
@@ -15,4 +14,6 @@ public interface IUserService {
 	Optional<User> retrieveByUserName(String user_name);
 	Optional<User> retrieveByEmail(String email);
 	Optional<User> retrieveByFullName(String first_name, String last_name);
+	User registerUser(User user, String role);
+	String loginUser(String username, String password);
 }

@@ -1,15 +1,20 @@
 package tn.esprit.spring.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import tn.esprit.spring.entities.ProductManager;
 
 public interface IProductManagerService {
-	ProductManager addProductManager(ProductManager pm);
-	ProductManager updateProductManager(ProductManager pm);
-	void deleteProductManager(int id);
-	void retrieveProductManager(int id);
-	List<ProductManager> retrieveAllProductManager();
-	List<ProductManager> retrieveByUserName(String name);
-	List<ProductManager> retrieveByEmail(String email);
+	
+	ProductManager updateManager(ProductManager pm);
+	void deleteManager(int id);
+	Optional<ProductManager> retrieveManager(int id);
+	List<ProductManager> retrieveAllManagers();
+	Optional<ProductManager> retrieveByUserName(String user_name);
+	Optional<ProductManager> retrieveByEmail(String email);
+	Optional<ProductManager> retrieveByFullName(String first_name, String last_name);
+	ProductManager registerManager(ProductManager pm);
+	String loginManager(String username, String password);
+
 }
