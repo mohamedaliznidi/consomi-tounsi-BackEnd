@@ -62,7 +62,7 @@ public class ClientController {
 				.ok(clientService.retrieveAllClients());
 	}
 
-	@GetMapping("/clients/{id}")
+	@GetMapping(value = "/clients/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> one(@PathVariable int id) {
 
 		Log.info("retrieving client with id {}", id);

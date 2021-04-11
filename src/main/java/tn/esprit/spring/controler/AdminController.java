@@ -59,7 +59,7 @@ public class AdminController {
 					.orElseThrow(() -> new ResourceNotFoundException(username));
 		}
 
-		@GetMapping("/admins/{id}")
+		@GetMapping(value ="/admins/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 		public ResponseEntity<?> one(@PathVariable int id) {
 
 			Log.info("retrieving admin with id {}", id);

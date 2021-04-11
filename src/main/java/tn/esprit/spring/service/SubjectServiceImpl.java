@@ -19,7 +19,7 @@ public class SubjectServiceImpl implements ISubjectService {
 	@Autowired
 	SubjectRepository subjectRepository;
 	
-	private static final Logger Log = LogManager.getLogger(ClientServiceImpl.class);
+	private static final Logger Log = LogManager.getLogger(SubjectServiceImpl.class);
 	
 	
 	@Override

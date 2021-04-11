@@ -56,11 +56,11 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
         .addFilterBefore(new JwtTokenAuthenticationFilter(jwtConfig, tokenProvider, userService), UsernamePasswordAuthenticationFilter.class)
         
         .authorizeRequests()
-                .antMatchers("/admin/*").hasRole("ADMIN")
-                .antMatchers("/user/*").hasAnyRole("ADMIN", "USER", "PRODUCT_MANAGER")
-                .antMatchers("/manager/*").hasAnyRole("ADMIN", "PRODUCT_MANAGER")
-                .antMatchers("/deliveryman/*").hasAnyRole("ADMIN", "DELIVERY_MAN")
-                .antMatchers("/","/home/*").permitAll()
+                .antMatchers("/admins/*").hasRole("ADMIN")
+                .antMatchers("/clients/*").hasAnyRole("ADMIN", "CLIENT", "PRODUCT_MANAGER")
+                .antMatchers("/managers/*").hasAnyRole("ADMIN", "PRODUCT_MANAGER")
+                .antMatchers("/deliverymans/*").hasAnyRole("ADMIN", "DELIVERY_MAN")
+                .antMatchers("/","/home/*","/users/*").permitAll()
                 .antMatchers("*").permitAll().and().formLogin();
     }
     

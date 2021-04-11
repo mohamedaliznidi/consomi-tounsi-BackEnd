@@ -1,7 +1,5 @@
 package tn.esprit.spring.controler;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -30,7 +28,7 @@ public class ChatController {
         ChatMessage saved = chatMessageService.save(chatMessage);
 
         messagingTemplate.convertAndSendToUser(
-        		chatMessage.getRecipientId(),"/queue/messages",
+        		String.valueOf(chatMessage.getRecipientId()),"/queue/messages",
                 new ChatNotification(
                         saved.getId(),
                         saved.getSenderId(),
@@ -47,8 +45,8 @@ public class ChatController {
     }
 
     @GetMapping("/messages/{senderId}/{recipientId}")
-    public ResponseEntity<?> findChatMessages ( @PathVariable String senderId,
-                                                @PathVariable String recipientId) {
+    public ResponseEntity<?> findChatMessages ( @PathVariable int senderId,
+                                                @PathVariable int recipientId) {
         return ResponseEntity
                 .ok(chatMessageService.findChatMessages(senderId, recipientId));
     }

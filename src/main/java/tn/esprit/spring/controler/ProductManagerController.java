@@ -63,7 +63,7 @@ public class ProductManagerController {
 					.ok(pmService.retrieveAllManagers());
 		}
 		
-		@GetMapping("/managers/{id}")
+		@GetMapping(value = "/managers/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 		public ResponseEntity<?> one(@PathVariable int id) {
 
 			Log.info("retrieving manager with id {}", id);
