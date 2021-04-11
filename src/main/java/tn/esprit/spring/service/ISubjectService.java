@@ -7,7 +7,7 @@ import tn.esprit.spring.entities.Subject;
 
 public interface ISubjectService {
 	Subject addSubject(Subject s);
-	Subject updateSubject(Subject s);
+	Subject updateSubject(Subject s,int id);
 	void deleteSubject(int id);
 	Optional<Subject> retrieveSubject(int id);
 	List<Subject> retrieveAllSubject();

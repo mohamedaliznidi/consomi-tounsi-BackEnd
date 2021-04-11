@@ -45,7 +45,7 @@ public class ClientServiceImpl implements IClientService {
 
 	@Override
 	public void deleteClient(int id) {
-		Log.info("deleting client by id {}",clientRepository.findById(id));
+		Log.info("deleting client by id {}",id);
 		clientRepository.deleteById(id);
 	}
 

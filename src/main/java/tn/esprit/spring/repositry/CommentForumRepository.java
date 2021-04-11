@@ -12,6 +12,8 @@ import tn.esprit.spring.entities.Subject;
 @Repository
 public interface CommentForumRepository extends JpaRepository<CommentForum, Integer> {
 
+	
+	
 	Optional<CommentForum> findByDate(Date d);
 
 	Optional<CommentForum> findBySubject(Subject s);

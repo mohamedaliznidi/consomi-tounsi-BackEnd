@@ -8,8 +8,8 @@ import tn.esprit.spring.entities.CommentForum;
 import tn.esprit.spring.entities.Subject;
 
 public interface ICommentForumService {
+	
 	CommentForum addCommentForum(CommentForum cf);
-	CommentForum updateCommentForum(CommentForum cf);
 	void deleteCommentForum(int id);
 	Optional<CommentForum>  retrieveCommentForum(int id);
 	List<CommentForum> retrieveAllCommentForum();
