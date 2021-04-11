@@ -31,7 +31,9 @@ public abstract class User implements Serializable {
 	@Column(name="USER_NAME",unique = true, nullable = false)
 	@NotBlank
     @Size(max = 15)
+
 	@JsonProperty("username")
+
 	protected String username;
 
 	@NotBlank

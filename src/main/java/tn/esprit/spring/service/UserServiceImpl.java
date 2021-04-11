@@ -44,12 +44,14 @@ public class UserServiceImpl implements IUserService {
 	public User registerUser(User user , String role) {
 		Log.info("registering user {}", user.getUsername());
 
+
 		if(userRepository.existsByUsername(user.getUsername())) {
 			Log.warn("username {} already exists.", user.getUsername());
 
 			throw new UsernameAlreadyExistsException(
 					String.format("username %s already exists", user.getUsername()));
 		}
+
 
 		if(userRepository.existsByEmail(user.getEmail())) {
 			Log.warn("email {} already exists.", user.getEmail());
