@@ -64,6 +64,8 @@ public class ForumController {
 
 	}
 	
+	
+	
 	//POST Requests
 
 		@PostMapping("/managers/subjects")

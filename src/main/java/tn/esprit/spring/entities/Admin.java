@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.time.Instant;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -13,7 +12,6 @@ import javax.validation.constraints.Size;
 
 
 @Entity
-@Table(name="ADMIN")
 public class Admin extends User implements Serializable {
 
 	private static final long serialVersionUID = 1L;

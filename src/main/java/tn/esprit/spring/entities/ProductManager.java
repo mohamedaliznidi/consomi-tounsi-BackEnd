@@ -4,15 +4,12 @@ import java.io.Serializable;
 import java.time.Instant;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 
 @Entity
-
-@Table(name="PRODUCT_MANAGER") 
 public class ProductManager extends User implements Serializable {
 		
 	
