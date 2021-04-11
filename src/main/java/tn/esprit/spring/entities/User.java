@@ -12,6 +12,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 
@@ -30,12 +31,16 @@ public abstract class User implements Serializable {
 	@Column(name="USER_NAME",unique = true, nullable = false)
 	@NotBlank
     @Size(max = 15)
+
+	@JsonProperty("username")
+
 	protected String username;
 
 	@NotBlank
     @Size(max = 40)
     @Email
 	@Column(name="USER_EMAIL",unique = true, nullable = false)
+	@JsonProperty("email")
 	protected String email;
 
 	
@@ -43,29 +48,35 @@ public abstract class User implements Serializable {
     @Size(max = 100)
     @JsonIgnore
 	@Column(name="USER_PW",unique = true, nullable = false)
+	@JsonProperty("password")
 	protected String password;
 
 	@Column(name="USER_PHONE", nullable = false)
+	@JsonProperty("number")
 	protected int phone_number;
 
 	@Column(name="ROLE")
 	protected String Role;
 	
 	@Column(name="USER_FIRST_NAME",  nullable = false)
+	@JsonProperty("firstname")
 	protected String first_Name;
 
 	@Column(name="USER_LAST_NAME", nullable = false)
+	@JsonProperty("lastname")
 	protected String last_Name;
 
-	@Column(name="CREATED_AT", nullable = false)
+	@Column(name="CREATED_AT")
 	@CreatedDate
+	@JsonProperty("createdAt")
     protected Instant createdAt = Instant.now();
 
-	@Column(name="UPDATED_AT", nullable = false)
+	@Column(name="UPDATED_AT")
     @LastModifiedDate
     protected Instant updatedAt = Instant.now();
 
-	@Column(name="ACTIVE", nullable = false)
+	@Column(name="ACTIVE")
+	
     protected boolean active;
 
 	
@@ -152,7 +163,7 @@ public abstract class User implements Serializable {
 	}
 
 	
-	/*public Instant getCreatedAt() {
+	public Instant getCreatedAt() {
 		return createdAt;
 	}
 
@@ -169,7 +180,7 @@ public abstract class User implements Serializable {
 	
 	public void setUpdatedAt(Instant updatedAt) {
 		this.updatedAt = updatedAt;
-	}*/
+	}
 	
 	public boolean isActive() {
 		return active;
@@ -201,8 +212,8 @@ public abstract class User implements Serializable {
 		this.Role = user.Role;
 		this.first_Name = user.first_Name;
 		this.last_Name = user.last_Name;
-		//this.createdAt = user.createdAt;
-		//this.updatedAt = user.updatedAt;
+		this.createdAt = user.createdAt;
+		this.updatedAt = user.updatedAt;
 		this.active = user.active;
 	}
 
@@ -218,8 +229,8 @@ public abstract class User implements Serializable {
 		this.Role = Role;
 		this.first_Name = first_Name;
 		this.last_Name = last_Name;
-		//this.createdAt = createdAt;
-		//this.updatedAt = updatedAt;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 		this.active = active;
 	}
 
@@ -233,4 +244,7 @@ public abstract class User implements Serializable {
 	}
 
 
+	public User() {};
 }
+
+

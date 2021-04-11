@@ -66,7 +66,7 @@ public class ProductManagerServiceImpl implements IProductManagerService {
 	@Override
 	public Optional<ProductManager> retrieveByUserName(String user_name) {
 		Log.info("retrieving manager {}",user_name);
-		Optional<ProductManager> pm = pmRepo.findByUserName(user_name);
+		Optional<ProductManager> pm = pmRepo.findByUsername(user_name);
 		return pm;
 	}
 
@@ -77,13 +77,7 @@ public class ProductManagerServiceImpl implements IProductManagerService {
 		return pm;
 	}
 
-	@Override
-	public Optional<ProductManager> retrieveByFullName(String first_name, String last_name) {
-		Log.info("retrieving manager {} {}",first_name,last_name);
-		Optional<ProductManager> pm = pmRepo.findByFullName(first_name, last_name);
-		return pm;
-	}
-
+	
 	@Override
 	public ProductManager registerManager(ProductManager pm) {
 		Log.info("registering manager {}", pm.getUsername());

@@ -61,7 +61,7 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Override
 	public Optional<Admin> retrieveByUserName(String user_name) {
-		Optional<Admin> admin = adminRepository.findByUserName(user_name);
+		Optional<Admin> admin = adminRepository.findByUsername(user_name);
 		return admin;
 	}
 
@@ -71,11 +71,7 @@ public class AdminServiceImpl implements IAdminService {
 		return admin;
 	}
 
-	@Override
-	public Optional<Admin> retrieveByFullName(String first_name, String last_name) {
-		Optional<Admin> admin = adminRepository.findByFullName(first_name, last_name);
-		return admin;
-	}
+	
 
 	@Override
 	public Admin registerAdmin(Admin admin) {

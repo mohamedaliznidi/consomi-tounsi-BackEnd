@@ -65,7 +65,7 @@ public class ClientServiceImpl implements IClientService {
 	@Override
 	public Optional<Client> retrieveByUserName(String user_name) {
 		Log.info("retrieving client : {}",user_name);
-		Optional<Client> client = clientRepository.findByUserName(user_name);
+		Optional<Client> client = clientRepository.findByUsername(user_name);
 		return client;
 	}
 
@@ -76,12 +76,7 @@ public class ClientServiceImpl implements IClientService {
 		return client;
 	}
 
-	@Override
-	public Optional<Client> retrieveByFullName(String first_name, String last_name) {
-		Log.info("retrieving client {} {}",first_name,last_name);
-		Optional<Client> client = clientRepository.findByFullName(first_name, last_name);
-		return client;
-	}
+	
 
 	@Override
 	public Client registerClient(Client client) {

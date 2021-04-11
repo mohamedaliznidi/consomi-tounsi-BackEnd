@@ -13,7 +13,6 @@ public interface IProductManagerService {
 	List<ProductManager> retrieveAllManagers();
 	Optional<ProductManager> retrieveByUserName(String user_name);
 	Optional<ProductManager> retrieveByEmail(String email);
-	Optional<ProductManager> retrieveByFullName(String first_name, String last_name);
 	ProductManager registerManager(ProductManager pm);
 	String loginManager(String username, String password);
 

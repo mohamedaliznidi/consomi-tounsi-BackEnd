@@ -1,8 +1,15 @@
 package tn.esprit.spring.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class ChatRoom {
 	
 	public static class Builder {
+		
 		private int id;
 	    private int chatId;
 	    private int senderId;
@@ -36,7 +43,8 @@ public class ChatRoom {
 	    	return room;
 	    }
 	}
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
     private int chatId;
     private int senderId;

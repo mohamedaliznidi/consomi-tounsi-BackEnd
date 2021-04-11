@@ -88,12 +88,12 @@ public class ProductManagerController {
 					.fromCurrentContextPath().path("/managers/{username}")
 					.buildAndExpand(pm.getUsername()).toUri();
 
-			return ResponseEntity
+			return  ResponseEntity
 					.created(location)
 					.body(new ApiResponse(true,"User registered successfully"));
 		}
 		
-		 @PostMapping("/signin")
+		 @PostMapping("/managers/signin")
 		    public ResponseEntity<?> authenticateClient(@Valid @RequestBody LoginRequest loginRequest) {
 		        String token = pmService.loginManager(loginRequest.getUsername(), loginRequest.getPassword());
 		        return ResponseEntity.ok(new JwtAuthenticationResponse(token));

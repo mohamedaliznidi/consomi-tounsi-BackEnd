@@ -103,11 +103,13 @@ public class AdminController {
 
 			return ResponseEntity
 					.created(location)
-					.body(new ApiResponse(true,"admin registered successfully"));
+					.body(new ApiResponse(true,"admin registered successfully"))
+					;
+					
 		}
 
 
-		@PostMapping("/signin")
+		@PostMapping("/admins/signin")
 		public ResponseEntity<?> authenticateAdmin(@Valid @RequestBody LoginRequest loginRequest) {
 			String token = adminService.loginAdmin(loginRequest.getUsername(), loginRequest.getPassword());
 			return ResponseEntity.ok(new JwtAuthenticationResponse(token));

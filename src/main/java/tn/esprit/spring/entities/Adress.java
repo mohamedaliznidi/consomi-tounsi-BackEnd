@@ -20,6 +20,9 @@ import javax.persistence.OneToMany;
 
 public class Adress implements Serializable {
 	
+	public Adress() {
+		super();
+	}
 	//Constructor 
 	public Adress( String road, int number ,CodeP codep) {
 		super();

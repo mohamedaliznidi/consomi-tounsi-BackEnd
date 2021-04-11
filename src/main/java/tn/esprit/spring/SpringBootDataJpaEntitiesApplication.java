@@ -1,5 +1,9 @@
+<<<<<<< HEAD:src/main/java/tn/esprit/spring/entities/SpringBootDataJpaEntitiesApplication.java
 
 package tn.esprit.spring.entities;
+=======
+package tn.esprit.spring;
+>>>>>>> main:src/main/java/tn/esprit/spring/SpringBootDataJpaEntitiesApplication.java
 
 import org.springframework.boot.SpringApplication;
 

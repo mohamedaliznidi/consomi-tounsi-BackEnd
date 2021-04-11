@@ -19,9 +19,9 @@ public class Subject implements Serializable {
 	
 	public Subject(int id, String name_Subject, String desc_Subject, String theme_Subject) {
 		this.id = id;
-		Theme_Subject = theme_Subject;
-		Name_Subject = name_Subject;
-		Desc_Subject = desc_Subject;
+		themesubject = theme_Subject;
+		namesubject = name_Subject;
+		descsubject = desc_Subject;
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -30,9 +30,9 @@ public class Subject implements Serializable {
 	@Column(name="Id_Subject")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String Name_Subject;
-	private String Desc_Subject;
-	private String Theme_Subject;
+	private String namesubject;
+	private String descsubject;
+	private String themesubject;
 	
 	@ManyToOne 
 	private Client client; 
@@ -53,33 +53,33 @@ public class Subject implements Serializable {
 	}
 
 
-	public String getName_Subject() {
-		return Name_Subject;
+	public String getNamesubject() {
+		return namesubject;
 	}
 
 
-	public void setName_Subject(String name_Subject) {
-		Name_Subject = name_Subject;
+	public void setNamesubject(String name_Subject) {
+		namesubject = name_Subject;
 	}
 
 
-	public String getDesc_Subject() {
-		return Desc_Subject;
+	public String getDescsubject() {
+		return descsubject;
 	}
 
 
-	public void setDesc_Subject(String desc_Subject) {
-		Desc_Subject = desc_Subject;
+	public void setDescsubject(String desc_Subject) {
+		descsubject = desc_Subject;
 	}
 
 
-	public String getTheme_Subject() {
-		return Theme_Subject;
+	public String getThemesubject() {
+		return themesubject;
 	}
 
 
-	public void setTheme_Subject(String theme_Subject) {
-		Theme_Subject = theme_Subject;
+	public void setThemesubject(String theme_Subject) {
+		themesubject = theme_Subject;
 	}
 
 	
