@@ -19,6 +19,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -59,32 +61,9 @@ public class Client extends User implements Serializable {
 	@OneToMany(mappedBy="client")
 	private List<CommentProduct> comments;
 	
+
+	//getters and setters
 	
-
-	public Client(int id, @NotBlank @Size(max = 15) String user_Name, @NotBlank @Size(max = 40) @Email String email,
-			@NotBlank @Size(max = 100) String password, int phone_number, String Role, String first_Name,
-			String last_Name, Instant createdAt, Instant updatedAt, boolean active) {
-		super(id, user_Name, email, password, phone_number, Role, first_Name, last_Name, createdAt, updatedAt, active);
-	
-	}
-
-
-
-	public Client(@NotBlank @Size(max = 15) String user_Name, @NotBlank @Size(max = 40) @Email String email,
-			@NotBlank @Size(max = 100) String password) {
-		super(user_Name, email, password);
-		
-	}
-
-
-
-	public Client(User user) {
-		super(user);
-		
-	}
-
-
-
 	
 	public Set<OrderC> getOrderc() {
 		return orderc;
@@ -213,10 +192,29 @@ public class Client extends User implements Serializable {
 	}
 
 
+	public Client(int id, @NotBlank @Size(max = 15) String user_Name, @NotBlank @Size(max = 40) @Email String email,
+			@NotBlank @Size(max = 100) String password, int phone_number, String Role, String first_Name,
+			String last_Name, Instant createdAt, Instant updatedAt, boolean active) {
+		super(id, user_Name, email, password, phone_number, Role, first_Name, last_Name, createdAt, updatedAt, active);
 	
-	
+	}
 
 
+	@JsonCreator
+	public Client(@NotBlank @Size(max = 15) String user_Name, @NotBlank @Size(max = 40) @Email String email,
+			@NotBlank @Size(max = 100) String password) {
+		super(user_Name, email, password);
+		
+	}
+	
+	@JsonCreator
+	public Client(User user) {
+		super(user);
+	}
+
+	public Client() {
+		super();
+	}
 
 }
 

@@ -32,10 +32,10 @@ public class ClientServiceImpl implements IClientService {
 	
 	@Override
 	public Client updateClient(Client client ,int id) throws ResourceNotFoundException {
-		Log.info("updating client {}", client.getUser_Name());
+		Log.info("updating client {}", client.getUsername());
 		Client c = clientRepository.findById(id).orElseThrow(()->new ResourceNotFoundException(" this client doesn't exist"));
 		c.setPhone_number(client.getPhone_number());
-		c.setUser_Name(client.getUser_Name());
+		c.setUsername(client.getUsername());
 		c.setPassword(passwordEncoder.encode(client.getPassword()));
 		c.setEmail(client.getEmail());
 		c.setFirst_Name(client.getFirst_Name());
@@ -65,7 +65,7 @@ public class ClientServiceImpl implements IClientService {
 	@Override
 	public Optional<Client> retrieveByUserName(String user_name) {
 		Log.info("retrieving client : {}",user_name);
-		Optional<Client> client = clientRepository.findByUserName(user_name);
+		Optional<Client> client = clientRepository.findByUsername(user_name);
 		return client;
 	}
 
@@ -76,22 +76,17 @@ public class ClientServiceImpl implements IClientService {
 		return client;
 	}
 
-	@Override
-	public Optional<Client> retrieveByFullName(String first_name, String last_name) {
-		Log.info("retrieving client {} {}",first_name,last_name);
-		Optional<Client> client = clientRepository.findByFullName(first_name, last_name);
-		return client;
-	}
+	
 
 	@Override
 	public Client registerClient(Client client) {
-		Log.info("registering client {}", client.getUser_Name());
+		Log.info("registering client {}", client.getUsername());
 
-		if(clientRepository.existsByUsername(client.getUser_Name())) {
-			Log.warn("username {} already exists.", client.getUser_Name());
+		if(clientRepository.existsByUsername(client.getUsername())) {
+			Log.warn("username {} already exists.", client.getUsername());
 
 			throw new UsernameAlreadyExistsException(
-					String.format("username %s already exists", client.getUser_Name()));
+					String.format("username %s already exists", client.getUsername()));
 		}
 
 		if(clientRepository.existsByEmail(client.getEmail())) {

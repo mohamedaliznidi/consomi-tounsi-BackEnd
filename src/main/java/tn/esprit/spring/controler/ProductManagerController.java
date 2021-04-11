@@ -78,7 +78,7 @@ public class ProductManagerController {
 
 		@PostMapping("/managers")
 		public ResponseEntity<ApiResponse> createManager(@RequestBody ProductManager pm) {
-			Log.info("updating manager {}", pm.getUser_Name());
+			Log.info("updating manager {}", pm.getUsername());
 			try {
 				pmService.registerManager(pm);
 			} catch (UsernameAlreadyExistsException | EmailAlreadyExistsException e) {
@@ -86,14 +86,14 @@ public class ProductManagerController {
 			}
 			URI location = ServletUriComponentsBuilder
 					.fromCurrentContextPath().path("/managers/{username}")
-					.buildAndExpand(pm.getUser_Name()).toUri();
+					.buildAndExpand(pm.getUsername()).toUri();
 
-			return ResponseEntity
+			return  ResponseEntity
 					.created(location)
 					.body(new ApiResponse(true,"User registered successfully"));
 		}
 		
-		 @PostMapping("/signin")
+		 @PostMapping("/managers/signin")
 		    public ResponseEntity<?> authenticateClient(@Valid @RequestBody LoginRequest loginRequest) {
 		        String token = pmService.loginManager(loginRequest.getUsername(), loginRequest.getPassword());
 		        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
@@ -104,7 +104,7 @@ public class ProductManagerController {
 			@PutMapping("/managers/{id}")
 			public ResponseEntity<ProductManager> update(@PathVariable("id") int id, @RequestBody ProductManager pm) {
 
-				Log.info("updating manager {}",pm.getUser_Name());
+				Log.info("updating manager {}",pm.getUsername());
 				Optional<ProductManager> pmData = pmService.retrieveManager(id);
 
 				if (pmData.isPresent()) {

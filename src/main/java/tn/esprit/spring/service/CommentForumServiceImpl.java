@@ -55,12 +55,6 @@ public class CommentForumServiceImpl implements ICommentForumService {
 		return commentsForum;
 	}
 
-	@Override
-	public Optional<CommentForum> retrieveByDate(Date d) {
-		Log.info("retriving comments by date {}" ,d);
-		Optional<CommentForum> commentsForum =  commentForumRepository.findByDate(d);
-		return commentsForum;
-	}
 
 	@Override
 	public Optional<CommentForum> retrieveBySubject(Subject s) {

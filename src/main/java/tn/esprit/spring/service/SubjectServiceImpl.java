@@ -24,11 +24,11 @@ public class SubjectServiceImpl implements ISubjectService {
 	
 	@Override
 	public Subject addSubject(Subject s) {
-		Log.info("adding subject{}",s.getName_Subject());
-		if(subjectRepository.existsBySubjectName(s.getName_Subject())) {
-			Log.warn("subject {} already exists.",s.getName_Subject());
+		Log.info("adding subject{}",s.getNamesubject());
+		if(subjectRepository.existsByNamesubject(s.getNamesubject())) {
+			Log.warn("subject {} already exists.",s.getNamesubject());
 			throw new UsernameAlreadyExistsException(
-					String.format("subject %s already exists", s.getName_Subject()));
+					String.format("subject %s already exists", s.getNamesubject()));
 		}
 		
 		return subjectRepository.save(s);
@@ -36,11 +36,11 @@ public class SubjectServiceImpl implements ISubjectService {
 
 	@Override
 	public Subject updateSubject(Subject s,int id) {
-		Log.info("updating subject {}",s.getName_Subject());
+		Log.info("updating subject {}",s.getNamesubject());
 		Subject s1 = subjectRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("this subject doesn't exist"));
-		s1.setDesc_Subject(s.getDesc_Subject());
-		s1.setName_Subject(s.getName_Subject());
-		s1.setTheme_Subject(s.getTheme_Subject());
+		s1.setDescsubject(s.getDescsubject());
+		s1.setNamesubject(s.getNamesubject());
+		s1.setThemesubject(s.getThemesubject());
 		return subjectRepository.save(s1);
 	}
 
@@ -68,7 +68,7 @@ public class SubjectServiceImpl implements ISubjectService {
 	@Override
 	public Optional<Subject> retrieveSubjectByName(String name) {
 		Log.info("retrieving subject by name {}", name);
-		Optional<Subject> subject = subjectRepository.findByName(name);
+		Optional<Subject> subject = subjectRepository.findByNamesubject(name);
 		return subject;
 	}
 

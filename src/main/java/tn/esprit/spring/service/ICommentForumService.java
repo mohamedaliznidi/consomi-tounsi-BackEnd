@@ -13,7 +13,6 @@ public interface ICommentForumService {
 	void deleteCommentForum(int id);
 	Optional<CommentForum>  retrieveCommentForum(int id);
 	List<CommentForum> retrieveAllCommentForum();
-	Optional<CommentForum> retrieveByDate(Date d);
 	Optional<CommentForum> retrieveBySubject(Subject s);
 
 }

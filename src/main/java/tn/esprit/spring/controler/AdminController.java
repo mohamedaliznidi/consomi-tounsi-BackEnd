@@ -91,7 +91,7 @@ public class AdminController {
 
 		@PostMapping("/admins")
 		public ResponseEntity<ApiResponse> createAdmin(@RequestBody Admin admin) {
-			Log.info("updating admin {}",admin.getUser_Name());
+			Log.info("updating admin {}",admin.getUsername());
 			try {
 				adminService.registerAdmin(admin);
 			} catch (UsernameAlreadyExistsException | EmailAlreadyExistsException e) {
@@ -99,15 +99,17 @@ public class AdminController {
 			}
 			URI location = ServletUriComponentsBuilder
 					.fromCurrentContextPath().path("/admins/{username}")
-					.buildAndExpand(admin.getUser_Name()).toUri();
+					.buildAndExpand(admin.getUsername()).toUri();
 
 			return ResponseEntity
 					.created(location)
-					.body(new ApiResponse(true,"admin registered successfully"));
+					.body(new ApiResponse(true,"admin registered successfully"))
+					;
+					
 		}
 
 
-		@PostMapping("/signin")
+		@PostMapping("/admins/signin")
 		public ResponseEntity<?> authenticateAdmin(@Valid @RequestBody LoginRequest loginRequest) {
 			String token = adminService.loginAdmin(loginRequest.getUsername(), loginRequest.getPassword());
 			return ResponseEntity.ok(new JwtAuthenticationResponse(token));
@@ -118,7 +120,7 @@ public class AdminController {
 		@PutMapping("/admins/{id}")
 		public ResponseEntity<Admin> update(@PathVariable("id") int id, @RequestBody Admin admin) throws ResourceNotFoundException {
 
-			Log.info("updatinging admin {}",admin.getUser_Name());
+			Log.info("updatinging admin {}",admin.getUsername());
 			Optional<Admin> adminData = adminService.retrieveAdmin(id);
 
 			if (adminData.isPresent()) {

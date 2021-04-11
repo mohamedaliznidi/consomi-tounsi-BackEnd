@@ -32,10 +32,10 @@ public class ProductManagerServiceImpl implements IProductManagerService {
 	
 	@Override
 	public ProductManager updateManager(ProductManager product_manager, int id)throws ResourceNotFoundException {
-		Log.info("updating manager {}", product_manager.getUser_Name());
+		Log.info("updating manager {}", product_manager.getUsername());
 		ProductManager pm = pmRepo.findById(id).orElseThrow(()->new ResourceNotFoundException(" this manager doesn't exist"));
 		pm.setPhone_number(product_manager.getPhone_number());
-		pm.setUser_Name(product_manager.getUser_Name());
+		pm.setUsername(product_manager.getUsername());
 		pm.setPassword(passwordEncoder.encode(product_manager.getPassword()));
 		pm.setEmail(product_manager.getEmail());
 		pm.setFirst_Name(product_manager.getFirst_Name());
@@ -66,7 +66,7 @@ public class ProductManagerServiceImpl implements IProductManagerService {
 	@Override
 	public Optional<ProductManager> retrieveByUserName(String user_name) {
 		Log.info("retrieving manager {}",user_name);
-		Optional<ProductManager> pm = pmRepo.findByUserName(user_name);
+		Optional<ProductManager> pm = pmRepo.findByUsername(user_name);
 		return pm;
 	}
 
@@ -77,22 +77,16 @@ public class ProductManagerServiceImpl implements IProductManagerService {
 		return pm;
 	}
 
-	@Override
-	public Optional<ProductManager> retrieveByFullName(String first_name, String last_name) {
-		Log.info("retrieving manager {} {}",first_name,last_name);
-		Optional<ProductManager> pm = pmRepo.findByFullName(first_name, last_name);
-		return pm;
-	}
-
+	
 	@Override
 	public ProductManager registerManager(ProductManager pm) {
-		Log.info("registering manager {}", pm.getUser_Name());
+		Log.info("registering manager {}", pm.getUsername());
 
-		if(pmRepo.existsByUsername(pm.getUser_Name())) {
-			Log.warn("username {} already exists.", pm.getUser_Name());
+		if(pmRepo.existsByUsername(pm.getUsername())) {
+			Log.warn("username {} already exists.", pm.getUsername());
 
 			throw new UsernameAlreadyExistsException(
-					String.format("username %s already exists", pm.getUser_Name()));
+					String.format("username %s already exists", pm.getUsername()));
 		}
 
 		if(pmRepo.existsByEmail(pm.getEmail())) {
