@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -20,9 +21,22 @@ public class ClientPlus extends Client implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToMany(mappedBy="clientplus", cascade = CascadeType.ALL)
-	private Set<Donation> donations;
+	/**@ManyToOne( cascade = CascadeType.ALL)
+	Donation donation;*/
+
+
 	
+
+	public Sheet getSheet() {
+		return sheet;
+	}
+
+	public void setSheet(Sheet sheet) {
+		this.sheet = sheet;
+	}
+
+
+
 	@OneToOne (mappedBy = "clientplus")
 	private Sheet sheet;
 

@@ -111,6 +111,112 @@ public class Client extends User implements Serializable {
 
 
 
+<<<<<<< HEAD
+=======
+	
+	public Set<Claim> getClaim() {
+		return claim;
+	}
+
+
+
+	
+	public void setClaim(Set<Claim> claim) {
+		this.claim = claim;
+	}
+
+
+
+	
+	public Basket getBasket() {
+		return basket;
+	}
+
+
+
+	
+	public void setBasket(Basket basket) {
+		this.basket = basket;
+	}
+
+
+
+	
+	public Event getEvent() {
+		return event;
+	}
+
+
+
+	
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+
+
+	
+	public Set<Event> getEvents() {
+		return events;
+	}
+
+
+
+	
+	public void setEvents(Set<Event> events) {
+		this.events = events;
+	}
+
+
+
+	
+	public Set<Subject> getSubjects() {
+		return subjects;
+	}
+
+
+
+	public void setSubjects(Set<Subject> subjects) {
+		this.subjects = subjects;
+	}
+
+
+
+	public List<CommentProduct> getComments() {
+		return comments;
+	}
+
+
+
+	
+	public void setComments(List<CommentProduct> comments) {
+		this.comments = comments;
+	}
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
+	public Client(User user, Set<OrderC> orderc, Adress adress, Set<Claim> claim, Basket basket, Event event,
+			Set<Event> events, Set<Subject> subjects, List<CommentProduct> comments) {
+		super(user);
+		this.orderc = orderc;
+		this.adress = adress;
+		this.claim = claim;
+		this.basket = basket;
+		this.event = event;
+		this.events = events;
+		this.subjects = subjects;
+		this.comments = comments;
+	}
+
+
+	
+>>>>>>> jihene
 	
 	public Set<Claim> getClaim() {
 		return claim;
@@ -217,4 +323,6 @@ public class Client extends User implements Serializable {
 	
 
 
+
 }
+

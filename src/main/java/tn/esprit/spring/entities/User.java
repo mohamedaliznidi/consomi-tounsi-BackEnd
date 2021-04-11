@@ -233,4 +233,8 @@ public abstract class User implements Serializable {
 	}
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> jihene
