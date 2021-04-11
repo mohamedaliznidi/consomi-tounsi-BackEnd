@@ -1,4 +1,4 @@
-package tn.esprit.spring.entities;
+/*package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -21,14 +21,7 @@ import javax.persistence.TemporalType;
 public class Event implements Serializable {
 	
 	
-	/**
-	 * @param id
-	 * @param name
-	 * @param startDate
-	 * @param endDate
-	 * @param time
-	 * @param clients
-	 */
+	
 	public Event(int id, String name, Date startDate, Date endDate, String time) {
 		this.id = id;
 		this.name = name;
@@ -112,3 +105,4 @@ public class Event implements Serializable {
 
 	
 }
+*/

@@ -1,4 +1,4 @@
-package tn.esprit.spring.entities;
+/*package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -31,7 +31,7 @@ public class CommentProduct implements Serializable {
 	private String content;
 	private Date date;
 	
-/**	@EmbeddedId 
+	@EmbeddedId 
 	public CommentProductId getCommentProductId(){
 		return id;
 	}
@@ -42,7 +42,7 @@ public class CommentProduct implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="idClient",referencedColumnName="USER_ID"
 	, insertable=false, updatable=false)
-	*/
+	
 	
 	public Client getClient(){
 		return client;
@@ -53,9 +53,9 @@ public class CommentProduct implements Serializable {
 		this.client=client;
 	}
 	
-/**	@ManyToOne
+	@ManyToOne
 	@JoinColumn(name="idProduct",referencedColumnName="ID_PRODUCT"
-	, insertable=false, updatable=false)*/
+	, insertable=false, updatable=false)
 	
 	public Product getProduct(){
 		return product;
@@ -90,3 +90,4 @@ public class CommentProduct implements Serializable {
 	
 
 }
+*/

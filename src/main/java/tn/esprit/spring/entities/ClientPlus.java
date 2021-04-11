@@ -22,7 +22,7 @@ public class ClientPlus extends Client implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToMany(mappedBy="clientplus", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy="clientpluss", cascade = CascadeType.ALL)
 	private Set<Donation> donations;
 	
 	@OneToOne (mappedBy = "clientplus")

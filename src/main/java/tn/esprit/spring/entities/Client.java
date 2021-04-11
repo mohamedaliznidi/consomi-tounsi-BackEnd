@@ -52,7 +52,7 @@ public Client(int id, String name, String email, String password, int phone_numb
 	@OneToOne
 	private Basket basket;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	/*@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="CL_EVT_ID")
 	private Event event;
 	@ManyToMany (cascade = CascadeType.ALL)
@@ -64,9 +64,9 @@ public Client(int id, String name, String email, String password, int phone_numb
 	private Set<Subject> subjects;
 	
 
-	/** ceci est un peu compliqué je vais terminer eli shelin baaed narj3elha
-	@OneToMany(mappedBy="client")
-	private List<CommentProduct> comments;*/
+	//ceci est un peu compliqué je vais terminer eli shelin baaed narj3elha
+	//@OneToMany(mappedBy="client")
+	//private List<CommentProduct> comments;*/
 	
 
 }

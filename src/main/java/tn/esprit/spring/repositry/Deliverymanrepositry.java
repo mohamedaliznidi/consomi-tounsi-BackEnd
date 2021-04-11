@@ -1,4 +1,4 @@
-package tn.esprit.spring.repositry;
+/*package tn.esprit.spring.repositry;
 
 import java.util.List;
 
@@ -17,3 +17,4 @@ public interface Deliverymanrepositry extends  JpaRepository<Deliveryman, Long> 
 	@Query("SELECT a FROM Deliveryman a WHERE delivery_id= ?1")
 	public Deliveryman  getDeliveryById(@Param("delivery_id") Long delivery_id );
 }
+*/
