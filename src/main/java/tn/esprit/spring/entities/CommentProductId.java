@@ -4,8 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 
-//@Embeddable 
+@Embeddable 
 public class CommentProductId implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idClient;
 	private int idProduct;
 	

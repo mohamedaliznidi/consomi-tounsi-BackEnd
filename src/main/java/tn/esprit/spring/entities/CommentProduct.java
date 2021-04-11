@@ -3,12 +3,10 @@ package tn.esprit.spring.entities;
 import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.EmbeddedId;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+
 
 @Entity
 public class CommentProduct implements Serializable {
@@ -16,6 +14,11 @@ public class CommentProduct implements Serializable {
 
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public CommentProduct(Client client, Product product, String content, Date date) {
 		super();
 		this.client = client;

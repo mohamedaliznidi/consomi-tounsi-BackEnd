@@ -2,7 +2,6 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -43,7 +42,7 @@ public class Product implements Serializable {
 		this.image = image;
 		this.quantity = quantity;
 		this.expDate = expDate;
-		this.productcategory = productcategory;
+		this.setProductcategory(productcategory);
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -157,6 +156,16 @@ public class Product implements Serializable {
 
 	public void setExpDate(Date expDate) {
 		this.expDate = expDate;
+	}
+
+
+	public ProductCategory getProductcategory() {
+		return productcategory;
+	}
+
+
+	public void setProductcategory(ProductCategory productcategory) {
+		this.productcategory = productcategory;
 	}
 
 
