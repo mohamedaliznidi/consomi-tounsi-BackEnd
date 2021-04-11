@@ -15,7 +15,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -24,7 +23,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorColumn(name="CLIENT_TYPE")
-@Table(name="CLIENT")
+
 public class Client extends User implements Serializable {
 
 	
@@ -55,10 +54,12 @@ public class Client extends User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="client")
 	private Set<Subject> subjects;
 	
+	
+
 	@OneToMany(mappedBy="client")
 	private List<CommentProduct> comments;
-
-
+	
+	
 
 	public Client(int id, @NotBlank @Size(max = 15) String user_Name, @NotBlank @Size(max = 40) @Email String email,
 			@NotBlank @Size(max = 100) String password, int phone_number, String Role, String first_Name,
@@ -84,155 +85,131 @@ public class Client extends User implements Serializable {
 
 
 
-	/**
-	 * @return the orderc
-	 */
+	
 	public Set<OrderC> getOrderc() {
 		return orderc;
 	}
 
 
 
-	/**
-	 * @param orderc the orderc to set
-	 */
 	public void setOrderc(Set<OrderC> orderc) {
 		this.orderc = orderc;
 	}
 
 
 
-	/**
-	 * @return the adress
-	 */
 	public Adress getAdress() {
 		return adress;
 	}
 
 
 
-	/**
-	 * @param adress the adress to set
-	 */
+	
 	public void setAdress(Adress adress) {
 		this.adress = adress;
 	}
 
 
 
-	/**
-	 * @return the claim
-	 */
+	
 	public Set<Claim> getClaim() {
 		return claim;
 	}
 
 
 
-	/**
-	 * @param claim the claim to set
-	 */
+	
 	public void setClaim(Set<Claim> claim) {
 		this.claim = claim;
 	}
 
 
 
-	/**
-	 * @return the basket
-	 */
+	
 	public Basket getBasket() {
 		return basket;
 	}
 
 
 
-	/**
-	 * @param basket the basket to set
-	 */
+	
 	public void setBasket(Basket basket) {
 		this.basket = basket;
 	}
 
 
 
-	/**
-	 * @return the event
-	 */
+	
 	public Event getEvent() {
 		return event;
 	}
 
 
 
-	/**
-	 * @param event the event to set
-	 */
+	
 	public void setEvent(Event event) {
 		this.event = event;
 	}
 
 
 
-	/**
-	 * @return the events
-	 */
+	
 	public Set<Event> getEvents() {
 		return events;
 	}
 
 
 
-	/**
-	 * @param events the events to set
-	 */
+	
 	public void setEvents(Set<Event> events) {
 		this.events = events;
 	}
 
 
 
-	/**
-	 * @return the subjects
-	 */
+	
 	public Set<Subject> getSubjects() {
 		return subjects;
 	}
 
 
 
-	/**
-	 * @param subjects the subjects to set
-	 */
 	public void setSubjects(Set<Subject> subjects) {
 		this.subjects = subjects;
 	}
 
 
 
-	/**
-	 * @return the comments
-	 */
 	public List<CommentProduct> getComments() {
 		return comments;
 	}
 
 
 
-	/**
-	 * @param comments the comments to set
-	 */
+	
 	public void setComments(List<CommentProduct> comments) {
 		this.comments = comments;
 	}
 
 
 
-	/**
-	 * @return the serialversionuid
-	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+
+
+	public Client(User user, Set<OrderC> orderc, Adress adress, Set<Claim> claim, Basket basket, Event event,
+			Set<Event> events, Set<Subject> subjects, List<CommentProduct> comments) {
+		super(user);
+		this.orderc = orderc;
+		this.adress = adress;
+		this.claim = claim;
+		this.basket = basket;
+		this.event = event;
+		this.events = events;
+		this.subjects = subjects;
+		this.comments = comments;
 	}
 
 

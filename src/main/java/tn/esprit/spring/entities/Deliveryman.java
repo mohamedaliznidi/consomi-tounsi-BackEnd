@@ -5,14 +5,12 @@ import java.time.Instant;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 
 @Entity
-@Table(name="DELIVERY_MAN")
 public class DeliveryMan  extends User implements Serializable {
 
 	
