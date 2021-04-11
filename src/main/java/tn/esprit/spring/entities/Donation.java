@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -51,18 +52,51 @@ public class Donation implements Serializable {
 	@Column(name="DONATION_STATE")
 	private boolean state;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	/*@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="CLP_DON_ID")
-	private ClientPlus clientplus;
+	private ClientPlus clientplus;*/
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	private Set<ClientPlus> clientpluss;
+
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="donation")
+	private Set<Sheet> sheet;
 	
 	
 	
 	//Getters&Setters
 	
+	public Donation() {
+		super();
+	}
+
+
+
+
+	public Set<Sheet> getSheet() {
+		return sheet;
+	}
+
+
+
+
+	public void setSheet(Set<Sheet> sheet) {
+		this.sheet = sheet;
+	}
+
+
+
+
+	public Donation(int id, Donation_Type type, boolean state, Set<Sheet> sheet) {
+		super();
+		this.id = id;
+		this.type = type;
+		this.state = state;
+		this.sheet = sheet;
+	}
+
+
+
+
 	public int getId() {
 		return id;
 	}

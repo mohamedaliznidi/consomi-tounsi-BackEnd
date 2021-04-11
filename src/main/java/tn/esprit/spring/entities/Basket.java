@@ -17,6 +17,10 @@ import javax.persistence.OneToOne;
 public class Basket implements Serializable {
 	
 	
+	public Basket() {
+		super();
+	}
+
 	public Basket( int idBasket, boolean stateBasket) {
 		super();
 		this.idBasket = idBasket;

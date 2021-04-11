@@ -2,12 +2,17 @@ package tn.esprit.spring.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import tn.esprit.spring.entities.Product;
 import tn.esprit.spring.entities.ProductCategory;
 import tn.esprit.spring.repositry.ProductCategoryRepository;
 
@@ -38,8 +43,8 @@ public class ProductCategoryServiceImpl implements IProductCategoryService{
 	}
 	
 	@Override
-	public void retrieveProductCategory(int id){
-		ProductCategoryRepository.findById(id);
+	public ProductCategory retrieveProductCategory(int id){
+		return ProductCategoryRepository.findById(id).get();
 		
 	}
 	
@@ -60,4 +65,5 @@ public class ProductCategoryServiceImpl implements IProductCategoryService{
 		return ProductCategories;
 	}
 
+	
 }

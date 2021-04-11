@@ -1,6 +1,7 @@
 package tn.esprit.spring.entities;
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 
@@ -16,6 +18,8 @@ import javax.persistence.OneToOne;
 
 public class Sheet implements Serializable {
 	
+	
+	//add requested_donation de type donation_type et response (binary)
 	
 	/**
 	 * @param id
@@ -60,6 +64,58 @@ public class Sheet implements Serializable {
 		Category3 = category3;
 	}
 
+	public ClientPlus getClientplus() {
+		return clientplus;
+	}
+
+
+	public void setClientplus(ClientPlus clientplus) {
+		this.clientplus = clientplus;
+	}
+
+	
+	@OneToOne
+	private ClientPlus clientplus;
+	
+	@ManyToOne( cascade = CascadeType.ALL)
+	Donation donation;
+	
+	public Donation getDonation() {
+		return donation;
+	}
+
+	public void setDonation(Donation donation) {
+		this.donation = donation;
+	}
+
+	public Sheet(ClientPlus clientplus, Donation donation, int id, boolean student, boolean job,
+			MonthlyIncome monthlyincome, tn.esprit.spring.entities.CivilStatus civilStatus, boolean kids,
+			boolean oldPerson, boolean oldPHealthP, int kidsN, boolean workCapacity, boolean monoParent,
+			boolean handicap, tn.esprit.spring.entities.HandicapType handicapType, boolean pregnant, String category1,
+			String category2, String category3) {
+		super();
+		this.clientplus = clientplus;
+		this.donation = donation;
+		this.id = id;
+		Student = student;
+		Job = job;
+		Monthlyincome = monthlyincome;
+		CivilStatus = civilStatus;
+		Kids = kids;
+		OldPerson = oldPerson;
+		OldPHealthP = oldPHealthP;
+		KidsN = kidsN;
+		WorkCapacity = workCapacity;
+		MonoParent = monoParent;
+		Handicap = handicap;
+		HandicapType = handicapType;
+		Pregnant = pregnant;
+		Category1 = category1;
+		Category2 = category2;
+		Category3 = category3;
+	}
+
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -103,9 +159,6 @@ public class Sheet implements Serializable {
 	
 	
 	
-	@OneToOne
-	private ClientPlus clientplus;
-
 	
 	
 	//Getters&Setters

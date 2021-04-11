@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -15,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.List;
 
@@ -42,6 +45,25 @@ public Client(int id, String name, String email, String password, int phone_numb
 	@OneToMany (cascade = CascadeType.ALL, mappedBy="client" )
 	private Set<OrderC> orderc;
 	
+	public Client(int id, String name, String email, String password, int phone_number, Set<OrderC> orderc,
+			Adress adress, Set<Claim> claim, Basket basket, Event event, Set<Event> events, Set<Subject> subjects
+			/**,List<CommentProduct> comments*/) {
+		super(id, name, email, password, phone_number);
+		this.orderc = orderc;
+		this.adress = adress;
+		this.claim = claim;
+		this.basket = basket;
+		this.event = event;
+		this.events = events;
+		this.subjects = subjects;
+		//this.comments = comments;
+	}
+
+	
+	public Client(int id, String name, String email, String password, int phone_number) {
+		super(id, name, email, password, phone_number);
+	}
+
 	@ManyToOne
 	private Adress adress;
 	
@@ -64,7 +86,89 @@ public Client(int id, String name, String email, String password, int phone_numb
 	private Set<Subject> subjects;
 	
 
+	
+	//@JsonBackReference
+    //@JsonIgnore
+
+	
+
+	public Set<OrderC> getOrderc() {
+		return orderc;
+	}
+
+
+	public void setOrderc(Set<OrderC> orderc) {
+		this.orderc = orderc;
+	}
+
+
+	public Adress getAdress() {
+		return adress;
+	}
+
+
+	public void setAdress(Adress adress) {
+		this.adress = adress;
+	}
+
+
+	public Set<Claim> getClaim() {
+		return claim;
+	}
+
+
+	public void setClaim(Set<Claim> claim) {
+		this.claim = claim;
+	}
+
+
+	public Basket getBasket() {
+		return basket;
+	}
+
+
+	public void setBasket(Basket basket) {
+		this.basket = basket;
+	}
+
+
+	public Event getEvent() {
+		return event;
+	}
+
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+
+	public Set<Event> getEvents() {
+		return events;
+	}
+
+
+	public void setEvents(Set<Event> events) {
+		this.events = events;
+	}
+
+
+	public Set<Subject> getSubjects() {
+		return subjects;
+	}
+
+
+	public void setSubjects(Set<Subject> subjects) {
+		this.subjects = subjects;
+	}
+
+
+
+
+
+
 	//private List<CommentProduct> comments;
+	
+	
 	@OneToMany(mappedBy="client")
 	private List<CommentProduct> comments;
 	private List<CommentProduct> getComments(){
@@ -75,4 +179,35 @@ public Client(int id, String name, String email, String password, int phone_numb
 		this.comments=comments;
 	}
 
+
+	public Client(int id, String name, String email, String password, int phone_number, Set<OrderC> orderc,
+			Adress adress, Set<Claim> claim, Basket basket, Event event, Set<Event> events, Set<Subject> subjects,
+			List<CommentProduct> comments) {
+		super(id, name, email, password, phone_number);
+		this.orderc = orderc;
+		this.adress = adress;
+		this.claim = claim;
+		this.basket = basket;
+		this.event = event;
+		this.events = events;
+		this.subjects = subjects;
+		this.comments = comments;
+	}
+
+
+	public Client() {
+		super();
+	}
+	
+/**
+	public void assignCommentProductToThisClient(
+			List<CommentProduct> comments){
+		this.setComments (comments);
+			for (CommentProduct c : comments)
+			{c.setClient(this);	
+	}
+		
+	}
+	*/
+	
 }

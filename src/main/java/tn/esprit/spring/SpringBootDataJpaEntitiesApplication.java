@@ -1,9 +1,14 @@
-package tn.esprit.spring.entities;
+package tn.esprit.spring;
 
 import org.springframework.boot.SpringApplication;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
+
 
 @SpringBootApplication
+@EnableScheduling
 public class SpringBootDataJpaEntitiesApplication {
 
 	public static void main(String[] args) {

@@ -38,6 +38,19 @@ public abstract class User implements Serializable {
 		this.phone_number = phone_number;
 	}
 
+	public User(String name, String email, String password, int phone_number) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.phone_number = phone_number;
+	}
+
+
+	public User() {
+		super();
+	}
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)

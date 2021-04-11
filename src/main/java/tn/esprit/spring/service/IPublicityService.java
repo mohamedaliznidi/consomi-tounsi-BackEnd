@@ -2,6 +2,8 @@ package tn.esprit.spring.service;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
+
 import tn.esprit.spring.entities.Product;
 import tn.esprit.spring.entities.ProductCategory;
 import tn.esprit.spring.entities.Publicity;
@@ -11,8 +13,8 @@ public interface IPublicityService {
 	
 	Publicity addPublicity(Publicity p);
 	void deletePublicity(int id);
-	void retrievePublicity(int id);
-	Publicity updatePublicity(Publicity p);
+	Publicity retrievePublicity(int id);
+	void updatePublicity(Publicity p);
 	List<Publicity> retrieveAllPublicities();
 	List<Publicity> retrieveByPublicityCategory(PublicityCategory publicitycategory);
 
