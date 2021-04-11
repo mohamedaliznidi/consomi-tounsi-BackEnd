@@ -30,7 +30,7 @@ public abstract class User implements Serializable {
 	@Column(name="USER_NAME",unique = true, nullable = false)
 	@NotBlank
     @Size(max = 15)
-	protected String user_Name;
+	protected String username;
 
 	@NotBlank
     @Size(max = 40)
@@ -83,13 +83,13 @@ public abstract class User implements Serializable {
 	}
 
 	
-	public String getUser_Name() {
-		return user_Name;
+	public String getUsername() {
+		return username;
 	}
 
 	
-	public void setUser_Name(String user_Name) {
-		this.user_Name = user_Name;
+	public void setUsername(String user_Name) {
+		this.username = user_Name;
 	}
 
 
@@ -194,7 +194,7 @@ public abstract class User implements Serializable {
 	
 	public User(User user) {
 		this.id = user.id;
-		this.user_Name = user.user_Name;
+		this.username = user.username;
 		this.email = user.email;
 		this.password = user.password;
 		this.phone_number = user.phone_number;
@@ -211,7 +211,7 @@ public abstract class User implements Serializable {
 			@NotBlank @Size(max = 100) String password, int phone_number, String Role, String first_Name,
 			String last_Name, Instant createdAt, Instant updatedAt, boolean active) {
 		this.id = id;
-		this.user_Name = user_Name;
+		this.username = user_Name;
 		this.email = email;
 		this.password = password;
 		this.phone_number = phone_number;
@@ -226,7 +226,7 @@ public abstract class User implements Serializable {
 
 	public User(@NotBlank @Size(max = 15) String user_Name, @NotBlank @Size(max = 40) @Email String email,
 			@NotBlank @Size(max = 100) String password) {
-		this.user_Name = user_Name;
+		this.username = user_Name;
 		this.email = email;
 		this.password = password;
 		this.active = true;

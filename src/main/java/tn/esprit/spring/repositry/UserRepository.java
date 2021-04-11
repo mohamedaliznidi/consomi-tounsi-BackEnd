@@ -11,10 +11,9 @@ import tn.esprit.spring.entities.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
-	Optional<User> findByUserName(String user_name);
+	Optional<User> findByUsername(String user_name);
 	Optional<User> findByEmail(String email);
-	Optional<User> findByFullName(String first_name, String last_name);
-	Boolean existsByUsername(String username);
+	Boolean existsByusername(String user_name);
 	Boolean existsByEmail(String email);
 
 }

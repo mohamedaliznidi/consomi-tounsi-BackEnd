@@ -42,14 +42,14 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User registerUser(User user , String role) {
-		Log.info("registering user {}", user.getUser_Name());
+		Log.info("registering user {}", user.getUsername());
 
-		if(userRepository.existsByUsername(user.getUser_Name())) {
-			Log.warn("username {} already exists.", user.getUser_Name());
+		//if(userRepository.existsByuser_Name(user.getUser_Name())) {
+			//Log.warn("username {} already exists.", user.getUser_Name());
 
-			throw new UsernameAlreadyExistsException(
-					String.format("username %s already exists", user.getUser_Name()));
-		}
+			//throw new UsernameAlreadyExistsException(
+				//	String.format("username %s already exists", user.getUser_Name()));
+		//}
 
 		if(userRepository.existsByEmail(user.getEmail())) {
 			Log.warn("email {} already exists.", user.getEmail());
@@ -66,7 +66,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User updateUser(User user) {
-		Log.info("updating user {}", user.getUser_Name());
+		Log.info("updating user {}", user.getUsername());
 		return userRepository.save(user);
 	}
 
@@ -92,7 +92,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public Optional<User> retrieveByUserName(String user_name) {
-		Optional<User> user = userRepository.findByUserName(user_name);
+		Optional<User> user = userRepository.findByUsername(user_name);
 		return user;
 	}
 
@@ -102,10 +102,5 @@ public class UserServiceImpl implements IUserService {
 		return user;
 	}
 
-	@Override
-	public Optional<User> retrieveByFullName(String first_name, String last_name) {
-		Optional<User> user = userRepository.findByFullName(first_name, last_name);
-		return user;
-	}
-
+	
 }

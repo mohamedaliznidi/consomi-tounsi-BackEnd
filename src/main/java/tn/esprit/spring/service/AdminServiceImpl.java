@@ -35,7 +35,7 @@ public class AdminServiceImpl implements IAdminService {
 		a.setFirst_Name(admin.getFirst_Name());
 		a.setLast_Name(admin.getLast_Name());
 		a.setPassword(passwordEncoder.encode(admin.getPassword()));
-		a.setUser_Name(admin.getUser_Name());
+		a.setUsername(admin.getUsername());
 		return adminRepository.save(a);
 
 	}
@@ -79,13 +79,13 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Override
 	public Admin registerAdmin(Admin admin) {
-		Log.info("registering admin {}", admin.getUser_Name());
+		Log.info("registering admin {}", admin.getUsername());
 
-		if(adminRepository.existsByUsername(admin.getUser_Name())) {
-			Log.warn("username {} already exists.", admin.getUser_Name());
+		if(adminRepository.existsByUsername(admin.getUsername())) {
+			Log.warn("username {} already exists.", admin.getUsername());
 
 			throw new UsernameAlreadyExistsException(
-					String.format("username %s already exists", admin.getUser_Name()));
+					String.format("username %s already exists", admin.getUsername()));
 		}
 
 		if(adminRepository.existsByEmail(admin.getEmail())) {

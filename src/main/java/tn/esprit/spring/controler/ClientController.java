@@ -77,7 +77,7 @@ public class ClientController {
 
 	@PostMapping("/clients")
 	public ResponseEntity<ApiResponse> createClient(@RequestBody Client client) {
-		Log.info("updating client {}",client.getUser_Name());
+		Log.info("updating client {}",client.getUsername());
 		try {
 			clientService.registerClient(client);
 		} catch (UsernameAlreadyExistsException | EmailAlreadyExistsException e) {
@@ -85,7 +85,7 @@ public class ClientController {
 		}
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentContextPath().path("/clients/{username}")
-				.buildAndExpand(client.getUser_Name()).toUri();
+				.buildAndExpand(client.getUsername()).toUri();
 
 		return ResponseEntity
 				.created(location)
@@ -105,7 +105,7 @@ public class ClientController {
 	@PutMapping("/clients/{id}")
 	public ResponseEntity<Client> update(@PathVariable("id") int id, @RequestBody Client client) throws ResourceNotFoundException {
 
-		Log.info("updatinging client {}",client.getUser_Name());
+		Log.info("updatinging client {}",client.getUsername());
 		Optional<Client> clientData = clientService.retrieveClient(id);
 
 		if (clientData.isPresent()) {

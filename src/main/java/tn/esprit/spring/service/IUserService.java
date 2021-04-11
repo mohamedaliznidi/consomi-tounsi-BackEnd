@@ -13,7 +13,6 @@ public interface IUserService {
 	List<User> retrieveAllUsers();
 	Optional<User> retrieveByUserName(String user_name);
 	Optional<User> retrieveByEmail(String email);
-	Optional<User> retrieveByFullName(String first_name, String last_name);
 	User registerUser(User user, String role);
 	String loginUser(String username, String password);
 }
