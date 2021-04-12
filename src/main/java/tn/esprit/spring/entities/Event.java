@@ -1,4 +1,4 @@
-/*package tn.esprit.spring.entities;
+package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,15 +19,29 @@ import javax.persistence.TemporalType;
 @Entity
 
 public class Event implements Serializable {
-	
-	
-	
-	public Event(int id, String name, Date startDate, Date endDate, String time) {
+
+	public Event() {
+		super();
+	}
+
+	public Event(int id, String name, Date startDate, Date endDate, String time, Set<Client> clients) {
+		super();
+
 		this.id = id;
 		this.name = name;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		Time = time;
+		this.clients = clients;
+	}
+
+	public Set<Client> getClients() {
+		return clients;
+	}
+
+
+	public void setClients(Set<Client> clients) {
+		this.clients = clients;
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -53,7 +67,7 @@ public class Event implements Serializable {
 	@ManyToMany(mappedBy="events", cascade = CascadeType.ALL)
 	private Set<Client> clients;
 
-	//Getters&Setters
+	
 	public int getId() {
 		return id;
 	}
@@ -84,7 +98,7 @@ public class Event implements Serializable {
 	}
 
 	
-	public Date getEndDate() {
+	public Date Time() {
 		return endDate;
 	}
 
@@ -103,6 +117,13 @@ public class Event implements Serializable {
 		Time = time;
 	}
 
+
+	public Date getEndDate() {
+		return endDate;
+	
+
 	
 }
-*/
+
+}
+

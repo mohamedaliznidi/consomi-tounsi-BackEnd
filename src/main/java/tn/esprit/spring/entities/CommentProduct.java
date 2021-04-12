@@ -39,11 +39,9 @@ public class CommentProduct implements Serializable {
 		this.commentproductid = commentproductid;
 	}
 	
-	
-
-
-
-
+	@EmbeddedId 
+	public CommentProductId getCommentProductId(){
+		return id;
 
 	public CommentProduct(float rate, String content, Client client, Product product) {
 		super();
@@ -53,8 +51,6 @@ public class CommentProduct implements Serializable {
 		this.product = product;
 
 	}
-
-
 
 
 	private float rate;
@@ -73,8 +69,11 @@ public class CommentProduct implements Serializable {
 		this.content = content;
 	}
 	
-	
 
+	@ManyToOne
+	@JoinColumn(name="idClient",referencedColumnName="USER_ID"
+	, insertable=false, updatable=false)
+	
 	
 	@JsonIgnore
 	@ManyToOne
@@ -86,14 +85,13 @@ public class CommentProduct implements Serializable {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-	
 
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(insertable = false, updatable = false, name ="idProduct",referencedColumnName= "ID_PRODUCT")
 	private Product product;
 	public Product getProduct() {
-		return product;
+  return product;
 	}
 	public void setProduct(Product product) {
 		this.product = product;

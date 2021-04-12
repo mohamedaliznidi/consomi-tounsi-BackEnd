@@ -22,8 +22,10 @@ import javax.persistence.OneToOne;
 
 public class Donation implements Serializable {
 	
-	
-	public Donation(int id, Donation_Type type, boolean state) {
+
+	public Donation(int id, Donation_Type type, int state) {
+
+
 		this.id = id;
 		this.type = type;
 		this.state = state;
@@ -34,7 +36,7 @@ public class Donation implements Serializable {
 	
 	
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue (strategy = GenerationType.AUTO)
 	@Column(name="DONATION_ID")
 	private int id ; 
 
@@ -43,20 +45,23 @@ public class Donation implements Serializable {
 	private Donation_Type type;
 
 	@Column(name="DONATION_STATE")
-	private boolean state;
-	
-	/*@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="CLP_DON_ID")
-	private ClientPlus clientplus;*/
-	
+	private int state;
 
-	
+	public Donation(int id, Donation_Type type, int state, Set<Sheet> sheet) {
+		super();
+		this.id = id;
+		this.type = type;
+		this.state = state;
+		this.sheet = sheet;
+	}
+
+	public Donation() {
+		super();
+	}
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="donation")
 	private Set<Sheet> sheet;
 	
-	
-	
-	//Getters&Setters
 	
 	public Donation() {
 		super();
@@ -95,6 +100,16 @@ public class Donation implements Serializable {
 	}
 
 	
+	public Set<Sheet> getSheet() {
+		return sheet;
+	}
+
+
+	public void setSheet(Set<Sheet> sheet) {
+		this.sheet = sheet;
+	}
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -109,15 +124,16 @@ public class Donation implements Serializable {
 		this.type = type;
 	}
 
-	
-	public boolean isState() {
+
+	public int getState() {
 		return state;
 	}
 
-	
-	public void setState(boolean state) {
+
+	public void setState(int state) {
 		this.state = state;
 	}
+
 	
 }
 

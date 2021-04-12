@@ -38,11 +38,7 @@ public class ProductServiceImpl implements IProductService {
 
 	@Autowired
 	ICommentProductService commentproductservice;
-
-	
-
 	 private static final Logger L = LogManager.getLogger(ProductServiceImpl.class);
-	
 	@Override
 	public Product addProduct (Product p){
 		return productRepository.save(p);
@@ -69,14 +65,6 @@ public class ProductServiceImpl implements IProductService {
 	@Override
 	public List<Product> retrieveAllProducts(){
 		List<Product> products = (List<Product>) productRepository.findAll();
-		for (Product product : products){
-
-
-
-
-			L.info("product +++ : " +product);
-
-		}
 		return products;
 		
 		}
@@ -109,8 +97,7 @@ public class ProductServiceImpl implements IProductService {
 		return products;
 	}
 	
-	public void invokeScheduled() {
-		//Date Today=new java.util.Date();  
+	public void invokeScheduled() { 
 		List<Product> products =  (List<Product>) productRepository.findAll();
 		float sum=0 ;
 		for (Product p2 : products){
