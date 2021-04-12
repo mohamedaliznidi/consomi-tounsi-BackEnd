@@ -204,7 +204,7 @@ public class ProductController {
 	        }catch (IOException e){
 	e.printStackTrace();
 	        }
-		   return "wtf";
+		   return "dosen't work";
 
 	    }
 	

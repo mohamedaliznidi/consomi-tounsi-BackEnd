@@ -60,6 +60,8 @@ public class ClientPlus extends Client implements Serializable {
 		super(user);
 		
 	}
+	
+	public ClientPlus() {}
 
 	
 	

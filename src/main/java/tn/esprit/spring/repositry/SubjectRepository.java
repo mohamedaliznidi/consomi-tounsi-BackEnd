@@ -10,7 +10,7 @@ import tn.esprit.spring.entities.Subject;
 @Repository
 public interface SubjectRepository extends JpaRepository<Subject, Integer> {
 
-	Boolean existsBySubjectName(String subject_name); 
-	Optional<Subject> findByName(String name);
+	Boolean existsByNamesubject(String subject_name); 
+	Optional<Subject> findByNamesubject(String name);
 
 }

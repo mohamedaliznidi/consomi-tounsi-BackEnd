@@ -3,8 +3,6 @@ package tn.esprit.spring.controler;
 import java.net.URI;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +11,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -44,8 +42,9 @@ public class ClientController {
 
 	//GET Requests
 
-	@GetMapping(value = "/clients/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> findClient(@PathVariable("username") String username) {
+	@RequestMapping(value ="/clients", produces = MediaType.APPLICATION_JSON_VALUE, params = "username", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<?> findClient(@RequestParam String username) {
 		Log.info("retrieving client {}", username);
 
 		return  clientService
@@ -62,8 +61,9 @@ public class ClientController {
 				.ok(clientService.retrieveAllClients());
 	}
 
-	@GetMapping(value = "/clients/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> one(@PathVariable int id) {
+	@RequestMapping(value ="/clients", produces = MediaType.APPLICATION_JSON_VALUE, params = "id", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<?> one(@RequestParam int id) {
 
 		Log.info("retrieving client with id {}", id);
 		return  clientService
@@ -77,7 +77,7 @@ public class ClientController {
 
 	@PostMapping("/clients")
 	public ResponseEntity<ApiResponse> createClient(@RequestBody Client client) {
-		Log.info("updating client {}",client.getUser_Name());
+		Log.info("updating client {}",client.getUsername());
 		try {
 			clientService.registerClient(client);
 		} catch (UsernameAlreadyExistsException | EmailAlreadyExistsException e) {
@@ -85,7 +85,7 @@ public class ClientController {
 		}
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentContextPath().path("/clients/{username}")
-				.buildAndExpand(client.getUser_Name()).toUri();
+				.buildAndExpand(client.getUsername()).toUri();
 
 		return ResponseEntity
 				.created(location)
@@ -93,8 +93,8 @@ public class ClientController {
 	}
 
 
-	@PostMapping("/signin")
-	public ResponseEntity<?> authenticateClient(@Valid @RequestBody LoginRequest loginRequest) {
+	@PostMapping("/clients/signin")
+	public ResponseEntity<?> authenticateClient( @RequestBody LoginRequest loginRequest) {
 		String token = clientService.loginClient(loginRequest.getUsername(), loginRequest.getPassword());
 		return ResponseEntity.ok(new JwtAuthenticationResponse(token));
 	}
@@ -102,10 +102,12 @@ public class ClientController {
 
 	//PUT Requests
 
-	@PutMapping("/clients/{id}")
-	public ResponseEntity<Client> update(@PathVariable("id") int id, @RequestBody Client client) throws ResourceNotFoundException {
+	@RequestMapping(value ="/clients", produces = MediaType.APPLICATION_JSON_VALUE, params = "id", method = RequestMethod.PUT)
+	@ResponseBody
+	public ResponseEntity<Client> update(@RequestParam int id, @RequestBody Client client) throws ResourceNotFoundException {
 
-		Log.info("updatinging client {}",client.getUser_Name());
+		
+		Log.info("updatinging client {}",client.getUsername());
 		Optional<Client> clientData = clientService.retrieveClient(id);
 
 		if (clientData.isPresent()) {
@@ -118,9 +120,10 @@ public class ClientController {
 
 	//DELETE Requests
 
-	@DeleteMapping("/clients/{id}")
+	@RequestMapping(value ="/clients", produces = MediaType.APPLICATION_JSON_VALUE, params = "id", method = RequestMethod.DELETE)
+	@ResponseBody
 	@PreAuthorize("hasRole('Admin')")
-	public ResponseEntity<HttpStatus> deleteClient(@PathVariable("id") int id) {
+	public ResponseEntity<HttpStatus> deleteClient(@RequestParam int id) {
 		try {
 			clientService.deleteClient(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
