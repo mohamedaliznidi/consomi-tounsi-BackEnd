@@ -1,5 +1,6 @@
 package tn.esprit.spring.service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,12 +31,15 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Override
 	public Admin updateAdmin(Admin admin, int id)  throws ResourceNotFoundException{
+		Log.info("updating admin : {}",admin.getUsername());
 		Admin a=adminRepository.findById(id).orElseThrow(
 				()->new ResourceNotFoundException(" this admin doesn't exist"));
 		a.setFirst_Name(admin.getFirst_Name());
 		a.setLast_Name(admin.getLast_Name());
 		a.setPassword(passwordEncoder.encode(admin.getPassword()));
 		a.setUsername(admin.getUsername());
+		a.setEmail(admin.getEmail());
+		a.setUpdatedAt(Instant.now());
 		return adminRepository.save(a);
 
 	}

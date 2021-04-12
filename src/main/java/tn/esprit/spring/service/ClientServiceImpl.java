@@ -1,5 +1,6 @@
 package tn.esprit.spring.service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,7 @@ public class ClientServiceImpl implements IClientService {
 		c.setEmail(client.getEmail());
 		c.setFirst_Name(client.getFirst_Name());
 		c.setLast_Name(client.getLast_Name());
+		c.setUpdatedAt(Instant.now());
 	   return clientRepository.save(c);
 	}
 

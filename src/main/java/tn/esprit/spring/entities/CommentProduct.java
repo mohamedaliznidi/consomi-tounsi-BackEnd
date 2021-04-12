@@ -106,7 +106,7 @@ public class CommentProduct implements Serializable {
 	
 	public CommentProduct() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	

@@ -6,10 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -23,8 +20,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
-@DiscriminatorColumn(name="CLIENT_TYPE")
 
 public class Client extends User implements Serializable {
 
@@ -207,7 +202,7 @@ public class Client extends User implements Serializable {
 		
 	}
 	
-	@JsonCreator
+	
 	public Client(User user) {
 		super(user);
 	}
