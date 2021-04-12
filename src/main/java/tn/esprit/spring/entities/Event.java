@@ -19,8 +19,6 @@ import javax.persistence.TemporalType;
 @Entity
 
 public class Event implements Serializable {
-	
-	
 
 	public Event() {
 		super();
@@ -28,6 +26,7 @@ public class Event implements Serializable {
 
 	public Event(int id, String name, Date startDate, Date endDate, String time, Set<Client> clients) {
 		super();
+
 		this.id = id;
 		this.name = name;
 		this.startDate = startDate;
@@ -125,4 +124,6 @@ public class Event implements Serializable {
 
 	
 }
+
 }
+

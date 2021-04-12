@@ -13,37 +13,44 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
 @Entity
 public class Subject implements Serializable {
 	
 	
-	/**
-	 * @param id
-	 * @param name_Subject
-	 * @param desc_Subject
-	 * @param client
-	 * @param commentforums
-	 */
-	public Subject(int id, String name_Subject, String desc_Subject) {
+	public Subject(int id, String name_Subject, String desc_Subject, String theme_Subject) {
 		this.id = id;
-		Name_Subject = name_Subject;
-		Desc_Subject = desc_Subject;
+		themesubject = theme_Subject;
+		namesubject = name_Subject;
+		descsubject = desc_Subject;
 	}
+	
+	public Subject() {}
 
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@Column(name="Id_Subject")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String Name_Subject;
-	private String Desc_Subject;
+	@Column(name="NAME", nullable = false)
+	@JsonProperty("name")
+	private String namesubject;
+	@Column(name="DECRIP", nullable = false)
+	@JsonProperty("descrip")
+	private String descsubject;
+	@Column(name="THEME", nullable = false)
+	@JsonProperty("theme")
+	private String themesubject;
 	
 	@ManyToOne 
 	private Client client; 
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="subject")
-	private Set<Commentforum> commentforums;
+	private Set<CommentForum> commentForums;
 
 	//Getters&Setters 
 	
@@ -58,23 +65,33 @@ public class Subject implements Serializable {
 	}
 
 
-	public String getName_Subject() {
-		return Name_Subject;
+	public String getNamesubject() {
+		return namesubject;
 	}
 
 
-	public void setName_Subject(String name_Subject) {
-		Name_Subject = name_Subject;
+	public void setNamesubject(String name_Subject) {
+		namesubject = name_Subject;
 	}
 
 
-	public String getDesc_Subject() {
-		return Desc_Subject;
+	public String getDescsubject() {
+		return descsubject;
 	}
 
 
-	public void setDesc_Subject(String desc_Subject) {
-		Desc_Subject = desc_Subject;
+	public void setDescsubject(String desc_Subject) {
+		descsubject = desc_Subject;
+	}
+
+
+	public String getThemesubject() {
+		return themesubject;
+	}
+
+
+	public void setThemesubject(String theme_Subject) {
+		themesubject = theme_Subject;
 	}
 
 	

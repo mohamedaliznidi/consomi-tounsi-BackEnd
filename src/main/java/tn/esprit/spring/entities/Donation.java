@@ -22,7 +22,10 @@ import javax.persistence.OneToOne;
 
 public class Donation implements Serializable {
 	
+
 	public Donation(int id, Donation_Type type, int state) {
+
+
 		this.id = id;
 		this.type = type;
 		this.state = state;
@@ -43,7 +46,6 @@ public class Donation implements Serializable {
 
 	@Column(name="DONATION_STATE")
 	private int state;
-	
 
 	public Donation(int id, Donation_Type type, int state, Set<Sheet> sheet) {
 		super();
@@ -61,6 +63,38 @@ public class Donation implements Serializable {
 	private Set<Sheet> sheet;
 	
 	
+	public Donation() {
+		super();
+	}
+
+
+
+
+	public Set<Sheet> getSheet() {
+		return sheet;
+	}
+
+
+
+
+	public void setSheet(Set<Sheet> sheet) {
+		this.sheet = sheet;
+	}
+
+
+
+
+	public Donation(int id, Donation_Type type, boolean state, Set<Sheet> sheet) {
+		super();
+		this.id = id;
+		this.type = type;
+		this.state = state;
+		this.sheet = sheet;
+	}
+
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -100,8 +134,6 @@ public class Donation implements Serializable {
 		this.state = state;
 	}
 
-	
-	
 	
 }
 

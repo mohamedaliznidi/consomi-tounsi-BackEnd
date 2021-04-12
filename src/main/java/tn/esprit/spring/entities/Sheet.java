@@ -12,30 +12,85 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-
-
 @Entity 
 
 public class Sheet implements Serializable {
-	/**
-	 * @param id
-	 * @param student
-	 * @param job
-	 * @param monthlyincome
-	 * @param civilStatus
-	 * @param kids
-	 * @param oldPerson
-	 * @param oldPHealthP
-	 * @param kidsN
-	 * @param workCapacity
-	 * @param monoParent
-	 * @param handicap
-	 * @param handicapType
-	 * @param pregnant
-	 * @param category1
-	 * @param category2
-	 * @param category3
-	 */
+
+	public Sheet(int id, boolean student, boolean job, MonthlyIncome monthlyincome,
+			tn.esprit.spring.entities.CivilStatus civilStatus, boolean kids, boolean oldPerson, boolean oldPHealthP,
+			int kidsN, boolean workCapacity, boolean monoParent, boolean handicap,
+			tn.esprit.spring.entities.HandicapType handicapType, boolean pregnant, String category1, String category2,
+			String category3) {
+		this.id = id;
+		Student = student;
+		Job = job;
+		Monthlyincome = monthlyincome;
+		CivilStatus = civilStatus;
+		Kids = kids;
+		OldPerson = oldPerson;
+		OldPHealthP = oldPHealthP;
+		KidsN = kidsN;
+		WorkCapacity = workCapacity;
+		MonoParent = monoParent;
+		Handicap = handicap;
+		HandicapType = handicapType;
+		Pregnant = pregnant;
+		Category1 = category1;
+		Category2 = category2;
+		Category3 = category3;
+	}
+
+	public ClientPlus getClientplus() {
+		return clientplus;
+	}
+
+
+	public void setClientplus(ClientPlus clientplus) {
+		this.clientplus = clientplus;
+	}
+
+	
+	@OneToOne
+	private ClientPlus clientplus;
+	
+	@ManyToOne( cascade = CascadeType.ALL)
+	Donation donation;
+	
+	public Donation getDonation() {
+		return donation;
+	}
+
+	public void setDonation(Donation donation) {
+		this.donation = donation;
+	}
+
+	public Sheet(ClientPlus clientplus, Donation donation, int id, boolean student, boolean job,
+			MonthlyIncome monthlyincome, tn.esprit.spring.entities.CivilStatus civilStatus, boolean kids,
+			boolean oldPerson, boolean oldPHealthP, int kidsN, boolean workCapacity, boolean monoParent,
+			boolean handicap, tn.esprit.spring.entities.HandicapType handicapType, boolean pregnant, String category1,
+			String category2, String category3) {
+		super();
+		this.clientplus = clientplus;
+		this.donation = donation;
+		this.id = id;
+		Student = student;
+		Job = job;
+		Monthlyincome = monthlyincome;
+		CivilStatus = civilStatus;
+		Kids = kids;
+		OldPerson = oldPerson;
+		OldPHealthP = oldPHealthP;
+		KidsN = kidsN;
+		WorkCapacity = workCapacity;
+		MonoParent = monoParent;
+		Handicap = handicap;
+		HandicapType = handicapType;
+		Pregnant = pregnant;
+		Category1 = category1;
+		Category2 = category2;
+		Category3 = category3;
+	}
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -76,30 +131,16 @@ public class Sheet implements Serializable {
 	private String Category2;
 	
 	private String Category3;
-	
-	@OneToOne
-	private ClientPlus clientplus;
-
-	
 	@ManyToOne( cascade = CascadeType.ALL)
 	Donation donation;
-	//Getters&Setters
 	
 	public int getId() {
 		return id;
 	}
 
-	
-
-
-
 	public Sheet() {
 		super();
 	}
-
-
-
-
 
 	public Sheet(int id, boolean student, boolean result, int mounthlyPurchase, boolean job, int monthlyincome,
 			int donationstate, tn.esprit.spring.entities.CivilStatus civilStatus, boolean kids, boolean oldPerson,

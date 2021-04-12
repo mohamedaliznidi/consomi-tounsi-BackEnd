@@ -15,6 +15,10 @@ import javax.persistence.OneToMany;
 public class CodeP implements Serializable {
 	
 	
+	public CodeP() {
+		super();
+	}
+
 	/**
 	 * @param codeP
 	 * @param gouvernorat
