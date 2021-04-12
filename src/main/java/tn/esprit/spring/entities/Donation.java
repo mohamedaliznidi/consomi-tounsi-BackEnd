@@ -55,9 +55,6 @@ public class Donation implements Serializable {
 		this.sheet = sheet;
 	}
 
-	public Donation() {
-		super();
-	}
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="donation")
 	private Set<Sheet> sheet;
@@ -70,27 +67,15 @@ public class Donation implements Serializable {
 
 
 
-	public Set<Sheet> getSheet() {
-		return sheet;
-	}
 
 
 
 
-	public void setSheet(Set<Sheet> sheet) {
-		this.sheet = sheet;
-	}
+	
 
 
 
-
-	public Donation(int id, Donation_Type type, boolean state, Set<Sheet> sheet) {
-		super();
-		this.id = id;
-		this.type = type;
-		this.state = state;
-		this.sheet = sheet;
-	}
+	
 
 
 
