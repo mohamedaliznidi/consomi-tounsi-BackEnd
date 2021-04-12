@@ -60,8 +60,8 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .antMatchers("api/clients/*").hasAnyRole("ADMIN", "CLIENT", "PRODUCT_MANAGER")
                 .antMatchers("api/managers/*").hasAnyRole("ADMIN", "PRODUCT_MANAGER")
                 .antMatchers("api/deliverymans/*").hasAnyRole("ADMIN", "DELIVERY_MAN")
-                .antMatchers("/","/home/*","/users/*").permitAll()
-                .antMatchers("*").permitAll().and().formLogin();
+                .antMatchers("/").permitAll().and().formLogin();
+               
     }
     
     @Bean

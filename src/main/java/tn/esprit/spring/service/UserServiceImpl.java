@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.exception.EmailAlreadyExistsException;
 import tn.esprit.spring.exception.UsernameAlreadyExistsException;
-
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repositry.UserRepository;
 
@@ -66,24 +65,6 @@ public class UserServiceImpl implements IUserService {
 		return userRepository.save(user);
 	}
 
-	@Override
-	public User updateUser(User user) {
-		Log.info("updating user {}", user.getUsername());
-		return userRepository.save(user);
-	}
-
-	@Override
-	public void deleteUser(int id) {
-		userRepository.deleteById(id);
-
-	}
-
-	@Override
-	public Optional<User> retrieveUser(int id) {
-		return userRepository.findById(id);
-
-
-	}
 
 	@Override
 	public List<User> retrieveAllUsers() {
@@ -92,18 +73,12 @@ public class UserServiceImpl implements IUserService {
 		return users;
 	}
 
-	@Override
-	public Optional<User> retrieveByUserName(String user_name) {
-		Optional<User> user = userRepository.findByUsername(user_name);
-		return user;
-	}
 
 	@Override
-	public Optional<User> retrieveByEmail(String email) {
-		Optional<User> user = userRepository.findByEmail(email);
+	public Optional<User> retrieveByUsername(String username) {
+		Optional<User> user = userRepository.findByUsername(username);
 		return user;
 	}
 
 	
-
 }

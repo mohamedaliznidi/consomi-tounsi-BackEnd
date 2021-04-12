@@ -1,7 +1,7 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.Instant;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,11 +24,13 @@ public class CommentForum implements Serializable {
 	 * @param content
 	 * @param commentdate
 	 */
-	public CommentForum(int id, String content, Date commentdate) {
+	public CommentForum(int id, String content, Instant commentdate) {
 		this.id = id;
 		this.content = content;
 		this.commentdate = commentdate;
 	}
+	
+	public CommentForum() {}
 
 	private static final long serialVersionUID = 1L;
 	
@@ -36,13 +38,16 @@ public class CommentForum implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
 	@Column(name="content")
-	String content;
+	private String content;
 	
 	@Column(name="commentdate")
-	java.util.Date commentdate ;
+	private Instant commentdate = Instant.now() ;
 	
 	@ManyToOne 
 	private Subject subject;
+	
+	@ManyToOne
+	private Client client;
 	
 	//Getters&Setters
 
@@ -64,12 +69,28 @@ public class CommentForum implements Serializable {
 		this.content = content;
 	}
 
-	public java.util.Date getCommentdate() {
+	public Instant getCommentdate() {
 		return commentdate;
 	}
 
-	public void setCommentdate(java.util.Date commentdate) {
+	public void setCommentdate(Instant commentdate) {
 		this.commentdate = commentdate;
+	}
+
+	public Subject getSubject() {
+		return subject;
+	}
+
+	public void setSubject(Subject subject) {
+		this.subject = subject;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 }

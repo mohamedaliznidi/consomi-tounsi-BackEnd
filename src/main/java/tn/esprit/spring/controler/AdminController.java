@@ -13,13 +13,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -49,8 +49,9 @@ public class AdminController {
 	
 	//GET Requests
 
-		@GetMapping(value = "/admins/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
-		public ResponseEntity<?> findAdmin(@PathVariable("username") String username) {
+		@RequestMapping(value = "/admins", produces = MediaType.APPLICATION_JSON_VALUE, params = "username", method = RequestMethod.GET)
+		@ResponseBody
+		public ResponseEntity<?> findAdmin(@RequestParam String username) {
 			Log.info("retrieving admin {}", username);
 
 			return  adminService
@@ -59,8 +60,9 @@ public class AdminController {
 					.orElseThrow(() -> new ResourceNotFoundException(username));
 		}
 
-		@GetMapping(value ="/admins/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-		public ResponseEntity<?> one(@PathVariable int id) {
+		@RequestMapping(value ="/admins", produces = MediaType.APPLICATION_JSON_VALUE, params = "id", method = RequestMethod.GET)
+		@ResponseBody
+		public ResponseEntity<?> one(@RequestParam int id) {
 
 			Log.info("retrieving admin with id {}", id);
 			return adminService
@@ -117,8 +119,9 @@ public class AdminController {
 		
 		//PUT Requests
 
-		@PutMapping("/admins/{id}")
-		public ResponseEntity<Admin> update(@PathVariable("id") int id, @RequestBody Admin admin) throws ResourceNotFoundException {
+		@RequestMapping(value ="/admins", produces = MediaType.APPLICATION_JSON_VALUE, params = "id", method = RequestMethod.PUT)
+		@ResponseBody
+		public ResponseEntity<Admin> update(@RequestParam int id, @RequestBody Admin admin) throws ResourceNotFoundException {
 
 			Log.info("updatinging admin {}",admin.getUsername());
 			Optional<Admin> adminData = adminService.retrieveAdmin(id);
@@ -133,9 +136,10 @@ public class AdminController {
 
 		//DELETE Requests
 
-		@DeleteMapping("/admins/{id}")
+		@RequestMapping(value ="/admins", produces = MediaType.APPLICATION_JSON_VALUE, params = "id", method = RequestMethod.DELETE)
+		@ResponseBody
 		@PreAuthorize("hasRole('Admin')")
-		public ResponseEntity<HttpStatus> deleteAdmin(@PathVariable("id") int id) {
+		public ResponseEntity<HttpStatus> deleteAdmin(@RequestParam int id) {
 			try {
 				adminService.deleteAdmin(id);
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);

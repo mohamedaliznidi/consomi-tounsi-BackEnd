@@ -1,5 +1,6 @@
 package tn.esprit.spring.service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,7 @@ public class ProductManagerServiceImpl implements IProductManagerService {
 		pm.setEmail(product_manager.getEmail());
 		pm.setFirst_Name(product_manager.getFirst_Name());
 		pm.setLast_Name(product_manager.getLast_Name());
+		pm.setUpdatedAt(Instant.now());
 	   return pmRepo.save(pm);
 	}
 

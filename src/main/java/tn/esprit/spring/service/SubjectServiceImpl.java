@@ -20,16 +20,19 @@ public class SubjectServiceImpl implements ISubjectService {
 	SubjectRepository subjectRepository;
 	
 	private static final Logger Log = LogManager.getLogger(SubjectServiceImpl.class);
+
+	
 	
 	
 	@Override
 	public Subject addSubject(Subject s) {
-		Log.info("adding subject{}",s.getNamesubject());
+		Log.info("adding subject {}",s.getNamesubject());
 		if(subjectRepository.existsByNamesubject(s.getNamesubject())) {
 			Log.warn("subject {} already exists.",s.getNamesubject());
 			throw new UsernameAlreadyExistsException(
 					String.format("subject %s already exists", s.getNamesubject()));
 		}
+		
 		
 		return subjectRepository.save(s);
 	}

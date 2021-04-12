@@ -13,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
 @Entity
 public class Subject implements Serializable {
 	
@@ -23,15 +26,24 @@ public class Subject implements Serializable {
 		namesubject = name_Subject;
 		descsubject = desc_Subject;
 	}
+	
+	public Subject() {}
 
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@Column(name="Id_Subject")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@Column(name="NAME", nullable = false)
+	@JsonProperty("name")
 	private String namesubject;
+	@Column(name="DECRIP", nullable = false)
+	@JsonProperty("descrip")
 	private String descsubject;
+	@Column(name="THEME", nullable = false)
+	@JsonProperty("theme")
 	private String themesubject;
 	
 	@ManyToOne 
