@@ -23,8 +23,8 @@ public class Basket implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-;
-	@OneToOne(cascade = CascadeType.ALL,mappedBy = "basket")
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
     private OrderC orderC;
 	

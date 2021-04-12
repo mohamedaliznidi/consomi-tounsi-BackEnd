@@ -39,8 +39,8 @@ public Client(int id, String name, String email, String password, int phone_numb
 
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany (cascade = CascadeType.ALL, mappedBy="client" )
-	private Set<OrderC> orderc;
+	//@OneToMany (cascade = CascadeType.ALL, mappedBy="client" )
+	//private Set<OrderC> orderc;
 	
 	@ManyToOne
 	private Adress adress;

@@ -1,25 +1,37 @@
 package tn.esprit.spring.entities;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
 public class ItemBasket {
 		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		@GeneratedValue(strategy = GenerationType.AUTO)
 		int id;
 		int quantity;
-		@ManyToOne
-		Basket basket;
-		@ManyToOne
-		Product product;
-		public ItemBasket() {
 		
+		@ManyToOne(optional = true)
+		@JoinColumn(name="basket_id",nullable = false,referencedColumnName = "id")
+		Basket basket;
+		
+		
+		@JsonIgnore
+		@ManyToOne(optional = true)
+		@JoinColumn(name="product_id",nullable = false,referencedColumnName = "id")
+		Product product;
+	
+
+		public ItemBasket() {
+		super();
 		}
 		
 		public ItemBasket(int quantity, Basket basket, Product product) {

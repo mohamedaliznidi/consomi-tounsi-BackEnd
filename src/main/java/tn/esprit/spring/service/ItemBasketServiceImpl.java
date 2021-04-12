@@ -40,7 +40,12 @@ public class ItemBasketServiceImpl implements ItemBasketService {
 
 	@Override
 	public void updateItem(ItemBasket itemBasket) {
-		itemBasketRepository.save(itemBasket);
+		int id=itemBasket.getBasket().getId();
+		ItemBasket ib=	itemBasketRepository.findById(id).get();
+		ib.setBasket(itemBasket.getBasket());
+		ib.setProduct(itemBasket.getProduct());
+		ib.setQuantity(itemBasket.getQuantity());
+		itemBasketRepository.save(ib);
 		
 	}
 

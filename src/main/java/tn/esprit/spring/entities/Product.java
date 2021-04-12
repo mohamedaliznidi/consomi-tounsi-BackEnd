@@ -57,7 +57,7 @@ public class Product implements Serializable {
 	@Id
 	//@Column(name="ID_PRODUCT")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	int id;
 
 	
 
@@ -65,8 +65,6 @@ public class Product implements Serializable {
 	private String name;
 	
 	private String categoryname;
-
-
 
 
 
@@ -388,12 +386,87 @@ public Product(String name, String code, float price, String image, int quantity
 		this.comments=comments;
 	}*/
 	
+	
+	@OneToMany(mappedBy="product")
+	private List<ItemBasket> items;
+
 
 	
 	
+	public Product(String name, String categoryname, int promotion, String code, float price, String image,
+			int quantity, Date expDate, float generalrate, String nature, float initial_price, int energie,
+			float matiere_grasse, float acide_gras_sature, float sucres, float fibres, float proteines, float sel,
+			int fruits, ProductCategory productCategory, List<ItemBasket> items, Matiere matiere) {
+		super();
+		this.name = name;
+		this.categoryname = categoryname;
+		this.promotion = promotion;
+		this.code = code;
+		this.price = price;
+		this.image = image;
+		this.quantity = quantity;
+		this.expDate = expDate;
+		this.generalrate = generalrate;
+		this.nature = nature;
+		this.initial_price = initial_price;
+		this.energie = energie;
+		this.matiere_grasse = matiere_grasse;
+		this.acide_gras_sature = acide_gras_sature;
+		this.sucres = sucres;
+		this.fibres = fibres;
+		this.proteines = proteines;
+		this.sel = sel;
+		this.fruits = fruits;
+		this.productCategory = productCategory;
+		this.items = items;
+		this.matiere = matiere;
+	}
+
+
 	//Getters&Setters
 	
 	
+	public List<ItemBasket> getItems() {
+		return items;
+	}
+
+
+	public Product(int id, String name, String categoryname, int promotion, String code, float price, String image,
+			int quantity, Date expDate, float generalrate, String nature, float initial_price, int energie,
+			float matiere_grasse, float acide_gras_sature, float sucres, float fibres, float proteines, float sel,
+			int fruits, ProductCategory productCategory, List<ItemBasket> items, Matiere matiere) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.categoryname = categoryname;
+		this.promotion = promotion;
+		this.code = code;
+		this.price = price;
+		this.image = image;
+		this.quantity = quantity;
+		this.expDate = expDate;
+		this.generalrate = generalrate;
+		this.nature = nature;
+		this.initial_price = initial_price;
+		this.energie = energie;
+		this.matiere_grasse = matiere_grasse;
+		this.acide_gras_sature = acide_gras_sature;
+		this.sucres = sucres;
+		this.fibres = fibres;
+		this.proteines = proteines;
+		this.sel = sel;
+		this.fruits = fruits;
+		this.productCategory = productCategory;
+		this.items = items;
+		this.matiere = matiere;
+	}
+
+
+	public void setItems(List<ItemBasket> items) {
+		this.items = items;
+	}
+
+
 	public int getId() {
 		return id;
 	}
@@ -496,5 +569,12 @@ public Product(String name, String code, float price, String image, int quantity
 	public void setMatiere(Matiere matiere) {
 		this.matiere = matiere;
 	}
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 
 }

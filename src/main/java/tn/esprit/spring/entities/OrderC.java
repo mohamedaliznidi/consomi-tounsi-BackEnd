@@ -2,6 +2,8 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -31,7 +33,7 @@ public class OrderC implements Serializable {
 	private boolean isDelivered;
 	private Date DeliveredAt;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL,mappedBy = "orderC")
     private Basket basket;
 
 	

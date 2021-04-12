@@ -20,7 +20,7 @@ import tn.esprit.spring.service.BasketService;
 
 @RestController
 @CrossOrigin(origins = "*",maxAge = 3600)
-@RequestMapping("/api/v1")
+@RequestMapping("/api/clients")
 public class BasketController {
 	@Autowired
 	BasketService basketService ;

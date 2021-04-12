@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.ItemBasket;
 import tn.esprit.spring.entities.OrderC;
+import tn.esprit.spring.entities.PaymentMethode;
 import tn.esprit.spring.repositry.BasketRepository;
 import tn.esprit.spring.repositry.ItemBasketRepository;
 import tn.esprit.spring.repositry.OrderCRepository;
@@ -64,7 +65,8 @@ public class OrderCServiceImpl implements OrderCService  {
 		orderC.setTotalPrice(0);
 		orderC.setTaxPrice(7);
 		float total = 0 ;
-		if(orderC.getPaymentMethode().equals("CASH"))
+		System.out.println(orderC.getPaymentMethode().equals(PaymentMethode.CASH));
+		if(orderC.getPaymentMethode().equals(PaymentMethode.CASH))
 			orderC.setPaid(false);
 		else {
 			orderC.setPaid(true);

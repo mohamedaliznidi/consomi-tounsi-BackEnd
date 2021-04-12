@@ -25,7 +25,7 @@ import tn.esprit.spring.util.GeneratePdfReport;
 
 @RestController
 @CrossOrigin(origins = "*",maxAge=3600)
-@RequestMapping("/api/v1")
+@RequestMapping("/api/clients")
 public class OrderCController {	
 	@Autowired
 	OrderCService orderCService;

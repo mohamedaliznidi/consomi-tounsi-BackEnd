@@ -21,7 +21,7 @@ import tn.esprit.spring.service.ItemBasketService;
 
 @RestController
 @CrossOrigin(origins = "*",maxAge = 3600)
-@RequestMapping("/api/v1")
+@RequestMapping("/api/clients")
 public class ItemBasketController {
 
 	@Autowired
