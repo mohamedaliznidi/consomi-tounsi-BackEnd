@@ -17,6 +17,39 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class OrderC implements Serializable {
+
+	
+	
+	/**
+	 * @param id
+	 * @param shippingAdress
+	 * @param paymentMethode
+	 * @param taxPrice
+	 * @param totalPrice
+	 * @param isPaid
+	 * @param paidAt
+	 * @param isDelivered
+	 * @param deliveredAt
+	 * @param products
+	 * @param client
+	 * @param adress
+	 * @param deliveryMan
+	 */
+	public OrderC(int id, Adress shippingAdress, PaymentMethode paymentMethode, float taxPrice, float totalPrice,
+			boolean isPaid, Date paidAt, boolean isDelivered, Date deliveredAt) {
+		this.id = id;
+		this.shippingAdress = shippingAdress;
+		this.paymentMethode = paymentMethode;
+		this.taxPrice = taxPrice;
+		this.totalPrice = totalPrice;
+		this.isPaid = isPaid;
+		this.paidAt = paidAt;
+		this.isDelivered = isDelivered;
+		DeliveredAt = deliveredAt;
+
+	}
+
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -46,6 +79,10 @@ public class OrderC implements Serializable {
 		
 	}
 	
+
+	//@ManyToOne
+	//DeliveryMan deliveryMan; 
+
 
 	public OrderC(Adress shippingAdress, PaymentMethode paymentMethode, float taxPrice, float totalPrice,
 			boolean isPaid, Date paidAt, boolean isDelivered, Date deliveredAt, Basket basket, Client client) {

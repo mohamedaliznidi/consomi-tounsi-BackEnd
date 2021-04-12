@@ -17,7 +17,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 
-//import tn.esprit.spring.entities.CommentProduct;
+
+
+
+
+import tn.esprit.spring.entities.CommentProduct;
 
 import tn.esprit.spring.entities.Product;
 import tn.esprit.spring.entities.ProductCategory;
@@ -31,8 +35,10 @@ public class ProductServiceImpl implements IProductService {
 	ProductRepository productRepository;
 	
 
-	/*@Autowired
-	ICommentProductService commentproductservice;*/
+
+	@Autowired
+	ICommentProductService commentproductservice;
+
 	
 
 	 private static final Logger L = LogManager.getLogger(ProductServiceImpl.class);
@@ -65,7 +71,8 @@ public class ProductServiceImpl implements IProductService {
 		List<Product> products = (List<Product>) productRepository.findAll();
 		for (Product product : products){
 
-			L.info("product +++ : " + product);
+
+
 
 			L.info("product +++ : " +product);
 
@@ -93,13 +100,15 @@ public class ProductServiceImpl implements IProductService {
 		return products;
 	}
 	
+	
+	
+	@Scheduled(fixedRate = 10000) 
 	@Override
 	public List<Product> retrieveByProductCategoryName(String name){
 		List<Product> products=productRepository.findByCategoryname(name);
 		return products;
 	}
 	
-	/*@Scheduled(fixedRate = 10000) 
 	public void invokeScheduled() {
 		//Date Today=new java.util.Date();  
 		List<Product> products =  (List<Product>) productRepository.findAll();
@@ -129,6 +138,6 @@ public class ProductServiceImpl implements IProductService {
 		}
 
 	}
-	*/
+
 
 }

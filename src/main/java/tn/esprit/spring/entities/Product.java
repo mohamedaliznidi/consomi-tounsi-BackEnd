@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -62,9 +63,13 @@ public class Product implements Serializable {
 	
 
 
+	
+
+
 	private String name;
 	
 	private String categoryname;
+
 
 
 
@@ -88,7 +93,10 @@ public class Product implements Serializable {
 	}
 
 
+
 	/*public Set<OrderC> getOrderc() {
+
+
 		return orderc;
 	}
 
@@ -96,7 +104,9 @@ public class Product implements Serializable {
 	public void setOrderc(Set<OrderC> orderc) {
 		this.orderc = orderc;
 	}
+
 */
+
 	private int promotion;
 	public int getPromotion() {
 		return promotion;
@@ -119,6 +129,7 @@ public class Product implements Serializable {
 	private Date expDate;
 	
 	private float generalrate;
+
 	
 	private String nature;
 	private float initial_price;
@@ -377,6 +388,268 @@ public Product(String name, String code, float price, String image, int quantity
 
 
 	/*@OneToMany(mappedBy="product")
+
+	
+	private String nature;
+	private float initial_price;
+	
+
+
+
+
+	public float getInitial_price() {
+		return initial_price;
+	}
+
+
+	public void setInitial_price(float initial_price) {
+		this.initial_price = initial_price;
+	}
+
+
+	private int energie;
+	private float matiere_grasse;
+	private float acide_gras_sature;
+	private float sucres;
+	private float fibres ;
+	private float proteines ;
+	private float sel;
+	private int fruits;
+	
+	
+	public Product(int id, String name, String code, float price, String image, int quantity, Date expDate,
+			float generalrate, String nature, Set<OrderC> orderc, ProductCategory productCategory,Matiere matiere) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.code = code;
+		this.price = price;
+		this.image = image;
+		this.quantity = quantity;
+		this.expDate = expDate;
+		this.generalrate = generalrate;
+		this.nature = nature;
+		this.orderc = orderc;
+		this.productCategory = productCategory;
+		this.matiere=matiere;
+	}
+
+
+	public Product(int id, String name, String code, float price, String image, int quantity, Date expDate,
+			float generalrate, String nature, int energie, float matiere_grasse, float acide_gras_sature, float sucres,
+			float fibres, float proteines, float sel, int fruits, Set<OrderC> orderc, ProductCategory productCategory,Matiere matiere) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.code = code;
+		this.price = price;
+		this.image = image;
+		this.quantity = quantity;
+		this.expDate = expDate;
+		this.generalrate = generalrate;
+		this.nature = nature;
+		this.energie = energie;
+		this.matiere_grasse = matiere_grasse;
+		this.acide_gras_sature = acide_gras_sature;
+		this.sucres = sucres;
+		this.fibres = fibres;
+		this.proteines = proteines;
+		this.sel = sel;
+		this.fruits = fruits;
+		this.orderc = orderc;
+		this.productCategory = productCategory;
+		this.matiere=matiere;
+	}
+
+
+	public Product(String nature, int energie, float matiere_grasse, float acide_gras_sature,float sucres, float fibres,
+			float proteines, int fruits, float sel) {
+		super();
+		this.nature = nature;
+		this.energie = energie;
+		this.matiere_grasse = matiere_grasse;
+		this.acide_gras_sature = acide_gras_sature;
+	}
+
+
+	public Product(String name, String code, float price, String image, int quantity, Date expDate, float generalrate,
+			String nature,Matiere matiere) {
+		super();
+		this.name = name;
+		this.code = code;
+		this.price = price;
+		this.image = image;
+		this.quantity = quantity;
+		this.expDate = expDate;
+		this.generalrate = generalrate;
+		this.nature = nature;
+		this.matiere=matiere;
+	}
+
+
+	public Product(String name, String code) {
+		super();
+		this.name = name;
+		this.code = code;
+	}
+
+
+	public Product(String name, String code, float price, String image, int quantity, Date expDate, float generalrate,
+			String nature, int energie, float matiere_grasse, float acide_gras_sature, float sucres, float fibres,
+			float proteines, float sel, int fruits, Set<OrderC> orderc, ProductCategory productCategory,Matiere matiere) {
+		super();
+		this.name = name;
+		this.code = code;
+		this.price = price;
+		this.image = image;
+		this.quantity = quantity;
+		this.expDate = expDate;
+		this.generalrate = generalrate;
+		this.nature = nature;
+		this.energie = energie;
+		this.matiere_grasse = matiere_grasse;
+		this.acide_gras_sature = acide_gras_sature;
+		this.sucres = sucres;
+		this.fibres = fibres;
+		this.proteines = proteines;
+		this.sel = sel;
+		this.fruits = fruits;
+		this.orderc = orderc;
+		this.productCategory = productCategory;
+		this.matiere=matiere;
+	}
+	
+	
+public Product(String name, String code, float price, String image, int quantity, Date expDate, float generalrate,
+			String nature, int energie, float matiere_grasse, float acide_gras_sature, float sucres, float fibres,
+			float proteines, float sel, int fruits,Matiere matiere) {
+		super();
+		this.name = name;
+		this.code = code;
+		this.price = price;
+		this.image = image;
+		this.quantity = quantity;
+		this.expDate = expDate;
+		this.generalrate = generalrate;
+		this.nature = nature;
+		this.energie = energie;
+		this.matiere_grasse = matiere_grasse;
+		this.acide_gras_sature = acide_gras_sature;
+		this.sucres = sucres;
+		this.fibres = fibres;
+		this.proteines = proteines;
+		this.sel = sel;
+		this.fruits = fruits;
+		this.matiere=matiere;
+	}
+	
+
+
+	public int getEnergie() {
+		return energie;
+	}
+
+
+	public void setEnergie(int energie) {
+		this.energie = energie;
+	}
+
+
+	public float getMatiere_grasse() {
+		return matiere_grasse;
+	}
+
+
+	public void setMatiere_grasse(float matiere_grasse) {
+		this.matiere_grasse = matiere_grasse;
+	}
+
+
+	public float getAcide_gras_sature() {
+		return acide_gras_sature;
+	}
+
+
+	public void setAcide_gras_sature(float acide_gras_sature) {
+		this.acide_gras_sature = acide_gras_sature;
+	}
+
+
+	public float getSucres() {
+		return sucres;
+	}
+
+
+	public void setSucres(float sucres) {
+		this.sucres = sucres;
+	}
+
+
+	public float getFibres() {
+		return fibres;
+	}
+
+
+	public void setFibres(float fibres) {
+		this.fibres = fibres;
+	}
+
+
+	public float getProteines() {
+		return proteines;
+	}
+
+
+	public void setProteines(float proteines) {
+		this.proteines = proteines;
+	}
+
+
+	public float getSel() {
+		return sel;
+	}
+
+
+	public void setSel(float sel) {
+		this.sel = sel;
+	}
+
+
+	public int getFruits() {
+		return fruits;
+	}
+
+
+	public void setFruits(int fruits) {
+		this.fruits = fruits;
+	}
+
+
+	@JsonIgnore
+	@ManyToMany(mappedBy="products", cascade = CascadeType.ALL)
+	private Set<OrderC> orderc;
+	
+	
+	@JsonIgnore
+	@ManyToOne
+	ProductCategory productCategory;
+	
+	
+	public ProductCategory getProductCategory() {
+		return productCategory;
+	}
+
+
+	public void setProductCategory(ProductCategory productCategory) {
+		this.productCategory = productCategory;
+	}
+	
+
+
+
+
+	@OneToMany(mappedBy="product")
+
 	private List<CommentProduct> comments;
 	public List<CommentProduct> getComments(){
 		return comments;
@@ -384,11 +657,16 @@ public Product(String name, String code, float price, String image, int quantity
 	
 	public void setComments(List<CommentProduct> comments){
 		this.comments=comments;
+
 	}*/
 	
 	
 	@OneToMany(mappedBy="product")
 	private List<ItemBasket> items;
+
+
+	
+	
 
 
 	
@@ -546,6 +824,7 @@ public Product(String name, String code, float price, String image, int quantity
 		return generalrate;
 	}
 
+
 	public void setGeneralrate(float generalrate) {
 		this.generalrate = generalrate;
 	}
@@ -575,6 +854,17 @@ public Product(String name, String code, float price, String image, int quantity
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 	
+	
+
+
+
+
+
+	
+
+
+
 
 }

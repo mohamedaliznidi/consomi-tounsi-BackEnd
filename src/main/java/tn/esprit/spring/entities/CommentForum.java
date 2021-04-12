@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Entity 
 
 @Table(name="COMMENT_FORUM")
-public class Commentforum implements Serializable {
+public class CommentForum implements Serializable {
 	
 	
 	/**
@@ -24,7 +24,7 @@ public class Commentforum implements Serializable {
 	 * @param content
 	 * @param commentdate
 	 */
-	public Commentforum(int id, String content, Date commentdate) {
+	public CommentForum(int id, String content, Date commentdate) {
 		this.id = id;
 		this.content = content;
 		this.commentdate = commentdate;

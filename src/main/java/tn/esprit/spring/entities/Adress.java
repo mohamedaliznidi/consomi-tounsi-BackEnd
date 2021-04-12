@@ -20,6 +20,19 @@ import javax.persistence.Table;
 @Table(name = "T_adresse")
 public class Adress implements Serializable {
 	
+
+	public Adress() {
+		super();
+	}
+	//Constructor 
+	public Adress( String road, int number ,CodeP codep) {
+		super();
+		this.codep = (CodeP) codep;
+		this.road = road;
+		this.number = number;
+		
+	}
+
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -31,7 +44,17 @@ public class Adress implements Serializable {
 	private int postalCode;
 	private String delegation;
 	private String localite;
+	private int number;
 	
+	
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	private CodeP codep;
 
@@ -41,8 +64,7 @@ public class Adress implements Serializable {
 	@OneToMany (cascade = CascadeType.ALL, mappedBy="adress" )
 	private Set<Client> client;
 	
-	public Adress() {
-	}
+	
 
 	public Long getId() {
 		return id;
