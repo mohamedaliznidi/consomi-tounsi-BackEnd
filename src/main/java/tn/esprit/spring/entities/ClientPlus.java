@@ -14,17 +14,34 @@ import javax.persistence.OneToOne;
 public class ClientPlus extends Client implements Serializable {
 	
 	
-	
-	public ClientPlus(int id, String name, String email, String password, int phone_number,Adress adress) {
+public ClientPlus(int id, String name, String email, String password, int phone_number,Adress adress) {
 		super(id, name, email, password, phone_number,adress);
 		// TODO Auto-generated constructor stub
 	}
 
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToMany(mappedBy="clientplus", cascade = CascadeType.ALL)
-	private Set<Donation> donations;
 	
+	public ClientPlus(int id, String name, String email, String password, int phone_number, Adress adress,
+			Sheet sheet) {
+		super(id, name, email, password, phone_number, adress);
+		this.sheet = sheet;
+	}
+	
+
+
+
+
+
+	public Sheet getSheet() {
+		return sheet;
+	}
+
+
+	public void setSheet(Sheet sheet) {
+		this.sheet = sheet;
+	}
+
 	@OneToOne (mappedBy = "clientplus")
 	private Sheet sheet;
 }
