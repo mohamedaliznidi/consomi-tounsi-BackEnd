@@ -22,14 +22,6 @@ import javax.persistence.OneToOne;
 
 public class Donation implements Serializable {
 	
-	
-	/**
-	 * @param id
-	 * @param type
-	 * @param state
-	 * @param clientplus
-	 * @param clientpluss
-	 */
 	public Donation(int id, Donation_Type type, int state) {
 		this.id = id;
 		this.type = type;
@@ -68,8 +60,6 @@ public class Donation implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="donation")
 	private Set<Sheet> sheet;
 	
-	
-	//Getters&Setters
 	
 	public int getId() {
 		return id;

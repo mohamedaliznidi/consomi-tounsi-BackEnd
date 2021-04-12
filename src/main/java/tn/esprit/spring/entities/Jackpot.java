@@ -13,12 +13,7 @@ import javax.persistence.Id;
 
 public class Jackpot implements Serializable {
 	
-	
-	/**
-	 * @param id
-	 * @param name
-	 * @param image
-	 */
+
 	public Jackpot(int id, int name, String image) {
 		this.id = id;
 		this.name = name;
@@ -41,8 +36,6 @@ public class Jackpot implements Serializable {
 	@Column(name="JACKPOT_IMAGE")
 	private String image;
 	
-
-	//Getters&Setters
 	
 	public int getId() {
 		return id;

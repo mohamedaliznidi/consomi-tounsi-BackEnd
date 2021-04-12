@@ -29,30 +29,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Product implements Serializable {
 	
 	
-	/**
-	 * @param id
-	 * @param name
-	 * @param code
-	 * @param price
-	 * @param image
-	 * @param quantity
-	 * @param expDate
-	 * @param productCategory
-	 */
-	/**public Product(int id, String name, String code, float price, String image, int quantity, Date expDate,
-			ProductCategory productCategory, float generalrate) {
-		this.id = id;
-		this.name = name;
-		this.code = code;
-		this.price = price;
-		this.image = image;
-		this.quantity = quantity;
-		this.expDate = expDate;
-		this.productCategory = productCategory;
-		this.generalrate=generalrate;
-	}*/
-
-
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="ID_PRODUCT")
@@ -206,34 +182,6 @@ public class Product implements Serializable {
 		this.productCategory = productCategory;
 	}
 
-
-	/*public Product(int id, String name, String code, float price, String image, int quantity, Date expDate,
-			float generalrate, String nature, int energie, float matiere_grasse, float acide_gras_sature, float sucres,
-			float fibres, float proteines, float sel, int fruits, Set<OrderC> orderc, ProductCategory productCategory,Matiere matiere) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.code = code;
-		this.price = price;
-		this.image = image;
-		this.quantity = quantity;
-		this.expDate = expDate;
-		this.generalrate = generalrate;
-		this.nature = nature;
-		this.energie = energie;
-		this.matiere_grasse = matiere_grasse;
-		this.acide_gras_sature = acide_gras_sature;
-		this.sucres = sucres;
-		this.fibres = fibres;
-		this.proteines = proteines;
-		this.sel = sel;
-		this.fruits = fruits;
-		this.orderc = orderc;
-		this.productCategory = productCategory;
-		this.matiere=matiere;
-	}*/
-
-
 	public Product(String nature, int energie, float matiere_grasse, float acide_gras_sature,float sucres, float fibres,
 			float proteines, int fruits, float sel) {
 		super();
@@ -243,80 +191,11 @@ public class Product implements Serializable {
 		this.acide_gras_sature = acide_gras_sature;
 	}
 
-
-	/*public Product(String name, String code, float price, String image, int quantity, Date expDate, float generalrate,
-			String nature,Matiere matiere) {
-		super();
-		this.name = name;
-		this.code = code;
-		this.price = price;
-		this.image = image;
-		this.quantity = quantity;
-		this.expDate = expDate;
-		this.generalrate = generalrate;
-		this.nature = nature;
-		this.matiere=matiere;
-	}*/
-
-
 	public Product(String name, String code) {
 		super();
 		this.name = name;
 		this.code = code;
 	}
-
-
-/*	public Product(String name, String code, float price, String image, int quantity, Date expDate, float generalrate,
-			String nature, int energie, float matiere_grasse, float acide_gras_sature, float sucres, float fibres,
-			float proteines, float sel, int fruits, Set<OrderC> orderc, ProductCategory productCategory,Matiere matiere) {
-		super();
-		this.name = name;
-		this.code = code;
-		this.price = price;
-		this.image = image;
-		this.quantity = quantity;
-		this.expDate = expDate;
-		this.generalrate = generalrate;
-		this.nature = nature;
-		this.energie = energie;
-		this.matiere_grasse = matiere_grasse;
-		this.acide_gras_sature = acide_gras_sature;
-		this.sucres = sucres;
-		this.fibres = fibres;
-		this.proteines = proteines;
-		this.sel = sel;
-		this.fruits = fruits;
-		this.orderc = orderc;
-		this.productCategory = productCategory;
-		this.matiere=matiere;
-	}
-	*/
-	
-	
-/*public Product(String name, String code, float price, String image, int quantity, Date expDate, float generalrate,
-			String nature, int energie, float matiere_grasse, float acide_gras_sature, float sucres, float fibres,
-			float proteines, float sel, int fruits,Matiere matiere) {
-		super();
-		this.name = name;
-		this.code = code;
-		this.price = price;
-		this.image = image;
-		this.quantity = quantity;
-		this.expDate = expDate;
-		this.generalrate = generalrate;
-		this.nature = nature;
-		this.energie = energie;
-		this.matiere_grasse = matiere_grasse;
-		this.acide_gras_sature = acide_gras_sature;
-		this.sucres = sucres;
-		this.fibres = fibres;
-		this.proteines = proteines;
-		this.sel = sel;
-		this.fruits = fruits;
-		this.matiere=matiere;
-	}*/
-	
-
 
 	public int getEnergie() {
 		return energie;
@@ -416,27 +295,7 @@ public class Product implements Serializable {
 	public void setProductCategory(ProductCategory productCategory) {
 		this.productCategory = productCategory;
 	}
-	
 
-
-
-
-	/*@OneToMany(mappedBy="product")
-	private List<CommentProduct> comments;
-	public List<CommentProduct> getComments(){
-		return comments;
-	}
-	
-	public void setComments(List<CommentProduct> comments){
-		this.comments=comments;
-	}
-	
-*/
-	
-	
-	//Getters&Setters
-	
-	
 	public int getId() {
 		return id;
 	}
@@ -523,22 +382,5 @@ public class Product implements Serializable {
 		super();
 	}
 	
-/*	
-	@Enumerated(EnumType.ORDINAL)
-	private Matiere matiere;
-	*/
-
-
-
-
-
-	/*public Matiere getMatiere() {
-		return matiere;
-	}
-
-
-	public void setMatiere(Matiere matiere) {
-		this.matiere = matiere;
-	}*/
 
 }

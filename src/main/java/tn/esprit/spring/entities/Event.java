@@ -21,14 +21,6 @@ import javax.persistence.TemporalType;
 public class Event implements Serializable {
 	
 	
-	/**
-	 * @param id
-	 * @param name
-	 * @param startDate
-	 * @param endDate
-	 * @param time
-	 * @param clients
-	 */
 
 	public Event() {
 		super();
@@ -76,7 +68,7 @@ public class Event implements Serializable {
 	@ManyToMany(mappedBy="events", cascade = CascadeType.ALL)
 	private Set<Client> clients;
 
-	//Getters&Setters
+	
 	public int getId() {
 		return id;
 	}

@@ -27,9 +27,6 @@ public class Donations implements Serializable
 @ManyToOne(cascade=CascadeType.ALL)
 Product products;	
 
-	/*@OneToMany(cascade = CascadeType.ALL, mappedBy="donations")
-	private Set<Product> products;*/
-	
 	
 	
 	public int getId() {

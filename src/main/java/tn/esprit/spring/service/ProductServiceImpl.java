@@ -17,8 +17,7 @@ public class ProductServiceImpl implements IProductService {
 	@Autowired
 	ProductRepository productRepository;
 	
-	 //private static final Logger L = LogManager.getLogger(ProductServiceImpl.class);
-	
+
 	@Override
 	public Product addProduct (Product p){
 		return productRepository.save(p);
@@ -44,9 +43,7 @@ public class ProductServiceImpl implements IProductService {
 	@Override
 	public List<Product> retrieveAllProducts(){
 		List<Product> products = (List<Product>) productRepository.findAll();
-		/**for (Product product : products){
-			L.info("product +++ : " +user);
-		}*/
+		
 		return products;
 		
 		}

@@ -38,7 +38,7 @@ public class Donationcontroller {
 	       int number_of_donations_wanted=donation.getState();
 		
 		List<Product>  p = new ArrayList<>();
-		List<String >   ct = new ArrayList();
+		List<String>   ct = new ArrayList();
 		
 		
 		List<Donations>  df = donrep.findAll();
@@ -47,11 +47,7 @@ public class Donationcontroller {
 		{	String m = d1.getProducts().getProductCategory().getCategoryName();
 			ct.add(m);
 			
-			  /*for(Product pl : d1.getProducts()) {
-				   String m  = pl.getProductCategory().getCategoryName();
-				   ct.add(m);
-			  }*/
-		       
+			
 		}
 		
 		
@@ -70,9 +66,8 @@ public class Donationcontroller {
 		for(int i = 0; i < Categories.length; i++){
 
 		    int quantity=0;
-		    for (/*Product d*/ String d : ct){
+		    for (String d : ct){
 
-		//d.getProductCategory().getCategoryName().equals(categories(i))
 		if (d.equals(Categories[i])){
 
 		quantity=quantity+1;
@@ -102,15 +97,13 @@ public class Donationcontroller {
 
 		if (c== Categories.length-1){
 
-		    //add donation
-		 //   msg= "Donation added";
 	 service.save(donation);
-	 return "ok";
+	 return "Donations add";
 
 		}
 		else {
 		
-		    return  "not  ok";
+		    return  "You can't add donation";
 		}
 		    
 		

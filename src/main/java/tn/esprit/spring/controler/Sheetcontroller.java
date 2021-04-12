@@ -17,10 +17,7 @@ import tn.esprit.spring.service.SheetService;
 public class Sheetcontroller {
 	@Autowired
 	private SheetService service;
-	/*@Autowired
-	private iSheetService service1;*/
-	
-	
+
 	@PostMapping("/addsheet")
 	public Sheet addsheet(@RequestBody Sheet sheet) {
 		return service.save(sheet);

@@ -26,12 +26,9 @@ public class SheetService implements ISheetService{
 		sht.deleteById(id);
 		return "Sheet removed!!"+id;
 	}
-	//@Override
+	
 	public List<Sheet> retrieveAllSheet(){
 		List<Sheet> Sheet = (List<Sheet>) sht.findAll();
-		/**for (ProductCategory ProductCategory : ProductCategorys){
-			L.info("ProductCategory +++ : " +user);
-		}*/
 
 		return Sheet;
 		

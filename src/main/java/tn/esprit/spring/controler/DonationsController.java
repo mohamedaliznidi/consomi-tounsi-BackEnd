@@ -23,13 +23,6 @@ public class DonationsController {
 	@Autowired
 	Donationsrepositry donrep;
 	
-	/**@PostMapping("/addproducttodonations/{id_product}")
-	public void adddonations(@RequestBody Donations donations) {
-				
-		Product p = productrepository.findByid(id_product).get();
-		donations.getProducts(p);
-		return service.save(donations);
-	}**/
 	
 	
 	@GetMapping("/donations/{id}")

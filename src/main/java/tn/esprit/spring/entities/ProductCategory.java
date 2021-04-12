@@ -18,13 +18,7 @@ import javax.persistence.OneToMany;
 @Entity
 
 public class ProductCategory implements Serializable {
-	
-	
-	/**
-	 * @param id
-	 * @param categoryName
-	 * @param products
-	 */
+
 	public ProductCategory(int id, String categoryName) {
 		this.id = id;
 		this.categoryName = categoryName;
@@ -40,17 +34,12 @@ public class ProductCategory implements Serializable {
 	}
 	private String categoryName;
 	
-	/**@ManyToOne
-	Product products;*/
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="productCategory")
 	private Set<Product> products;
 
-	
-	
-		//Getters&Setters
-	
+
 	
 	public int getId() {
 		return id;
