@@ -2,6 +2,7 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -92,5 +93,7 @@ public class CommentForum implements Serializable {
 	public void setClient(Client client) {
 		this.client = client;
 	}
+
+	
 
 }
