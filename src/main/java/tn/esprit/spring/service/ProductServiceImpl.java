@@ -3,6 +3,7 @@ package tn.esprit.spring.service;
 import java.util.Date;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
@@ -62,6 +63,7 @@ public class ProductServiceImpl implements IProductService {
 	@Override
 	public List<Product> retrieveAllProducts(){
 		List<Product> products = (List<Product>) productRepository.findAll();
+
 		return products;
 		
 		}
