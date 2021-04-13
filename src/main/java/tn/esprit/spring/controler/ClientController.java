@@ -93,12 +93,7 @@ public class ClientController {
 	}
 
 
-	@PostMapping("/clients/signin")
-	public ResponseEntity<?> authenticateClient( @RequestBody LoginRequest loginRequest) {
-		String token = clientService.loginClient(loginRequest.getUsername(), loginRequest.getPassword());
-		return ResponseEntity.ok(new JwtAuthenticationResponse(token));
-	}
-
+	
 
 	//PUT Requests
 

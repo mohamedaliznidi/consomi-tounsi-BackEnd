@@ -16,5 +16,4 @@ public interface IClientService {
 	Optional<Client> retrieveByUserName(String user_name);
 	Optional<Client> retrieveByEmail(String email);
 	Client registerClient(Client client);
-	String loginClient(String username, String password);
 }

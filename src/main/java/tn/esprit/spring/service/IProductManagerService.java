@@ -14,6 +14,5 @@ public interface IProductManagerService {
 	Optional<ProductManager> retrieveByUserName(String user_name);
 	Optional<ProductManager> retrieveByEmail(String email);
 	ProductManager registerManager(ProductManager pm);
-	String loginManager(String username, String password);
 
 }

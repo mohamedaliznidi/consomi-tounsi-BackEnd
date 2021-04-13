@@ -7,9 +7,6 @@ import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +21,6 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Autowired private BCryptPasswordEncoder passwordEncoder;
 	@Autowired private AdminRepository adminRepository;
-	@Autowired private AuthenticationManager authenticationManager;
-	@Autowired private JwtTokenProvider tokenProvider;
-
 	private static final Logger Log = LogManager.getLogger(AdminServiceImpl.class);
 
 	@Override
@@ -101,12 +95,6 @@ public class AdminServiceImpl implements IAdminService {
 		return adminRepository.save(admin);
 	}
 
-	@Override
-	public String loginAdmin(String username, String password) {
-		Authentication authentication = authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-
-		return tokenProvider.generateToken(authentication);
-	}
+	
 }
 

@@ -3,8 +3,6 @@ package tn.esprit.spring.controler;
 import java.net.URI;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +27,6 @@ import tn.esprit.spring.exception.EmailAlreadyExistsException;
 import tn.esprit.spring.exception.ResourceNotFoundException;
 import tn.esprit.spring.exception.UsernameAlreadyExistsException;
 import tn.esprit.spring.payload.ApiResponse;
-import tn.esprit.spring.payload.JwtAuthenticationResponse;
-import tn.esprit.spring.payload.LoginRequest;
 import tn.esprit.spring.service.AdminServiceImpl;
 import tn.esprit.spring.service.UserServiceImpl;
 
@@ -110,12 +106,6 @@ public class AdminController {
 					
 		}
 
-
-		@PostMapping("/admins/signin")
-		public ResponseEntity<?> authenticateAdmin(@Valid @RequestBody LoginRequest loginRequest) {
-			String token = adminService.loginAdmin(loginRequest.getUsername(), loginRequest.getPassword());
-			return ResponseEntity.ok(new JwtAuthenticationResponse(token));
-		}
 		
 		//PUT Requests
 

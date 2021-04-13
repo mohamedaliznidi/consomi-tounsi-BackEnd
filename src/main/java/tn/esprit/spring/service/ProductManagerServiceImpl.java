@@ -7,9 +7,6 @@ import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +21,6 @@ public class ProductManagerServiceImpl implements IProductManagerService {
 
 	
 	@Autowired private PasswordEncoder passwordEncoder;
-	@Autowired private AuthenticationManager authenticationManager;
-	@Autowired private JwtTokenProvider tokenProvider;
 	@Autowired private ProductManagerRepository pmRepo;
 
 	private static final Logger Log = LogManager.getLogger(ProductManagerServiceImpl.class);
@@ -104,12 +99,7 @@ public class ProductManagerServiceImpl implements IProductManagerService {
 		return pmRepo.save(pm);
 	}
 
-	@Override
-	public String loginManager(String username, String password) {
-		Authentication authentication = authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-
-		return tokenProvider.generateToken(authentication);
-	}
+	
+	
 
 }
