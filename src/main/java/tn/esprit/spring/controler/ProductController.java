@@ -1,5 +1,7 @@
 package tn.esprit.spring.controler;
 import tn.esprit.spring.entities.*;
+
+import tn.esprit.spring.entities.Product;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -26,6 +28,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,8 +44,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 public class ProductController {
 	
 	@Autowired
-	
-	
+
 	private IProductService productserviceimpl;
 	
 	@Autowired
@@ -50,6 +53,13 @@ public class ProductController {
 	@Autowired
 	
 	private ProductCategoryRepository pcr;
+	
+
+	@Autowired
+	 ProductRepository prodrep;
+	 
+	 
+
 	
 	@PostMapping ("/addproduct/{category_id}")
 	public void add(@RequestBody Product p, @PathVariable("category_id") int id){
@@ -213,7 +223,9 @@ public class ProductController {
 	        }catch (IOException e){
 	e.printStackTrace();
 	        }
+
 		   return "Not working";
+
 
 	    }
 
@@ -222,7 +234,7 @@ public class ProductController {
 	
 	
 	
-	
+
 	
 	
 	
@@ -501,12 +513,16 @@ public class ProductController {
 
 	
 	
+
 }
+
+
 			
 			
 		
 		
 	
+
 
 
 

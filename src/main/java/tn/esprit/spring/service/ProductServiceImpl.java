@@ -1,18 +1,29 @@
 package tn.esprit.spring.service;
 
 import java.util.Date;
+
 import java.util.List;
+
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+
+
+
+
+
 import tn.esprit.spring.entities.CommentProduct;
+
 import tn.esprit.spring.entities.Product;
 import tn.esprit.spring.entities.ProductCategory;
 import tn.esprit.spring.entities.Publicity;
@@ -24,11 +35,11 @@ public class ProductServiceImpl implements IProductService {
 	@Autowired
 	ProductRepository productRepository;
 	
+
+
 	@Autowired
 	ICommentProductService commentproductservice;
-	
 	 private static final Logger L = LogManager.getLogger(ProductServiceImpl.class);
-	
 	@Override
 	public Product addProduct (Product p){
 		return productRepository.save(p);
@@ -55,9 +66,7 @@ public class ProductServiceImpl implements IProductService {
 	@Override
 	public List<Product> retrieveAllProducts(){
 		List<Product> products = (List<Product>) productRepository.findAll();
-		for (Product product : products){
-			L.info("product +++ : " +product);
-		}
+
 		return products;
 		
 		}
@@ -81,15 +90,16 @@ public class ProductServiceImpl implements IProductService {
 		return products;
 	}
 	
+	
+	
+	@Scheduled(fixedRate = 10000) 
 	@Override
 	public List<Product> retrieveByProductCategoryName(String name){
 		List<Product> products=productRepository.findByCategoryname(name);
 		return products;
 	}
 	
-	@Scheduled(fixedRate = 10000) 
-	public void invokeScheduled() {
-		//Date Today=new java.util.Date();  
+	public void invokeScheduled() { 
 		List<Product> products =  (List<Product>) productRepository.findAll();
 		float sum=0 ;
 		for (Product p2 : products){
@@ -117,6 +127,6 @@ public class ProductServiceImpl implements IProductService {
 		}
 
 	}
-	
+
 
 }

@@ -13,16 +13,15 @@ import javax.persistence.Id;
 
 public class Jackpot implements Serializable {
 	
-	
-	/**
-	 * @param id
-	 * @param name
-	 * @param image
-	 */
-	public Jackpot(int id, Jackpot_Type name, String image) {
+
+	public Jackpot(int id, int name, String image) {
 		this.id = id;
 		this.name = name;
 		this.image = image;
+	}
+
+	public Jackpot() {
+		super();
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -32,13 +31,11 @@ public class Jackpot implements Serializable {
 	private int id; 
 
 	@Column(name="JACKPOT_TYPE")
-	private Jackpot_Type name;
+	private int  name;
 	
 	@Column(name="JACKPOT_IMAGE")
 	private String image;
 	
-
-	//Getters&Setters
 	
 	public int getId() {
 		return id;
@@ -48,12 +45,12 @@ public class Jackpot implements Serializable {
 		this.id = id;
 	}
 
-	public Jackpot_Type getName() {
+	public  int getName() {
 		return name;
 	}
 
 	
-	public void setName(Jackpot_Type name) {
+	public void setName(int name) {
 		this.name = name;
 	}
 
