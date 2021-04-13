@@ -21,7 +21,7 @@ public class ClientPlus extends Client implements Serializable {
 	
 
 public ClientPlus(int id, String name, String email, String password, int phone_number,Adress adress) {
-		super(id, name, email, password, phone_number,adress);
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -30,7 +30,7 @@ public ClientPlus(int id, String name, String email, String password, int phone_
 	
 	public ClientPlus(int id, String name, String email, String password, int phone_number, Adress adress,
 			Sheet sheet) {
-		super(id, name, email, password, phone_number, adress);
+		super();
 		this.sheet = sheet;
 	}
 	
