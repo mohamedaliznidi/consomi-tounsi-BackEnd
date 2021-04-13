@@ -34,6 +34,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper; 
+import com.fasterxml.jackson.databind.ObjectWriter; 
 
 
 @RestController
@@ -62,7 +64,8 @@ public class ProductController {
 	@PostMapping ("/addproduct/{category_id}")
 	public void add(@RequestBody Product p, @PathVariable("category_id") int id){
 		
-		if (p.getNature().equals("Alimentaire"/**.toLowerCase()*/)){
+		if (p.getNature().toString().equals("Alimentaire"/**.toLowerCase()*/)){
+			
 			
 			Product p1 = new Product(p.getName(),p.getCode(),p.getPrice(),p.getImage(),p.getQuantity(),p.getExpDate(),p.getGeneralrate(),
 					p.getNature(),p.getEnergie(),p.getMatiere_grasse(),p.getAcide_gras_sature(),p.getSucres(),p.getFibres()
@@ -167,12 +170,33 @@ public class ProductController {
 	
 	}
 	
+	@PutMapping("/annulerpromotion/{id}")
+	@ResponseBody
+	public void promotion(@PathVariable("id") int id) {
+		Product productpromotion =  (Product) productserviceimpl.retrieveProduct(id);
+		float price = (float) productpromotion.getInitial_price();
+		productpromotion.setPrice(price);
+		this.productserviceimpl.updateProduct(productpromotion);
+		
+		
 	
+	}
+	
+	
+	
+	//READY FOR ML
 	@GetMapping("/showlink")
 	@ResponseBody
 	public String showlink(){
+		 String msg = "{ok ok, ok}";
 		
 		   try {
+			   
+
+
+			   ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+			   String json = ow.writeValueAsString(msg);
+		   
 	            URL url = new URL("http://127.0.0.1:5000/");
 	            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	            conn.setRequestMethod("GET");
@@ -200,12 +224,17 @@ public class ProductController {
 	e.printStackTrace();
 	        }
 
-		   return "doesn't work";
+		   return "Not working";
 
 
 	    }
+
 	
-	// chznger wtfff
+	
+	
+	
+	
+
 	
 	
 	
@@ -236,7 +265,7 @@ public class ProductController {
 		int fruits=p.getFruits();
 		int score=0;
 		int pts=0;
-		if (p.getNature().equals("Alimentaire"/**.toLowerCase()*/) ){
+		if (p.getNature().toString().equals("Alimentaire"/**.toLowerCase()*/) ){
 			
 			
 			
@@ -479,9 +508,9 @@ public class ProductController {
 	}
 
 	
+
 	
-	
-	
+
 	
 	
 

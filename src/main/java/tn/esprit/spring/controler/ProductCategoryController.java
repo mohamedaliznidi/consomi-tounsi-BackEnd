@@ -23,7 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 //reste modify
-//unique in categoryname
+
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("productcategory")

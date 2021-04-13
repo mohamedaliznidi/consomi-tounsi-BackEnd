@@ -24,6 +24,15 @@ import javax.persistence.ManyToMany;
 @Entity
 public class CommentProduct implements Serializable {
 	
+	public CommentProduct(float rate, String content) {
+		super();
+		this.rate = rate;
+		this.content = content;
+	}
+
+
+
+
 	private static final long serialVersionUID = 1L;
 	
 	

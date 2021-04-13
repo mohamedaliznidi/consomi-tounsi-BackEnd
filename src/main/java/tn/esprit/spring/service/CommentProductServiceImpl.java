@@ -23,12 +23,12 @@ public class CommentProductServiceImpl implements ICommentProductService {
 	
 	
 	@Override
-	public void addCommentProduct (int idproduct, int idclient,Date date){
-		CommentProductId id = new CommentProductId();
+	public void addCommentProduct (CommentProduct comment){
+	/*	CommentProductId id = new CommentProductId();
 		id.setIdClient(idclient);
 		id.setIdProduct(idproduct);
 		CommentProduct comment = new CommentProduct();
-		comment.setCommentproductid(id);
+		comment.setCommentproductid(id);*/
 	commentproductRepository.save(comment);
 	}
 	
