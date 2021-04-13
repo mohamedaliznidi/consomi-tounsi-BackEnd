@@ -1,15 +1,14 @@
 package tn.esprit.spring.service;
 
 import java.util.Date;
+
 import java.util.List;
-<<<<<<< HEAD
-=======
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
->>>>>>> jihene
+
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,11 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-
-=======
 import tn.esprit.spring.entities.CommentProduct;
->>>>>>> jihene
+
 import tn.esprit.spring.entities.Product;
 import tn.esprit.spring.entities.ProductCategory;
 import tn.esprit.spring.entities.Publicity;
@@ -33,12 +29,11 @@ public class ProductServiceImpl implements IProductService {
 	@Autowired
 	ProductRepository productRepository;
 	
-<<<<<<< HEAD
-=======
+
 	@Autowired
 	ICommentProductService commentproductservice;
 	
->>>>>>> jihene
+
 	 private static final Logger L = LogManager.getLogger(ProductServiceImpl.class);
 	
 	@Override
@@ -67,13 +62,6 @@ public class ProductServiceImpl implements IProductService {
 	@Override
 	public List<Product> retrieveAllProducts(){
 		List<Product> products = (List<Product>) productRepository.findAll();
-		for (Product product : products){
-<<<<<<< HEAD
-			L.info("product +++ : " + product);
-=======
-			L.info("product +++ : " +product);
->>>>>>> jihene
-		}
 		return products;
 		
 		}
