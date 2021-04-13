@@ -83,8 +83,8 @@ public class Ray extends AuditModel {
 	public Product getBestProduct() {
 		return bestProduct;
 	}
-	public void setBestProduct(Product bestProduct) {
-		this.bestProduct = bestProduct;
+	public void setBestProduct(Product product1) {
+		this.bestProduct = product1;
 	}
 	
 	public int getCapacity() {

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import net.bytebuddy.build.HashCodeAndEqualsPlugin.Sorted;
 import tn.esprit.spring.entities.Category;
 import tn.esprit.spring.entities.Product;
+import tn.esprit.spring.entities.Product1;
 import tn.esprit.spring.repositry.productRepository1;
 
 import java.util.Comparator;
@@ -23,16 +24,7 @@ public class BestOf {
 	productRepository1 product1;
 	
 //bestproduct	
-	public List<Product> SortBySold() {
-		List<Product> sorted=product1.findAll();
-	     sorted.sort(new Comparator<Product1>() {
-	    	@Override
-	    	public int compare(Product P1,Product P2){
-	    		return P2.getSold()-P1.getSold();
-	    	}
-		});
-	     return sorted;
-	}
+	
 	
 	
 	

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+//import org.springframework.mail.SimpleMailMessage;
+//import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Product1;
@@ -24,8 +24,8 @@ public class StockServiceImpl implements StockServiceImp {
 	private StockRepository stockRepository;
 	@Autowired
 	private productRepository1 productRepository;
-	@Autowired
-	private JavaMailSender javaMailSender;
+	//@Autowired
+	//private JavaMailSender javaMailSender;
 
 	@Override
 	public int addStock(Stock s) {
@@ -62,7 +62,7 @@ public class StockServiceImpl implements StockServiceImp {
 		return products;
 	}
 
-//ordering prodcts to stock
+	//ordering prodcts to stock
 	public void orderProduct(long pid,int amount)
 	{
 		Product1 p = productRepository.findById(pid).get();
@@ -71,7 +71,7 @@ public class StockServiceImpl implements StockServiceImp {
 		productRepository.save(p);
 	}
 
-//send an email if the prodct is mssng in the stock
+	//send an email if the prodct is mssng in the stock
 	public void sendEmail() {
 		try
 		{
@@ -89,7 +89,7 @@ public class StockServiceImpl implements StockServiceImp {
 
 			}
 
-			SimpleMailMessage msg = new SimpleMailMessage();
+			/*SimpleMailMessage msg = new SimpleMailMessage();
 			msg.setTo("ines.chaieb@esprit.tn", "ineschaieb@outlook.fr");
 
 			msg.setSubject("Missing Product");
@@ -101,17 +101,20 @@ public class StockServiceImpl implements StockServiceImp {
 			msg.setText(ch);
 			System.out.println(ch);
 
-			javaMailSender.send(msg);
+			javaMailSender.send(msg);*/
 
 		}
 		catch(Exception e) {
 
 			System.out.println("erreur"+e);
 		}
+			 
 
+
+
+	
+		
 	}
-
-
 
 }
 

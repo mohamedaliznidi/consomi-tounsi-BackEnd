@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
 
 public class Sheet implements Serializable {
 
-	public Sheet(int id, boolean student, boolean job, MonthlyIncome monthlyincome,
+	public Sheet(int id, boolean student, boolean job, int monthlyincome,
 			tn.esprit.spring.entities.CivilStatus civilStatus, boolean kids, boolean oldPerson, boolean oldPHealthP,
 			int kidsN, boolean workCapacity, boolean monoParent, boolean handicap,
 			tn.esprit.spring.entities.HandicapType handicapType, boolean pregnant, String category1, String category2,
@@ -40,12 +40,12 @@ public class Sheet implements Serializable {
 		Category3 = category3;
 	}
 
-	public ClientPlus getClientplus() {
+	public ClientPlus getClientplus1() {
 		return clientplus;
 	}
 
 
-	public void setClientplus(ClientPlus clientplus) {
+	public void setClientplus1(ClientPlus clientplus) {
 		this.clientplus = clientplus;
 	}
 
@@ -56,16 +56,16 @@ public class Sheet implements Serializable {
 	@ManyToOne( cascade = CascadeType.ALL)
 	Donation donation;
 	
-	public Donation getDonation() {
+	public Donation getDonation1() {
 		return donation;
 	}
 
-	public void setDonation(Donation donation) {
+	public void setDonation1(Donation donation) {
 		this.donation = donation;
 	}
 
 	public Sheet(ClientPlus clientplus, Donation donation, int id, boolean student, boolean job,
-			MonthlyIncome monthlyincome, tn.esprit.spring.entities.CivilStatus civilStatus, boolean kids,
+			int monthlyincome, tn.esprit.spring.entities.CivilStatus civilStatus, boolean kids,
 			boolean oldPerson, boolean oldPHealthP, int kidsN, boolean workCapacity, boolean monoParent,
 			boolean handicap, tn.esprit.spring.entities.HandicapType handicapType, boolean pregnant, String category1,
 			String category2, String category3) {
@@ -132,7 +132,7 @@ public class Sheet implements Serializable {
 	
 	private String Category3;
 	@ManyToOne( cascade = CascadeType.ALL)
-	Donation donation;
+	Donation donation1;
 	
 	public int getId() {
 		return id;

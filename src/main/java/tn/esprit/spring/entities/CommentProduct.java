@@ -50,7 +50,7 @@ public class CommentProduct implements Serializable {
 	
 	@EmbeddedId 
 	public CommentProductId getCommentProductId(){
-		return id;
+		return commentproductid;}
 
 	public CommentProduct(float rate, String content, Client client, Product product) {
 		super();
@@ -79,9 +79,6 @@ public class CommentProduct implements Serializable {
 	}
 	
 
-	@ManyToOne
-	@JoinColumn(name="idClient",referencedColumnName="USER_ID"
-	, insertable=false, updatable=false)
 	
 	
 	@JsonIgnore

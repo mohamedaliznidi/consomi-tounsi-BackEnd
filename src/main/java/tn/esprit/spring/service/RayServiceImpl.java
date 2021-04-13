@@ -50,11 +50,7 @@ public class RayServiceImpl implements RayService  {
 			return r ;
 		}
 
-		@Override
-		public void updateRay(Ray ray) {
-			rayRepository.save(ray);
-			
-		}
+		
 
 		@Override
 
@@ -83,7 +79,7 @@ public class RayServiceImpl implements RayService  {
 			List<Product1> best_products = new ArrayList<Product1>();
 			for (int i = 0 ; i < ray_id.size(); i++) {
 				rayRepository.findById((long)ray_id.get(i)).map(r ->{
-					r.setBestProduct(product_rep.findBestProduct(product_rep.findBestProductByrayId(r.getRayId())));
+					//r.setBestProduct(product_rep.findBestProduct(product_rep.findBestProductByrayId(r.getRayId())));
 					rayRepository.save(r);
 					best_products.add(product_rep.findBestProduct(product_rep.findBestProductByrayId(r.getRayId())));
 					return r;
@@ -106,57 +102,16 @@ public class RayServiceImpl implements RayService  {
 		}
 
 	@Override
-	public Ray addRay(Ray ray) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void updateRay(Ray ray) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public tn.esprit.spring.service.Ray addRay(tn.esprit.spring.service.Ray ray) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void updateRay(Ray ray) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	
-	/*@Override
-	public Ray findBy(Long RayId) throws RayNotFoundException {
-		Ray ray = rayRepository.findBy(RayId);
-		if (ray != null)
-			return ray;
-		else
-			throw new RayNotFoundException();
-	}
-
-	@Override
-	public Ray findByName(String RayName) throws RayNotFoundException {
-		Ray ray=rayRepository.findBy(RayName);
-		if(ray != null) 
-			return ray ;
-		else
-			throw new RayNotFoundException();
-	}*/
+	
 
 	
-	/*@Override
-	public Ray findBy(String RayDescription) throws RayNotFoundException {
-		Ray ray = rayRepository.findBy(RayDescription);
-		if (ray != null)
-			return ray;
-		else
-			throw new RayNotFoundException();
-	}*/
 	
 
 	  

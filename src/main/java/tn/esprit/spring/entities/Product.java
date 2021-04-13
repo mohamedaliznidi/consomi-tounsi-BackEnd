@@ -29,11 +29,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Product implements Serializable {
 	
 	
-	private static final long serialVersionUID = 1L;
+	
+	
+	private static final long serialVersionUID1 = 1L;
 	@Id
 	@Column(name="ID_PRODUCT")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private int id1;
 
 
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -41,7 +43,7 @@ public class Product implements Serializable {
 
 
 	public Product(Donations donations, String name, String categoryname, int promotion, String code, float price,
-			String image, int quantity, Date expDate, float generalrate, String nature, float initial_price,
+			String image, int quantity, Date expDate, float generalrate, Nature nature, float initial_price,
 			int energie, float matiere_grasse, float acide_gras_sature, float sucres, float fibres, float proteines,
 			float sel, int fruits, Set<OrderC> orderc, ProductCategory productCategory) {
 		super();
@@ -184,7 +186,7 @@ public class Product implements Serializable {
 			float generalrate, Nature nature, Set<OrderC> orderc, ProductCategory productCategory,Matiere matiere) {
 
 		super();
-		this.id = id;
+		this.id1 = id;
 		this.name = name;
 		this.code = code;
 		this.price = price;
@@ -204,7 +206,7 @@ public class Product implements Serializable {
 			float fibres, float proteines, float sel, int fruits, Set<OrderC> orderc, ProductCategory productCategory,Matiere matiere) {
 
 		super();
-		this.id = id;
+		this.id1 = id;
 		this.name = name;
 		this.code = code;
 		this.price = price;
@@ -351,42 +353,42 @@ public Product(String name, String code, float price, String image, int quantity
 	}
 
 
-	public float getFibres() {
+	public float getFibres1() {
 		return fibres;
 	}
 
 
-	public void setFibres(float fibres) {
+	public void setFibres1(float fibres) {
 		this.fibres = fibres;
 	}
 
 
-	public float getProteines() {
+	public float getProteines1() {
 		return proteines;
 	}
 
 
-	public void setProteines(float proteines) {
+	public void setProteines1(float proteines) {
 		this.proteines = proteines;
 	}
 
 
-	public float getSel() {
+	public float getSel1() {
 		return sel;
 	}
 
 
-	public void setSel(float sel) {
+	public void setSel1(float sel) {
 		this.sel = sel;
 	}
 
 
-	public int getFruits() {
+	public int getFruits1() {
 		return fruits;
 	}
 
 
-	public void setFruits(int fruits) {
+	public void setFruits1(int fruits) {
 		this.fruits = fruits;
 	}
 
@@ -458,7 +460,7 @@ public Product(String name, String code, float price, String image, int quantity
 	private Set<OrderC> orderc;
 	
 	public Product(String name, String categoryname, int promotion, String code, float price, String image,
-			int quantity, Date expDate, float generalrate, String nature, float initial_price, int energie,
+			int quantity, Date expDate, float generalrate, Nature nature, float initial_price, int energie,
 			float matiere_grasse, float acide_gras_sature, float sucres, float fibres, float proteines, float sel,
 			int fruits, ProductCategory productCategory, List<ItemBasket> items, Matiere matiere) {
 		super();
@@ -495,11 +497,11 @@ public Product(String name, String code, float price, String image, int quantity
 
 
 	public Product(int id, String name, String categoryname, int promotion, String code, float price, String image,
-			int quantity, Date expDate, float generalrate, String nature, float initial_price, int energie,
+			int quantity, Date expDate, float generalrate, Nature nature, float initial_price, int energie,
 			float matiere_grasse, float acide_gras_sature, float sucres, float fibres, float proteines, float sel,
 			int fruits, ProductCategory productCategory, List<ItemBasket> items, Matiere matiere) {
 		super();
-		this.id = id;
+		this.id1 = id;
 		this.name = name;
 		this.categoryname = categoryname;
 		this.promotion = promotion;
@@ -530,12 +532,12 @@ public Product(String name, String code, float price, String image, int quantity
 	}
 
 	public int getId() {
-		return id;
+		return id1;
 	}
 
 	
 	public void setId(int id) {
-		this.id = id;
+		this.id1 = id;
 	}
 
 	
@@ -629,7 +631,7 @@ public Product(String name, String code, float price, String image, int quantity
 
 
 	public static long getSerialversionuid() {
-		return serialVersionUID;
+		return serialVersionUID1;
 	}
 
 	
