@@ -17,6 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+
+
+
+
+
 import tn.esprit.spring.entities.CommentProduct;
 
 import tn.esprit.spring.entities.Product;
@@ -31,12 +36,10 @@ public class ProductServiceImpl implements IProductService {
 	ProductRepository productRepository;
 	
 
+
 	@Autowired
 	ICommentProductService commentproductservice;
-	
-
 	 private static final Logger L = LogManager.getLogger(ProductServiceImpl.class);
-	
 	@Override
 	public Product addProduct (Product p){
 		return productRepository.save(p);
@@ -87,15 +90,16 @@ public class ProductServiceImpl implements IProductService {
 		return products;
 	}
 	
+	
+	
+	@Scheduled(fixedRate = 10000) 
 	@Override
 	public List<Product> retrieveByProductCategoryName(String name){
 		List<Product> products=productRepository.findByCategoryname(name);
 		return products;
 	}
 	
-	@Scheduled(fixedRate = 10000) 
-	public void invokeScheduled() {
-		//Date Today=new java.util.Date();  
+	public void invokeScheduled() { 
 		List<Product> products =  (List<Product>) productRepository.findAll();
 		float sum=0 ;
 		for (Product p2 : products){
@@ -123,6 +127,6 @@ public class ProductServiceImpl implements IProductService {
 		}
 
 	}
-	
+
 
 }

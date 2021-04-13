@@ -8,5 +8,6 @@ import tn.esprit.spring.entities.ChatRoom;
 
 @Repository
 public interface ChatRoomRepository extends JpaRepository<ChatRoom, Integer> {
+	
 	Optional<ChatRoom> findBySenderIdAndRecipientId(int senderId, int recipientId);
 }

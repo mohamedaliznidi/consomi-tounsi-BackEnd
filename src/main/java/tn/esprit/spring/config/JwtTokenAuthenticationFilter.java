@@ -60,7 +60,7 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
             String username = claims.getSubject();
 
             UsernamePasswordAuthenticationToken auth =
-                    userService.retrieveByUserName(username)
+                    userService.retrieveByUsername(username)
                             .map(MyUserDetails::new)
                             .map(userDetails -> {
                                 UsernamePasswordAuthenticationToken authentication =

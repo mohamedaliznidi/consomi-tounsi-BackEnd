@@ -1,6 +1,6 @@
 package tn.esprit.spring.controler;
 
-import org.springframework.beans.factory.annotation.Autowired;
+/*import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -56,5 +56,5 @@ public class ChatController {
         return ResponseEntity
                 .ok(chatMessageService.findById(id));
     }
-}
+}*/
 

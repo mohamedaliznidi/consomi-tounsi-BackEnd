@@ -12,34 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-
-
 @Entity 
 
 public class Sheet implements Serializable {
-	
-	
-	//add requested_donation de type donation_type et response (binary)
-	
-	/**
-	 * @param id
-	 * @param student
-	 * @param job
-	 * @param monthlyincome
-	 * @param civilStatus
-	 * @param kids
-	 * @param oldPerson
-	 * @param oldPHealthP
-	 * @param kidsN
-	 * @param workCapacity
-	 * @param monoParent
-	 * @param handicap
-	 * @param handicapType
-	 * @param pregnant
-	 * @param category1
-	 * @param category2
-	 * @param category3
-	 */
+
 	public Sheet(int id, boolean student, boolean job, MonthlyIncome monthlyincome,
 			tn.esprit.spring.entities.CivilStatus civilStatus, boolean kids, boolean oldPerson, boolean oldPHealthP,
 			int kidsN, boolean workCapacity, boolean monoParent, boolean handicap,
@@ -115,7 +91,6 @@ public class Sheet implements Serializable {
 		Category3 = category3;
 	}
 
-
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -124,10 +99,11 @@ public class Sheet implements Serializable {
 	
 	private boolean Student;
 
-	
+	private boolean Result;
+	private int MounthlyPurchase;
 	private boolean Job;
-	@Enumerated(EnumType.STRING)
-	private MonthlyIncome Monthlyincome;
+	private int Monthlyincome;
+	private int Donationstate;
 	@Enumerated(EnumType.STRING)
 	private CivilStatus CivilStatus;
 
@@ -155,19 +131,131 @@ public class Sheet implements Serializable {
 	private String Category2;
 	
 	private String Category3;
-	
-	
-	
-	
-	
-	
-	//Getters&Setters
+	@ManyToOne( cascade = CascadeType.ALL)
+	Donation donation;
 	
 	public int getId() {
 		return id;
 	}
 
-	
+	public Sheet() {
+		super();
+	}
+
+	public Sheet(int id, boolean student, boolean result, int mounthlyPurchase, boolean job, int monthlyincome,
+			int donationstate, tn.esprit.spring.entities.CivilStatus civilStatus, boolean kids, boolean oldPerson,
+			boolean oldPHealthP, int kidsN, boolean workCapacity, boolean monoParent, boolean handicap,
+			tn.esprit.spring.entities.HandicapType handicapType, boolean pregnant, String category1, String category2,
+			String category3, ClientPlus clientplus, Donation donation) {
+		super();
+		this.id = id;
+		Student = student;
+		Result = result;
+		MounthlyPurchase = mounthlyPurchase;
+		Job = job;
+		Monthlyincome = monthlyincome;
+		Donationstate = donationstate;
+		CivilStatus = civilStatus;
+		Kids = kids;
+		OldPerson = oldPerson;
+		OldPHealthP = oldPHealthP;
+		KidsN = kidsN;
+		WorkCapacity = workCapacity;
+		MonoParent = monoParent;
+		Handicap = handicap;
+		HandicapType = handicapType;
+		Pregnant = pregnant;
+		Category1 = category1;
+		Category2 = category2;
+		Category3 = category3;
+		this.clientplus = clientplus;
+		this.donation = donation;
+	}
+
+
+
+
+
+	public boolean isResult() {
+		return Result;
+	}
+
+
+
+
+
+	public void setResult(boolean result) {
+		Result = result;
+	}
+
+
+
+
+
+	public int getMounthlyPurchase() {
+		return MounthlyPurchase;
+	}
+
+
+
+
+
+	public void setMounthlyPurchase(int mounthlyPurchase) {
+		MounthlyPurchase = mounthlyPurchase;
+	}
+
+
+
+
+
+	public int getMonthlyincome() {
+		return Monthlyincome;
+	}
+
+
+
+
+
+	public void setMonthlyincome(int monthlyincome) {
+		Monthlyincome = monthlyincome;
+	}
+
+
+
+
+
+	public int getDonationstate() {
+		return Donationstate;
+	}
+
+
+
+
+
+	public void setDonationstate(int donationstate) {
+		Donationstate = donationstate;
+	}
+
+	public ClientPlus getClientplus() {
+		return clientplus;
+	}
+
+
+	public void setClientplus(ClientPlus clientplus) {
+		this.clientplus = clientplus;
+	}
+
+
+	public Donation getDonation() {
+		return donation;
+	}
+
+
+	public void setDonation(Donation donation) {
+		this.donation = donation;
+	}
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -194,16 +282,6 @@ public class Sheet implements Serializable {
 	}
 
 
-
-	public MonthlyIncome getMonthlyincome() {
-		return Monthlyincome;
-	}
-
-
-
-	public void setMonthlyincome(MonthlyIncome monthlyincome) {
-		Monthlyincome = monthlyincome;
-	}
 
 
 

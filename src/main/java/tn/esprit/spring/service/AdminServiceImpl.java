@@ -1,5 +1,6 @@
 package tn.esprit.spring.service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,12 +31,15 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Override
 	public Admin updateAdmin(Admin admin, int id)  throws ResourceNotFoundException{
+		Log.info("updating admin : {}",admin.getUsername());
 		Admin a=adminRepository.findById(id).orElseThrow(
 				()->new ResourceNotFoundException(" this admin doesn't exist"));
 		a.setFirst_Name(admin.getFirst_Name());
 		a.setLast_Name(admin.getLast_Name());
 		a.setPassword(passwordEncoder.encode(admin.getPassword()));
-		a.setUser_Name(admin.getUser_Name());
+		a.setUsername(admin.getUsername());
+		a.setEmail(admin.getEmail());
+		a.setUpdatedAt(Instant.now());
 		return adminRepository.save(a);
 
 	}
@@ -61,7 +65,7 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Override
 	public Optional<Admin> retrieveByUserName(String user_name) {
-		Optional<Admin> admin = adminRepository.findByUserName(user_name);
+		Optional<Admin> admin = adminRepository.findByUsername(user_name);
 		return admin;
 	}
 
@@ -71,21 +75,17 @@ public class AdminServiceImpl implements IAdminService {
 		return admin;
 	}
 
-	@Override
-	public Optional<Admin> retrieveByFullName(String first_name, String last_name) {
-		Optional<Admin> admin = adminRepository.findByFullName(first_name, last_name);
-		return admin;
-	}
+	
 
 	@Override
 	public Admin registerAdmin(Admin admin) {
-		Log.info("registering admin {}", admin.getUser_Name());
+		Log.info("registering admin {}", admin.getUsername());
 
-		if(adminRepository.existsByUsername(admin.getUser_Name())) {
-			Log.warn("username {} already exists.", admin.getUser_Name());
+		if(adminRepository.existsByUsername(admin.getUsername())) {
+			Log.warn("username {} already exists.", admin.getUsername());
 
 			throw new UsernameAlreadyExistsException(
-					String.format("username %s already exists", admin.getUser_Name()));
+					String.format("username %s already exists", admin.getUsername()));
 		}
 
 		if(adminRepository.existsByEmail(admin.getEmail())) {
