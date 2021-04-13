@@ -81,12 +81,12 @@ public class Product implements Serializable {
 	}
 
 
-	public String getNature() {
+	public Nature getNature() {
 		return nature;
 	}
 
 
-	public void setNature(String nature) {
+	public void setNature(Nature nature) {
 		this.nature = nature;
 	}
 
@@ -123,7 +123,10 @@ public class Product implements Serializable {
 	
 	private float generalrate;
 	
-	private String nature;
+	@Enumerated(EnumType.ORDINAL)
+	private Nature nature;
+	
+	
 	private float initial_price;
 	
 
@@ -151,7 +154,7 @@ public class Product implements Serializable {
 	
 	
 	public Product(int id, String name, String code, float price, String image, int quantity, Date expDate,
-			float generalrate, String nature, Set<OrderC> orderc, ProductCategory productCategory,Matiere matiere) {
+			float generalrate, Nature nature, Set<OrderC> orderc, ProductCategory productCategory,Matiere matiere) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -169,7 +172,7 @@ public class Product implements Serializable {
 
 
 	public Product(int id, String name, String code, float price, String image, int quantity, Date expDate,
-			float generalrate, String nature, int energie, float matiere_grasse, float acide_gras_sature, float sucres,
+			float generalrate, Nature nature, int energie, float matiere_grasse, float acide_gras_sature, float sucres,
 			float fibres, float proteines, float sel, int fruits, Set<OrderC> orderc, ProductCategory productCategory,Matiere matiere) {
 		super();
 		this.id = id;
@@ -195,7 +198,7 @@ public class Product implements Serializable {
 	}
 
 
-	public Product(String nature, int energie, float matiere_grasse, float acide_gras_sature,float sucres, float fibres,
+	public Product(Nature nature, int energie, float matiere_grasse, float acide_gras_sature,float sucres, float fibres,
 			float proteines, int fruits, float sel) {
 		super();
 		this.nature = nature;
@@ -206,7 +209,7 @@ public class Product implements Serializable {
 
 
 	public Product(String name, String code, float price, String image, int quantity, Date expDate, float generalrate,
-			String nature,Matiere matiere) {
+			Nature nature,Matiere matiere) {
 		super();
 		this.name = name;
 		this.code = code;
@@ -228,7 +231,7 @@ public class Product implements Serializable {
 
 
 	public Product(String name, String code, float price, String image, int quantity, Date expDate, float generalrate,
-			String nature, int energie, float matiere_grasse, float acide_gras_sature, float sucres, float fibres,
+			Nature nature, int energie, float matiere_grasse, float acide_gras_sature, float sucres, float fibres,
 			float proteines, float sel, int fruits, Set<OrderC> orderc, ProductCategory productCategory,Matiere matiere) {
 		super();
 		this.name = name;
@@ -254,7 +257,7 @@ public class Product implements Serializable {
 	
 	
 public Product(String name, String code, float price, String image, int quantity, Date expDate, float generalrate,
-			String nature, int energie, float matiere_grasse, float acide_gras_sature, float sucres, float fibres,
+			Nature nature, int energie, float matiere_grasse, float acide_gras_sature, float sucres, float fibres,
 			float proteines, float sel, int fruits,Matiere matiere) {
 		super();
 		this.name = name;

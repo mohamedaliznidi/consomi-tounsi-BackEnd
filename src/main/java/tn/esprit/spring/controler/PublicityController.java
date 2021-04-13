@@ -76,7 +76,7 @@ public class PublicityController {
 	
 
 
-// NO OVERLAP ALGORHYTHME
+// NO OVERLAP ALGORHiTHM
 	@PostMapping ("/addpublicity/{idproduct}")
 	public String add(@RequestBody Publicity p,@PathVariable("idproduct") int id1){
 		Product product = productservice.retrieveProduct(id1);
@@ -103,7 +103,7 @@ public class PublicityController {
 	
 	
 	
-	//current publicities
+	//current publicities Algorithm 
 	@GetMapping("/currentpublicities")
 	public ArrayList<Publicity> current(){
 

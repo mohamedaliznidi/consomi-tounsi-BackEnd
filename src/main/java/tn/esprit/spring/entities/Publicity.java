@@ -107,9 +107,26 @@ public class Publicity implements Serializable {
 	}
 
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Product product;
-	
+
+
+
+
+	public Publicity(Date startDateP, Date endDateP, PublicityCategory publicitycategory, String image, boolean current,
+			Product product) {
+		super();
+		StartDateP = startDateP;
+		EndDateP = endDateP;
+		this.publicitycategory = publicitycategory;
+		this.image = image;
+		this.current = current;
+		this.product = product;
+	}
+
+
+
+
 	public Product getProduct() {
 		return product;
 	}

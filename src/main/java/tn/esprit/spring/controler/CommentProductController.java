@@ -27,6 +27,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
+//revoir delete comment
+
 public class CommentProductController {
 @Autowired
 	
@@ -36,9 +38,16 @@ public class CommentProductController {
 private IProductService productservice;
 	
 	@PostMapping ("/addcomment/{idclient}/{idproduct}")
-	public void add(@PathVariable ("idclient") int idclient , @PathVariable ("idproduct") int idproduct){
+	public void add(@RequestBody CommentProduct p,@PathVariable ("idclient") int idclient , @PathVariable ("idproduct") int idproduct){
 		Date date = new Date();
-		this.commentproductservice.addCommentProduct(idclient,idproduct,date);
+
+		CommentProduct comment = new CommentProduct(p.getRate(),p.getContent());
+		CommentProductId id = new CommentProductId();
+		id.setDate(date);
+		id.setIdClient(idclient);
+		id.setIdProduct(idproduct);
+		comment.setCommentproductid(id);
+		this.commentproductservice.addCommentProduct(comment);
 		
 	}
 	

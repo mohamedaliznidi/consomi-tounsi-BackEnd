@@ -8,7 +8,7 @@ import tn.esprit.spring.entities.CommentProductId;
 import tn.esprit.spring.entities.Product;
 
 public interface ICommentProductService {
-	void addCommentProduct(int idproduct, int idclient,Date date);
+	void addCommentProduct(CommentProduct comment);
 	List<CommentProduct> retrieveAllCommentProduct();
 	List<CommentProduct> RetrieveByProduct(int idProduct);
 	public void deleteCommentProduct(int idproduct, int idclient,Date date);

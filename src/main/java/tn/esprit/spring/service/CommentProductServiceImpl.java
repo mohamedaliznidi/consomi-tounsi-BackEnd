@@ -27,14 +27,14 @@ public class CommentProductServiceImpl implements ICommentProductService {
 	 private static final Logger L = LogManager.getLogger(ProductServiceImpl.class);
 	
 	@Override
-	public void addCommentProduct (int idproduct, int idclient,Date date){
-		CommentProductId id = new CommentProductId();
+	public void addCommentProduct (CommentProduct comment){
+	/*	CommentProductId id = new CommentProductId();
 		id.setIdClient(idclient);
 		id.setIdProduct(idproduct);
 		//Date date = new Date();
 		id.setDate(date);
 		CommentProduct comment = new CommentProduct();
-		comment.setCommentproductid(id);
+		comment.setCommentproductid(id);*/
 	commentproductRepository.save(comment);
 	}
 	
