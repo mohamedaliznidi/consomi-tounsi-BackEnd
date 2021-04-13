@@ -80,5 +80,12 @@ public class UserServiceImpl implements IUserService {
 		return user;
 	}
 
+
+	@Override
+	public Optional<User> retrieveUser(int id) {
+		Optional<User> user = userRepository.findById(id);
+		return user;
+	}
+
 	
 }

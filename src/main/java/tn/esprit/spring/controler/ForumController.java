@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +17,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.CommentForum;
 import tn.esprit.spring.entities.Subject;
+import tn.esprit.spring.entities.User;
 import tn.esprit.spring.exception.ResourceNotFoundException;
+import tn.esprit.spring.service.ClientServiceImpl;
 import tn.esprit.spring.service.CommentForumServiceImpl;
 import tn.esprit.spring.service.SubjectServiceImpl;
+import tn.esprit.spring.service.UserServiceImpl;
 
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
@@ -30,6 +35,7 @@ public class ForumController {
 
 	@Autowired SubjectServiceImpl subjectService;
 	@Autowired CommentForumServiceImpl commentForumService;
+	@Autowired ClientServiceImpl userService;
 
 
 	@GetMapping("/users/subjects")
@@ -82,9 +88,22 @@ public class ForumController {
 		}
 	}
 
-	@PostMapping("/clients/comments")
-	public ResponseEntity<CommentForum> createComment(@RequestBody CommentForum cf ) {
+	
+	@RequestMapping(value ="/clients/comments", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<CommentForum> createComment(@RequestBody CommentForum cf ,@RequestParam  int subjectid) {
 		try {
+			
+			cf.setSubject(subjectService
+					.retrieveSubject(subjectid)
+					.map(sub ->  (Subject) sub)
+					.orElseThrow(() -> new ResourceNotFoundException(String.valueOf(subjectid))));
+			
+			cf.setClient(userService
+					.retrieveClient(userid)
+					.map(client ->  (Client) client)
+					.orElseThrow(() -> new ResourceNotFoundException(String.valueOf(userid))));
+			
 			commentForumService.addCommentForum(cf);
 			return new ResponseEntity<>( HttpStatus.CREATED);
 		} catch (Exception e) {

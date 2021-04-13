@@ -12,4 +12,5 @@ public interface IUserService {
 	User registerUser(User user, String role);
 	String loginUser(String username, String password);
 	Optional<User> retrieveByUsername(String username);
+	Optional<User> retrieveUser(int id);
 }
