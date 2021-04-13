@@ -1,41 +1,42 @@
 package tn.esprit.spring.config;
 
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 
 
 @Component
+@ConfigurationProperties(prefix = "security.jwt")
 public class JwtConfig {
 
-    @Value("${security.jwt.uri:}")
-    private String Uri;
+   
+    private String uri;
 
-    @Value("${security.jwt.header:}")
+   
     private String header;
 
-    @Value("${security.jwt.prefix:}")
+   
     private String prefix;
 
-    @Value("${security.jwt.expiration:1234}")
+   
     private int expiration;
 
-    @Value("${security.jwt.secret:}")
+   
     private String secret;
 
 	/**
 	 * @return the uri
 	 */
 	public String getUri() {
-		return Uri;
+		return uri;
 	}
 
 	/**
 	 * @param uri the uri to set
 	 */
-	public void setUri(String uri) {
-		Uri = uri;
+	public void setUri(String urii) {
+		uri = urii;
 	}
 
 	/**

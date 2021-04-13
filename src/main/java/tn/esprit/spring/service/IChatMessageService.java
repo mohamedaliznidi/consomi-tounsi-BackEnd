@@ -8,8 +8,8 @@ import tn.esprit.spring.exception.ResourceNotFoundException;
 
 public interface IChatMessageService {
 	ChatMessage save(ChatMessage chatMessage) ;
-	long countNewMessages(int senderId, int recipientId);
-	List<ChatMessage> findChatMessages(int senderId, int recipientId) throws ResourceNotFoundException;
+	long countNewMessages(String senderId, String recipientId);
+	List<ChatMessage> findChatMessages(String senderId, String recipientId) throws ResourceNotFoundException;
 	ChatMessage findById(int id) throws ResourceNotFoundException;
-	void updateStatuses(int senderId, int recipientId, MessageStatus status) throws ResourceNotFoundException;
+	void updateStatuses(String senderId, String recipientId, MessageStatus status) throws ResourceNotFoundException;
 }

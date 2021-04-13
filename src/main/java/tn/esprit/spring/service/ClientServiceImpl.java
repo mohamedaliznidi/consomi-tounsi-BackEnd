@@ -7,9 +7,6 @@ import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +21,6 @@ import tn.esprit.spring.repositry.ClientRepository;
 public class ClientServiceImpl implements IClientService {
 
 	@Autowired private PasswordEncoder passwordEncoder;
-	@Autowired private AuthenticationManager authenticationManager;
-	@Autowired private JwtTokenProvider tokenProvider;
 	@Autowired private ClientRepository clientRepository;
 
 	private static final Logger Log = LogManager.getLogger(ClientServiceImpl.class);
@@ -104,12 +99,6 @@ public class ClientServiceImpl implements IClientService {
 		return clientRepository.save(client);
 	}
 
-	@Override
-	public String loginClient(String username, String password) {
-		Authentication authentication = authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-
-		return tokenProvider.generateToken(authentication);
-	}
+	
 
 }

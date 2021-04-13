@@ -1,97 +1,85 @@
 package tn.esprit.spring.entities;
 
-import java.io.Serializable;
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class ChatMessage implements Serializable{
+public class ChatMessage {
 	
+	public static class Builder {
+		private String content;
+		private String sender;
+		private String time;
+		private MessageType type ;
+		
+		public Builder() {};
+		
+		public Builder content (String content) {
+			this.content = content;
+			return this;
+		}
+		
+		public Builder sender (String sender) {
+			this.sender = sender;
+			return this;
+		}
+		
+		public Builder time (String time) {
+			this.time = time;
+			return this;
+		}
+		public Builder type (MessageType type) {
+			this.type = type;
+			return this;
+		}
+		
+		public ChatMessage build() {
+			ChatMessage message = new ChatMessage();
+			message.setContent(this.content);
+			message.setSender(this.sender);
+			message.setTime(this.time);
+			message.setType(this.type);
+			
+			return message;
+		}
+	}
 	
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	private int chatId;
-	private int senderId;
-	private int recipientId;
-	private String senderName;
-	private String recipientName;
 	private String content;
-	private Date timestamp;
-	private MessageStatus status;
-	public int getId() {
-		return id;
+	private String sender;
+	private String time;
+	private MessageType type ;
+
+	public enum MessageType {
+		CHAT,CONNECT,DISCONNECT
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public int getChatId() {
-		return chatId;
-	}
-	public void setChatId(int chatId) {
-		this.chatId = chatId;
-	}
-	public int getSenderId() {
-		return senderId;
-	}
-	public void setSenderId(int senderId) {
-		this.senderId = senderId;
-	}
-	public int getRecipientId() {
-		return recipientId;
-	}
-	public void setRecipientId(int recipientId) {
-		this.recipientId = recipientId;
-	}
-	public String getSenderName() {
-		return senderName;
-	}
-	public void setSenderName(String senderName) {
-		this.senderName = senderName;
-	}
-	public String getRecipientName() {
-		return recipientName;
-	}
-	public void setRecipientName(String recipientName) {
-		this.recipientName = recipientName;
-	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getTimestamp() {
-		return timestamp;
+
+	public String getSender() {
+		return sender;
 	}
-	public void setTimestamp(Date timestamp) {
-		this.timestamp = timestamp;
+
+	public void setSender(String sender) {
+		this.sender = sender;
 	}
-	public MessageStatus getStatus() {
-		return status;
+
+	public MessageType getType() {
+		return type;
 	}
-	public void setStatus(MessageStatus status) {
-		this.status = status;
+
+	public void setType(MessageType type) {
+		this.type = type;
 	}
-	public ChatMessage(int id, int chatId, int senderId, int recipientId, String senderName, String recipientName,
-			String content, Date timestamp, MessageStatus status) {
-		this.id = id;
-		this.chatId = chatId;
-		this.senderId = senderId;
-		this.recipientId = recipientId;
-		this.senderName = senderName;
-		this.recipientName = recipientName;
-		this.content = content;
-		this.timestamp = timestamp;
-		this.status = status;
+
+	public String getTime() {
+		return time;
 	}
-	public ChatMessage() {
+
+	public void setTime(String time) {
+		this.time = time;
 	}
-	
-	
+
+
 }

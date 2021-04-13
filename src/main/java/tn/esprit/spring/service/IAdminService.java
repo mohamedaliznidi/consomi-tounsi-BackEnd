@@ -15,6 +15,6 @@ public interface IAdminService {
 	Optional<Admin> retrieveByUserName(String user_name);
 	Optional<Admin> retrieveByEmail(String email);
 	Admin registerAdmin(Admin admin);
-	String loginAdmin(String username, String password);
+	
 
 }
