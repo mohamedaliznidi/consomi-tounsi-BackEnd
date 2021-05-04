@@ -94,15 +94,7 @@ public class ForumController {
 	public ResponseEntity<CommentForum> createComment(@RequestBody CommentForum cf ,@RequestParam  int subjectid) {
 		try {
 			
-			cf.setSubject(subjectService
-					.retrieveSubject(subjectid)
-					.map(sub ->  (Subject) sub)
-					.orElseThrow(() -> new ResourceNotFoundException(String.valueOf(subjectid))));
-			
-			cf.setClient(userService
-					.retrieveClient(userid)
-					.map(client ->  (Client) client)
-					.orElseThrow(() -> new ResourceNotFoundException(String.valueOf(userid))));
+		
 			
 			commentForumService.addCommentForum(cf);
 			return new ResponseEntity<>( HttpStatus.CREATED);

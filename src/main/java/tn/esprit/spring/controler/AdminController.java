@@ -30,7 +30,7 @@ import tn.esprit.spring.payload.ApiResponse;
 import tn.esprit.spring.service.AdminServiceImpl;
 import tn.esprit.spring.service.UserServiceImpl;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class AdminController {
