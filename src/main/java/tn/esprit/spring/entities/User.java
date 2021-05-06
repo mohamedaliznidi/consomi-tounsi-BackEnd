@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @Entity
+@Table(name="idkkk") 
 @Inheritance( strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="USER_TYPE")
 public abstract class User implements Serializable {
