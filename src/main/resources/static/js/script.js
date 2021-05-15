@@ -12,7 +12,7 @@ let stompClient
 let username
 
 const connect = (event) => {
-    username = document.querySelector('#username').value.trim()
+    username =  decoded.sub;//document.querySelector('#username').value.trim()
 
     if (username) {
         const login = document.querySelector('#login')
