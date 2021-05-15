@@ -1,5 +1,10 @@
 'use strict'
 
+const jwt_decode = require("jwt-decode");
+var token = localStorage.getItem("token");
+var decoded = jwt_decode(token);
+console.log(decoded);
+
 let stompClient
 let username
 
