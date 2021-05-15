@@ -13,7 +13,7 @@ let username
 
 window.onload = connect;
 
-const connect = (event) => {
+function connect(event) {
     username =  decoded.sub;//document.querySelector('#username').value.trim()
 
     if (username) {
