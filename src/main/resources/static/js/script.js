@@ -1,7 +1,8 @@
 'use strict'
 
 //import jwt_decode from "jwt-decode";
-let token = localStorage.getItem("token");
+let token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYWxpem5haWRpIiwiYXV0aG9yaXRpZXMiOlsiQURNSU4iXSwiaWF0IjoxNjIxMDk3OTc2LCJleHAiOjE2MjExODQzNzZ9.dqYlu_HcxreZMFvCKd6kDv5osFK84spXKNLFEMdpMUbt5v9GZnRnSgzvxKelbTM-cuOg-RYQ_m0ysoNsDTw8eg" 
+//localStorage.getItem("token");
 console.log(token);
 let decoded = jwt_decode(token);
 console.log(decoded);
