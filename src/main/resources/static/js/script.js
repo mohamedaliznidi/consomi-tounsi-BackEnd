@@ -1,8 +1,9 @@
 'use strict'
 
-import jwt_decode from "jwt-decode";
-var token = localStorage.getItem("token");
-var decoded = jwt_decode(token);
+//import jwt_decode from "jwt-decode";
+let token = localStorage.getItem("token");
+console.log(token);
+let decoded = jwt_decode(token);
 console.log(decoded);
 console.log("heloo");
 
