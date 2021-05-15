@@ -11,6 +11,8 @@ console.log("heloo");
 let stompClient
 let username
 
+window.onload = connect;
+
 const connect = (event) => {
     username =  decoded.sub;//document.querySelector('#username').value.trim()
 
