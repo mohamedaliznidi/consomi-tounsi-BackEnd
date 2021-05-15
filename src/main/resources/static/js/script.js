@@ -14,6 +14,7 @@ let username
 window.onload = connect;
 
 function connect(event) {
+    console.log(JSON.parse(window.location.hash.replace('#','')));
     username =  decoded.sub;//document.querySelector('#username').value.trim()
 
     if (username) {
