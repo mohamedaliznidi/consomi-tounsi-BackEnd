@@ -34,7 +34,7 @@ function parseURLParams(url) {
 window.onload = connect;
 
 function connect(event) {
-    console.log(parseURLParams(location.search));
+    console.log(parseURLParams(window.location.href));
     username =  decoded.sub;//document.querySelector('#username').value.trim()
 
     if (username) {
