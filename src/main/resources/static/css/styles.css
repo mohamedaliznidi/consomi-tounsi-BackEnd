@@ -1,106 +1,105 @@
-body,html {
-    margin: 0;
-    background-color: rgba(40, 42, 54, 1) !important;
+body,
+html {
+  margin: 0;
+  background-color: #f16c69 !important;
 }
 
 .card {
-    height: 500px;
-    border-radius: 15px !important;
-    background-color: rgba(0,0,0,0.4) !important;
+  height: 500px;
+  border-radius: 15px !important;
+  background-color: #fffc !important;
 }
 
 .card-body {
-    overflow-y: auto;
+  overflow-y: auto;
 }
 
 .card-header {
-    border-radius: 15px 15px 0 0 !important;
-    border-bottom: 0 !important;
+  border-radius: 15px 15px 0 0 !important;
+  border-bottom: 0 !important;
 }
 
 .card-footer {
-    border-radius: 0 0 15px 15px !important;
-    border-top: 0 !important;
+  border-radius: 0 0 15px 15px !important;
+  border-top: 0 !important;
 }
 
 .user_img {
-    height: 70px;
-    width: 70px;
-    border:1.5px solid #f5f6fa;
+  height: 70px;
+  width: 70px;
+  border: 1.5px solid #f16c69;
 }
 
-
 .img_cont_msg {
-    height: 40px;
-    width: 40px;
+  height: 40px;
+  width: 40px;
 }
 
 .chat-summary {
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 15px;
 }
 
 .chat-summary span {
-    font-size: 20px;
-    color: white;
+  font-size: 20px;
+  color: #4a4a4a;
 }
 
 .chat-summary p {
-    font-size: 10px;
-    color: rgba(255,255,255,0.6);
+  font-size: 10px;
+  color: rgba(74, 74, 74, 0.6);
 }
 
 .msg_container_send {
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-right: 10px;
-    border-radius: 25px;
-    padding: 10px;
-    position: relative;
-    color:white;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 10px;
+  border-radius: 25px;
+  padding: 10px;
+  position: relative;
+  color: #f5f6fa;
 }
 
 .msg_time_send {
-    position: absolute;
-    right:0;
-    bottom: -20px;
-    color: rgba(255,255,255,0.5);
-    font-size: 10px;
-    width: max-content;
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+  color: #f5f6fa;
+  font-size: 10px;
+  width: max-content;
 }
 
 .all-input {
-    background-color: rgba(0,0,0,0.3) !important;
-    border:0 !important;
-    color:white !important;
-    height: 60px !important;
-    overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  border: 0 !important;
+  color: #f5f6fa !important;
+  height: 60px !important;
+  overflow-y: auto;
 }
 
-
 .all-input:focus {
-   box-shadow:none !important;
-   outline:0px !important;
+  box-shadow: none !important;
+  outline: 0px !important;
 }
 
 button {
-    background-color: rgba(0,0,0,0.3) !important;
-    border:0 !important;
-    color:white !important;
-    border-radius: 0 5px 5px 0 !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  border: 0 !important;
+  color: #f16c69 !important;
+  border-radius: 0 5px 5px 0 !important;
 }
 
 .hide {
-    display:none;
+  display: none;
 }
 
 .login {
-    padding: 10px;
+  padding: 10px;
 }
 
 .main {
-    margin: 30px auto;
+  margin: 30px auto;
 }
 
 .circle {
@@ -111,6 +110,6 @@ button {
   text-align: center;
   font-size: 1.5em;
   vertical-align: middle;
-  margin:3px;
-  border:1.5px solid #f5f6fa;
+  margin: 3px;
+  border: 1.5px solid #f16c69;
 }
