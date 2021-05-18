@@ -58,22 +58,22 @@ html {
   border-radius: 25px;
   padding: 10px;
   position: relative;
-  color: #f5f6fa;
+  color: #4a4a4a;
 }
 
 .msg_time_send {
   position: absolute;
   right: 0;
   bottom: -20px;
-  color: #f5f6fa;
+  color: #4a4a4a;
   font-size: 10px;
   width: max-content;
 }
 
 .all-input {
-  background-color: rgba(0, 0, 0, 0.3) !important;
+  background-color: #fffc !important;
   border: 0 !important;
-  color: #f5f6fa !important;
+  color: #4a4a4a !important;
   height: 60px !important;
   overflow-y: auto;
 }
